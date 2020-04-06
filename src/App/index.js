@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import '../../node_modules/font-awesome/scss/font-awesome.scss';

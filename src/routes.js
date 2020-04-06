@@ -7,15 +7,15 @@ global.jQuery = $;
 
 // Private Area
 // Beranda
-const BerandaPrivate = React.lazy(() => import('./Demo/aPrivate/Beranda/Beranda'));
+const BerandaPrivate = React.lazy(() => import('./Demo/Protected/Calon/Beranda/Beranda'));
 // News
-const News = React.lazy(() => import('./Demo/aPrivate/News/News'));
+const News = React.lazy(() => import('./Demo/Protected/Calon/News/News'));
 // Biodata
-const Biodata = React.lazy(() => import('./Demo/aPrivate/Biodata/Biodata'));
+const Biodata = React.lazy(() => import('./Demo/Protected/Calon/Biodata/Biodata'));
 // Cetak Bukti Pendaftaran
-const CetakBukti = React.lazy(() => import('./Demo/aPrivate/CetakBukti/CetakBukti'));
+const CetakBukti = React.lazy(() => import('./Demo/Protected/Calon/CetakBukti/CetakBukti'));
 // Panduan
-const Panduan = React.lazy(() => import('./Demo/aPrivate/Panduan/Panduan'));
+const Panduan = React.lazy(() => import('./Demo/Protected/Calon/Panduan/Panduan'));
 
 const routes = [
     { path: '/user/beranda', exact:true, name: 'Default', component: BerandaPrivate },

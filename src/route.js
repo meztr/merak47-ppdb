@@ -5,11 +5,11 @@ import React from 'react';
 const Signin1 = React.lazy(() => import('./Demo/Authentication/SignIn/SignIn1'));
 
 // Landing
-const Landing = React.lazy(() => import('./Demo/aPublic/Landing/Landing'));
+const Landing = React.lazy(() => import('./Demo/Public/Landing/Landing'));
 // Pendaftaran
-const Pendaftaran = React.lazy(() => import('./Demo/aPublic/Pendaftaran/Pendaftaran'));
+const Pendaftaran = React.lazy(() => import('./Demo/Public/Pendaftaran/Pendaftaran'));
 // Pengumuman
-const Pengumuman = React.lazy(() => import('./Demo/aPublic/Pengumuman/Pengumuman'));
+const Pengumuman = React.lazy(() => import('./Demo/Public/Pengumuman/Pengumuman'));
 
 
 const route = [
