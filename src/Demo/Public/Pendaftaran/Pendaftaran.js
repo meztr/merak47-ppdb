@@ -4,7 +4,10 @@ class Pendaftaran extends Component {
     render() {
         return (
             //Page Content
-            <h1>Pendaftaran</h1>
+            <div>
+                <h1>Pendaftaran</h1>
+                <a className="btn" href="/user/beranda">private area</a>
+            </div>
         );
     }
 }

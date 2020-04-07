@@ -1,8 +1,12 @@
-  
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+import * as firebase from "firebase/app";
 
+// Add the Firebase services that you want to use
+// We only want to use Firebase Auth here
+import "firebase/auth";
+
+// Your app's Firebase configuration
 const prodconfig = {
     apiKey: process.env.REACT_APP_PROD_API_KEY,
     authDomain: process.env.REACT_APP_PROD_AUTH_DOMAIN,
@@ -21,9 +25,11 @@ const devconfig = {
     messagingSenderId: process.env.REACT_APP_DEV_MESSAGING_SENDER_ID,
 };
   
-const config = process.env.NODE_ENV === 'production' ? prodconfig : devconfig;
+//const firebaseConfig = process.env.NODE_ENV === 'production' ? prodconfig : devconfig;
+//console.log('using: ' + process.env.NODE_ENV);
+// Initialize Firebase
+//firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(prodconfig);
 
-firebase.initializeApp(config)
-
-export const ref = firebase.database().ref()
-export const firebaseAuth = firebase.auth
+// Finally, export it to use it throughout your app
+export default firebase;

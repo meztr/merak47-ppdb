@@ -37,43 +37,43 @@ export default {
                 }
             ]
         },
-        {
-            id: 'panitia',
-            title: 'Panitia',
-            type: 'group',
-            icon: 'icon-navigation',
-            children: [
-                {
-                    id: 'beranda',
-                    title: 'Beranda',
-                    type: 'item',
-                    url: '/user/beranda',
-                    icon: 'feather icon-home',
-                    breadcrumbs: false
-                },
-                {
-                    id: 'news',
-                    title: 'Pengumuman',
-                    type: 'item',
-                    url: '/user/news',
-                    icon: 'feather icon-box',
-                },
-                {
-                    id: 'biodata',
-                    title: 'Biodata Pendaftaran',
-                    type: 'item',
-                    url: '/user/biodata',
-                    icon: 'feather icon-user',
-                },
-                {
-                    id: 'cetak',
-                    title: 'Cetak Bukti Pendaftaran',
-                    type: 'item',
-                    url: '/user/cetak',
-                    icon: 'feather icon-printer',
-                }
-            ]
-        },
+        // {
+        //     id: 'panitia',
+        //     title: 'Panitia',
+        //     type: 'group',
+        //     icon: 'icon-navigation',
+        //     children: [
+        //         {
+        //             id: 'beranda',
+        //             title: 'Beranda',
+        //             type: 'item',
+        //             url: '/user/beranda',
+        //             icon: 'feather icon-home',
+        //             breadcrumbs: false
+        //         },
+        //         {
+        //             id: 'news',
+        //             title: 'Pengumuman',
+        //             type: 'item',
+        //             url: '/user/news',
+        //             icon: 'feather icon-box',
+        //         },
+        //         {
+        //             id: 'biodata',
+        //             title: 'Biodata Pendaftaran',
+        //             type: 'item',
+        //             url: '/user/biodata',
+        //             icon: 'feather icon-user',
+        //         },
+        //         {
+        //             id: 'cetak',
+        //             title: 'Cetak Bukti Pendaftaran',
+        //             type: 'item',
+        //             url: '/user/cetak',
+        //             icon: 'feather icon-printer',
+        //         }
+        //     ]
+        // },
         {
             id: 'others',
                 title: 'Lainnya',
@@ -106,7 +106,7 @@ export default {
                         id: 'form-pendaftaran',
                         title: 'Pendaftaran PPDB Online',
                         type: 'item',
-                        url: '/landing',
+                        url: '/pendaftaran',
                         icon: 'feather icon-help-circle',
                     }
                 ]

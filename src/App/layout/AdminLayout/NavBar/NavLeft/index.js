@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Dropdown} from 'react-bootstrap';
+// import {Dropdown} from 'react-bootstrap';
 import windowSize from 'react-window-size';
 
-import NavSearch from './NavSearch';
+// import NavSearch from './NavSearch';
 import Aux from "../../../../../hoc/_Aux";
 import DEMO from "../../../../../store/constant";
 import * as actionTypes from "../../../../../store/actions";
@@ -18,10 +18,10 @@ class NavLeft extends Component {
         if (this.props.windowWidth <= 575) {
             navItemClass = [...navItemClass, 'd-none'];
         }
-        let dropdownRightAlign = false;
-        if (this.props.rtlLayout) {
-            dropdownRightAlign = true;
-        }
+        // let dropdownRightAlign = false;
+        // if (this.props.rtlLayout) {
+        //     dropdownRightAlign = true;
+        // }
 
 
         return (
