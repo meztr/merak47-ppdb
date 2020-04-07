@@ -9,7 +9,7 @@ const Main = ({ signout }) => {
     <div className="page">
       <div>
         <span className="emoji" role="img" aria-label="House With Garden">
-          🏡
+          🏡🏡🏡
         </span>
       </div>
       <h1>Welcome on Home</h1>
