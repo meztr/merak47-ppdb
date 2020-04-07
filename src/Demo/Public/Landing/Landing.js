@@ -6,7 +6,7 @@ class Landing extends Component {
             //Page Content
             <div>
             <h1>LandingPage</h1>
-            <a className="btn" href="/dashboard/default">private area</a>
+            <a className="btn" href="/user/beranda">private area</a>
             </div>
         );
     }

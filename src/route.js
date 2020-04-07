@@ -13,11 +13,11 @@ const Pengumuman = React.lazy(() => import('./Demo/Public/Pengumuman/Pengumuman'
 
 
 const route = [
-    // { path: '/auth/signup-1', exact: true, name: 'Signup 1', component: SignUp1 },
+    // { path: '/auth/signup-1', exact: true, name: 'Signup 1', component: SignUp1 },    
+    { path: '/', exact: true, name: 'Landing Page', component: Landing },
     { path: '/auth/signin-1', exact: true, name: 'Signin 1', component: Signin1 },
-    { path: '/landing', exact: true, name: 'Signin 1', component: Landing },
-    { path: '/pendaftaran', exact: true, name: 'Signin 1', component: Pendaftaran },
-    { path: '/pengumuman', exact: true, name: 'Signin 1', component: Pengumuman }
+    { path: '/pendaftaran', exact: true, name: 'Pendaftaran', component: Pendaftaran },
+    { path: '/pengumuman', exact: true, name: 'Pengumuman', component: Pengumuman }
 ];
 
 export default route;
