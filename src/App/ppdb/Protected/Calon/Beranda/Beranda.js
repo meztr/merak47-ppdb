@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col } from 'react-bootstrap';
 
-import Aux from "../../../../../hoc/_Aux";
+import Aux from "../../../../hoc/_Aux";
 import Card from "../../../../../App/components/MainCard";
 // import DEMO from "../../../../store/constant";
 

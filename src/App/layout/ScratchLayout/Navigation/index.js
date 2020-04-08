@@ -8,7 +8,7 @@ import windowSize from 'react-window-size';
 
 import NavContent from './NavContent';
 import OutsideClick from './OutsideClick';
-import Aux from './../../../../hoc/_Aux'
+import Aux from '../../../hoc/_Aux';
 import * as actionTypes from './../../../../store/actions';
 // import navigation from '../../../../menu-scratch-items';
 // import navigation from '../../../../menu-ppdb-items';

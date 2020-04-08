@@ -61,7 +61,7 @@ export const signup = (email, password) => async dispatch => {
   }
 };
 
-// Signing in with Firebase
+// Signing in with Firebase Claire version
 export const signin = (email, password, callback) => async dispatch => {
   try {
     dispatch(beginApiCall());

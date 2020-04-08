@@ -7,14 +7,17 @@ import windowSize from 'react-window-size';
 import Navigation from './Navigation';
 // import Breadcrumb from './Breadcumb';
 import Loader from "../Loader";
-import Aux from "../../../hoc/_Aux";
+import Aux from "../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions";
 
 // import bgImage from "../../../assets/bg-masthead.jpg"
-import Home from '../../ppdb/Scratch/Home/Home';
-import Footer from "../../ppdb/Scratch/Footer/Footer";
+import Home from "./Home/Home";
+import Footer from "./Footer/Footer";
 
 import './app.scss';
+
+import { signout } from "../../../store/actions/auth";
+import requireAuth from "../../hoc/requireAuth";
 
 class ScratchLayout extends Component {
 
@@ -62,7 +65,14 @@ class ScratchLayout extends Component {
                                         style={{margin: "10px"}}
                                         href="/pendaftaran"
                                     >Pendaftaran PPDB Online</a>                                                     
-                                    <a className="btn btn-primary btn-xl js-scroll-trigger" style={{margin: "10px"}}>Login Calon Peserta Didik</a>
+                                    <a className="btn btn-primary btn-xl js-scroll-trigger" 
+                                        style={{margin: "10px"}}
+                                        href="/main"
+                                    >Login Calon Peserta Didik</a>
+                                    <a className="btn btn-primary btn-xl js-scroll-trigger" 
+                                        style={{margin: "10px"}}
+                                        href="/claire"
+                                    >Claire Test</a>
                                 </div>
                             </div>
                         </div>
@@ -93,4 +103,5 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
+// export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(ScratchLayout)));
 export default connect(mapStateToProps, mapDispatchToProps) (windowSize(ScratchLayout));
