@@ -1,0 +1,49 @@
+// Variables
+
+// merak47 theme color
+$biru-merak : #272466 !default;
+$orange-merak: #FFA200 !default;
+$yellow-merak: #FFC600 !default;
+$white-merak: #F9F9F9  !default;
+$red-glamour: #EE0045 !default;
+
+//- Override and add to color system
+
+$orange: #f4623a !default;
+$brown: #5c4d42 !default;
+
+$col1: #0e10c5 !default;
+$col2: #cb4e24 !default;
+$col3: #04C37E !default;
+$col4: #325547 !default;
+$col5: #b4b7ba !default;
+
+//- Override primary color
+// $primary: $orange !default;
+$primary: $orange-merak !default;
+$secondary: $biru-merak !default;
+
+//- Override NavBar color
+$navbg: $biru-merak !default;
+$navfont: $biru-merak !default;
+$navfont2: $yellow-merak !default;
+
+//- Override font system
+// $font-family-sans-serif: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+// $font-family-serif: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+// $font-family-base: $font-family-serif !default;
+// $headings-font-family: $font-family-sans-serif !default;
+
+//- Scratch Override font system
+$font-family-sans-serif: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+$font-family-serif: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+$font-family-base: $font-family-serif !default;
+$headings-font-family: $font-family-sans-serif !default;
+
+$navlogo-font: 'Open Sans', sans-serif;
+$navmenu-font: 'Open Sans', sans-serif;
+$font-weight-small: small;
+$font-weight-bold: bold;
+
+//- Add custom variables
+$navbar-height: 4.5rem !default;

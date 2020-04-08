@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Main from "./Main";
-import Login from "./Login";
-import Bunny from "./Bunny";
+import Main from "./clairechabas/Main";
+import Login from "./clairechabas/Login";
+import Bunny from "./clairechabas/Bunny";
 
 const App = () => {
   return (

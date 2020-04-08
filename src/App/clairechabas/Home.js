@@ -1,8 +1,8 @@
 import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { signout } from "../store/actions/auth";
-import requireAuth from "./hoc/requireAuth";
+import { signout } from "../../store/actions/auth";
+import requireAuth from "../hoc/requireAuth"
 
 const Main = ({ signout }) => {
   return (

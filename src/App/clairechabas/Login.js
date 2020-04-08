@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { signup, signin, resetPassword } from "../store/actions/auth";
-import useForm from "../utils/useForm";
-import validate from "../utils/validateLoginForm";
+import { signup, signin, resetPassword } from "../../store/actions/auth";
+import useForm from "../../utils/useForm";
+import validate from "../../utils/validateLoginForm";
 import Spinner from "./Spinner";
 
 const Login = ({

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import requireAuth from "./hoc/requireAuth"
+import requireAuth from "../hoc/requireAuth"
 
 const Bunny = () => {
   return (

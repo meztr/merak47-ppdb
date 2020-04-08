@@ -91,7 +91,7 @@ export default {
                         id: 'logout',
                         title: 'Keluar',
                         type: 'item',
-                        url: '/news',
+                        url: '/pengumuman',
                         icon: 'feather icon-log-out',
                     }
                 ]
