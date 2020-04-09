@@ -13,10 +13,10 @@ const validate = values => {
     errors.email = 'Invalid email address'
   }
   if (!values.sex) {
-    errors.sex = 'wajib diisi'
+    errors.sex = ' wajib diisi'
   }
   if (!values.favoriteColor) {
-    errors.favoriteColor = 'wajib diisi'
+    errors.favoriteColor = ' wajib diisi'
   }
 
   // step 0 ketentuan
@@ -49,6 +49,16 @@ const validate = values => {
   // -- tgl lahir
   if (!values.tgllahirsiswa) {
     errors.tgllahirsiswa = ' wajib diisi'
+  }
+
+  // -- bln lahir
+  if (!values.blnlahirsiswa) {
+    errors.blnlahirsiswa = ' wajib diisi'
+  }
+
+  // -- thn lahir
+  if (!values.tahunlahirsiswa) {
+    errors.tahunlahirsiswa = ' wajib diisi'
   }
   // -- no.reg.akta lahir (di tunda untuk registrasi ulang)
   // if (!values.noakta) {
@@ -108,58 +118,91 @@ const validate = values => {
   // Step 2 Data Ortu - Wali
   // - Data Ayah
   // -- Nama Lengkap Ayah Kandung
-  if (!values.nama) {
-    errors.nama = ' wajib diisi'
+  if (!values.namaAyah) {
+    errors.namaAyah = ' wajib diisi'
   }
   // -- Pendidikan terakhir
-  if (!values.pendidikan) {
-    errors.pendidikan = 'wajib diisi'
+  if (!values.pendidikanAyah) {
+    errors.pendidikanAyah = ' wajib diisi'
   }
   // -- Pekerjaan
-  if (!values.pekerjaan) {
-    errors.pekerjaan = 'wajib diisi'
+  if (!values.pekerjaanAyah) {
+    errors.pekerjaanAyah = ' wajib diisi'
   }
   // -- Agama
-  if (!values.agama) {
-    errors.agama = 'wajib diisi'
+  if (!values.agamaAyah) {
+    errors.agamaAyah = ' wajib diisi'
   }
   // -- Penghasilan/bulan
-  if (!values.agama) {
-    errors.agama = 'wajib diisi'
+  if (!values.penghasilanAyah) {
+    errors.penghasilanAyah = ' wajib diisi'
   }
   // -- No hape Ayah kandung
-  if (!values.nohape) {
-    errors.nohape = 'wajib diisi'
+  if (!values.nohapeAyah) {
+    errors.nohapeAyah = ' wajib diisi'
   }
 
   // - Data Ibu
   // -- Nama Lengkap Ibu Kandung
+  if (!values.namaIbu) {
+    errors.namaIbu = ' wajib diisi'
+  }
   // -- Pendidikan terakhir
+  if (!values.pendidikanIbu) {
+    errors.pendidikanIbu = ' wajib diisi'
+  }
   // -- Pekerjaan
+  if (!values.pekerjaanIbu) {
+    errors.pekerjaanIbu = ' wajib diisi'
+  }
   // -- Agama
+  if (!values.agamaIbu) {
+    errors.agamaIbu = ' wajib diisi'
+  }
   // -- Penghasilan/bulan
+  if (!values.penghasilanIbu) {
+    errors.penghasilanIbu = ' wajib diisi'
+  }
   // -- No hape Ibu kandung
+  if (!values.nohapeIbu) {
+    errors.nohapeIbu = ' wajib diisi'
+  }
   
   // - Data Wali
   // -- Nama Lengkap Wali
+  if (!values.namaWali) {
+    errors.namaWali = ' wajib diisi'
+  }
   // -- Pendidikan terakhir
+  if (!values.pendidikanWali) {
+    errors.pendidikanWali = ' wajib diisi'
+  }
   // -- Pekerjaan
+  if (!values.pekerjaanWali) {
+    errors.pekerjaanWali = ' wajib diisi'
+  }
   // -- Penghasilan/bulan
-  // -- No hape Wali
+  if (!values.penghasilanWali) {
+    errors.penghasilanWali = ' wajib diisi'
+  }
+  // -- No hape Ibu kandung
+  if (!values.nohapeWali) {
+    errors.nohapeWali = ' wajib diisi'
+  }
 
   // Step 3 Data Sekolah Asal
   // -- Sekolah Asal
   // -- Status sekolah asal
   if (!values.sekolahasal) {
-    errors.sekolahasal = 'wajib diisi'
+    errors.sekolahasal = ' wajib diisi'
   }
   // -- Alamat sekolah asal
   if (!values.alamatsekolah) {
-    errors.sekolahasal = 'wajib diisi'
+    errors.sekolahasal = ' wajib diisi'
   }
   // -- Tahun lulus
   if (!values.tahunlulus) {
-    errors.sekolahasal = 'wajib diisi'
+    errors.sekolahasal = ' wajib diisi'
   }
   return errors
 }

@@ -28,7 +28,7 @@ const WizardForm0Ketentuan = props => {
             <Row>
                 <Col>
                     <hr/>
-                    <h5>Ketentuan</h5>
+                    <h4>Ketentuan</h4>
                     <Col md="auto">
                     <ListGroup variant="flush">
                         <ListGroupItem action variant="info">1. Setiap calon siswa wajib mengisi form pendaftaran dengan lengkap.</ListGroupItem>
