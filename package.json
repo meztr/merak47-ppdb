@@ -29,6 +29,8 @@
     "react-scripts": "^3.0.0",
     "react-window-size": "^1.2.2",
     "redux": "^4.0.5",
+    "redux-form": "^8.2.6",
+    "redux-form-website-template": "^1.0.1",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {

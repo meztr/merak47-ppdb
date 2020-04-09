@@ -636,7 +636,7 @@
         }
 
         +.datta-scroll {
-            float: left;
+            float: none; //float //just disable warning
             display: inline-block;
         }
     }
@@ -940,9 +940,9 @@
                         }
                     }
 
-                    .pcoded-submenu {
-                        //display: none;
-                    }
+                    // .pcoded-submenu {
+                    //     //display: none;
+                    // }
                 }
             }
 
@@ -1509,7 +1509,7 @@
                     }
                 }
 
-                .main-search {
+                // .main-search {
                     // .search-close > .input-group-text {
                     //     color: $primary-color;
                     // }
@@ -1526,7 +1526,7 @@
                     //         }
                     //     }
                     // }
-                }
+                // }
 
                 .dropdown {
                     .notification {

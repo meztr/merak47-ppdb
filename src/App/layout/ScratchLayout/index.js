@@ -63,7 +63,7 @@ class ScratchLayout extends Component {
                                 <div className="col-lg-8 align-self-baseline">        
                                     <a className="btn btn-primary btn-xl js-scroll-trigger" 
                                         style={{margin: "10px"}}
-                                        href="/pendaftaran"
+                                        href="/wizard"
                                     >Pendaftaran PPDB Online</a>                                                     
                                     <a className="btn btn-primary btn-xl js-scroll-trigger" 
                                         style={{margin: "10px"}}
