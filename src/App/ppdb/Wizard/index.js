@@ -5,6 +5,7 @@ import { reducer as reduxFormReducer } from 'redux-form'
 import WizardForm from "./WizardForm"
 import '../../../assets/scss/style.scss';
 import Aux from "../../hoc/_Aux";
+import firebase from '../../../services/firebase'
 
 // const dest = document.getElementById('content')
 const reducer = combineReducers({
@@ -25,10 +26,39 @@ const showResults = values =>
         }, 500)
 })
 
+const registerCalonSiswa = values =>
+    new Promise(resolve=> {
+        firebase
+            .auth()
+            .signInAnonymously()
+            .then(() => {
+                // const { name, avatar } = getState().user;
+                const kodePendaftaran = Math.floor(100000 + Math.random() * 900000);
+                const namasiswa = values.namasiswa;
+                const verifikasi = false;
+                const diterima = false;
+                const lunasPembayaran = false;
+
+                firebase.database()
+                        .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`)
+                        .set({
+                            namasiswa,
+                            verifikasi,
+                            diterima,
+                            lunasPembayaran,
+                            "data": values
+                        })
+
+                // startChatting(dispatch);
+                // console.log(`values sukses =>\n\n ${JSON.stringify(values, null, 2)}` )
+            });
+        console.log(`values luar =>\n\n ${JSON.stringify(values, null, 2)}` )
+    })
+
 const Wizard = ({}) => {   
     return (     
         <Provider store={store}>            
-            <WizardForm onSubmit={showResults} />
+            <WizardForm onSubmit={registerCalonSiswa} />
         </Provider>          
     )
 }

@@ -94,6 +94,30 @@ export const signin = (email, password, callback) => async dispatch => {
   }
 };
 
+// Signing in Anonymously
+export const signinAnonim = (callback) => async dispatch => {
+  try {
+    dispatch(beginApiCall());
+    firebase
+      .auth
+      .signInAnonymously()
+      .then(() => {
+        dispatch({ type: SIGNIN_SUCCESS });
+        callback();
+      })
+      .catch(() => {
+        dispatch(apiCallError());
+        dispatch({
+          type: SIGNIN_ERROR,
+          payload: "auth/operation-not-allowed"
+      });
+    });
+  } catch (err) {
+    dispatch(apiCallError());
+    dispatch({ type: SIGNIN_ERROR, payload: "invalid registrasi anonim" });
+  }
+}
+
 // Signing out with Firebase
 export const signout = () => async dispatch => {
   try {
