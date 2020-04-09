@@ -189,39 +189,18 @@ const WizardFormFirstPage = props => {
     <div>
       <h4>Data Siswa</h4>
       <form onSubmit={handleSubmit}>
-        <Field
-          name="namasiswa"
-          type="text"
-          component={renderField}
-          label="Nama Lengkap"
-        />
-        <Field
-          name="nisn"
-          type="text"
-          component={renderField}
-          label="NISN"
-        />
-        <Field
-          name="nik"
-          type="text"
-          component={renderField}
-          label="NIK"
-        />
+        <Field name="namasiswa" type="text" component={renderField} label="Nama Lengkap" />
+        <Field name="nisn" type="text" component={renderField} label="NISN" />
+        <Field name="nik" type="text" component={renderField} label="NIK" />
         <div>
           <label>Jenis Kelamin</label>
           <div>
             <Field name="jeniskelamin" component="input" type="radio" value="laki-laki" />{' '} Laki-laki
             <Field name="jeniskelamin" component="input" type="radio" value="perempuan" />{' '} Perempuan
             <Field name="jeniskelamin" component={renderError} />
-          </div>          
-          
+          </div>
         </div>
-        <Field
-          name="tempatlahir"
-          type="text"
-          component={renderField}
-          label="Tempat Lahir"
-        />
+        <Field name="tempatlahir" type="text" component={renderField} label="Tempat Lahir" />
         <Field name="tgllahir" label="Tanggal Lahir" hints="Pilih tanggal.." component={renderTanggalSelector} />
         <Field name="blnlahir" label="Bulan Lahir" hints="Pilih bulan.." component={renderBulanSelector} />
         <Field name="tahunlahir" label="Tahun Lahir" hints="Pilih tahun.." component={renderTahunSelector} />
