@@ -60,10 +60,6 @@ const validate = values => {
   if (!values.tahunlahirsiswa) {
     errors.tahunlahirsiswa = ' wajib diisi'
   }
-  // -- no.reg.akta lahir (di tunda untuk registrasi ulang)
-  // if (!values.noakta) {
-  //   errors.noakta = ' wajib diisi'
-  // }
 
   // -- agama
   if (!values.agamaSiswa) {
