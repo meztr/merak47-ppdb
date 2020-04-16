@@ -1,14 +1,13 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Container, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 import validate from './validate'
+import renderField from './renderField'
 
 import '../../../assets/scss/style.scss';
 import Aux from "../../hoc/_Aux";
 import Loader from "../../layout/Loader"
 
-// const renderError = ({ meta: { touched, error } }) =>
-//   touched && error ? <span>{error}</span> : false
 const renderCheckbox = ({ input, label, meta: { touched, error } }) => (
     <div style={{ border: touched && error ? "1px solid red" : "none" }}>
       <input type="checkbox" {...input} />
@@ -19,7 +18,7 @@ const renderCheckbox = ({ input, label, meta: { touched, error } }) => (
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
 
-const WizardForm0Ketentuan = props => {
+const WizardFormTest0 = props => {
   const { handleSubmit } = props
   return (
     <Aux>
@@ -68,4 +67,4 @@ export default reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate
-})(WizardForm0Ketentuan)
+})(WizardFormTest0)

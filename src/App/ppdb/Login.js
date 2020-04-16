@@ -140,8 +140,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     signup: (email, password) => dispatch(signup(email, password)),
-    signin: (email, password, callback) =>
-      dispatch(signin(email, password, callback)),
+    signin: (email, password, callback) => dispatch(signin(email, password, callback)),
     resetPassword: email => dispatch(resetPassword(email))
   };
 }

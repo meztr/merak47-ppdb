@@ -14,6 +14,11 @@ const AdminLayout = Loadable({
     loading: Loader
 });
 
+// const ScratchLayout = Loadable({
+//     loader: () => import('./layout/ScratchLayout'),
+//     loading: Loader
+// });
+
 class App extends Component {    
 
     render() {

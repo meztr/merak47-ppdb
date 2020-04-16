@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Form, Container, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { connect } from "react-redux";
-import { signup, signin, resetPassword } from "../../store/actions/auth";
+// import { connect } from "react-redux";
+// import { signup, signin, resetPassword } from "../../store/actions/auth";
 
 import '../../assets/scss/style.scss';
 import Aux from "../hoc/_Aux";

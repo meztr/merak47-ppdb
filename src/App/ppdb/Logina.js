@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import React, { useState } from 'react';
 import { connect } from "react-redux";
-import {NavLink} from 'react-router-dom';
+// import {NavLink} from 'react-router-dom';
 
 import '../../assets/scss/style.scss';
 import Aux from "../hoc/_Aux";

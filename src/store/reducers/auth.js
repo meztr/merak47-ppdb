@@ -11,12 +11,13 @@ import {
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
-  authMsg: ""
+  authMsg: "",
+  calonSiswa: ""
 };
 
 export default function(state = INITIAL_STATE, action) {
   if (action.type === SIGNIN_SUCCESS || action.type === SIGNOUT_SUCCESS) {
-    return { ...state, authMsg: "" };
+    return { ...state, authMsg: "", calonSiswa: "" };
   } else if (
     action.type === SIGNUP_SUCCESS ||
     action.type === SIGNUP_ERROR ||
@@ -26,7 +27,7 @@ export default function(state = INITIAL_STATE, action) {
     action.type === RESET_SUCCESS ||
     action.type === RESET_ERROR
   ) {
-    return { ...state, authMsg: action.payload };
+    return { ...state, authMsg: action.payload, calonSiswa: action.payload };
   } else {
     return state;
   }

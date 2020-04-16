@@ -1,185 +1,69 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
+import { Form, Row, Button,} from 'react-bootstrap'
 import { Field, reduxForm } from 'redux-form'
 import validate from './validate'
 import renderField from './renderField'
 
-const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
-
-const renderError = ({ meta: { touched, error } }) =>
-  touched && error ? <span>{error}</span> : false
-
 const year = (new Date()).getFullYear();
 const years = Array.from(new Array(30),( val, index) => year - index);
-const renderTahunSelector = ({ label, placeholder, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">{placeholder}</option>
-        {years.map(val => (
-          <option value={val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
 const bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"]
-const renderBulanSelector = ({ label, placeholder, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">{placeholder}</option>
-        {bulan.map(val => (
-          <option value={val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
-const renderTanggalSelector = ({ label, placeholder, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">{placeholder}</option>
-        {[...Array(31).keys()].map(val => (
-          <option value={++val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
 const agama = ["Islam", "Kristen", "Katolik", "Kristen Protestan", "Hindu", "Budha", "Konghucu"]
-const renderAgamaSelector = ({ label, placeholder, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">{placeholder}</option>
-        {agama.map(val => (
-          <option value={val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
-const renderKewarganegaraanSelector = ({ label, placeholder, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">{placeholder}</option>
-        {["Indonesia", "Asing"].map(val => (
-          <option value={val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
-const tinggalBersama = ["Bersama orang tua", "Bersama wali", "Asrama", "Panti asuhan", "Kos"]
-const renderTinggalBersamaSelector = ({ label, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">Tinggal bersama..</option>
-        {tinggalBersama.map(val => (
-          <option value={val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
-const renderAnakKeBrp = ({ label, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">Anak ke..</option>
-        {[...Array(15).keys()].map(val => (
-          <option value={++val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
-const renderJmlSaudara = ({ label, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">Jumlah saudara..</option>
-        {[...Array(15).keys()].map(val => (
-          <option value={++val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
-const renderStatusDlmKeluarga = ({ label, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">Status anak..</option>
-        <option value="Anak Kandung">Anak Kandung</option>
-        <option value="Anak Tiri">Anak Tiri</option>
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
-
+const kewarganegaraan = ["Indonesia", "Asing"]
+const tinggalbersama = ["Bersama orang tua", "Bersama wali", "Asrama", "Panti asuhan", "Kos"]
+const statuskeluarga = ["Anak Kandung", "Anak Tiri", "Anak Angkat"]
 const pilihanjur = ["OTKP", "TKJ", "PBKS"]
-const renderPilihanJurusan = ({ label, placeholder, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">{placeholder}</option>
-        {pilihanjur.map(val => (
-          <option value={val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
+
+const whiteStyle = {
+  backgroundColor: "white"
+}
+
+// style={{ border: touched && error ? "1px solid red" : "none" }}
+const renderError = ({ meta: { touched, error } }) =>
+  touched && error ? <span style={{ border: touched && error ? "1px solid red" : "none" }}>{error}</span> : false
+
+const renderSelectorWithArray = ({ array, label, placeholder, input, meta: { touched, error } }) => (
+  <Form.Group style={{color:"black"}} >
+    <Form.Label>{label}</Form.Label>
+    <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
+      <option value="">{placeholder}</option>
+      {array.map(val => (
+            <option value={val} key={val}>
+              {val}
+            </option>
+          ))}     
+    </Form.Control>
+    <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>    
+  </Form.Group >  
+)
+
+const renderSelectorWithInteger = ({ maxInt, label, placeholder, input, meta: { touched, error } }) => (
+  <Form.Group style={{color:"black"}} >
+    <Form.Label>{label}</Form.Label>
+    <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
+      <option value="">{placeholder}</option>
+      {[...Array(maxInt).keys()].map(val => (
+        <option value={val++} key={val}>
+          {val}
+        </option>
+      ))}   
+    </Form.Control>
+    <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>    
+  </Form.Group >
+)
+
+const renderSelectorWithIntegerBeginNull = ({ maxInt, label, placeholder, input, meta: { touched, error } }) => (
+  <Form.Group style={{color:"black"}} >
+    <Form.Label>{label}</Form.Label>
+    <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
+      <option value="">{placeholder}</option>
+      {[...Array(maxInt).keys()].map(val => (
+        <option value={val} key={val}>
+          {val}
+        </option>
+      ))}   
+    </Form.Control>
+    <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>    
+  </Form.Group >
 )
 
 const number = value =>  value && isNaN(Number(value)) ? ' Harus angka' : undefined
@@ -188,7 +72,6 @@ const phoneNumber = value =>
   value && !/^08[0-9]{8,}$/i.test(value)
     ? ' Nomor hp tidak valid'
     : undefined
-
 
 const WizardFormFirstPage = props => {
   const { handleSubmit, previousPage } = props
@@ -199,36 +82,39 @@ const WizardFormFirstPage = props => {
         <Field name="namasiswa" type="text" component={renderField} label="Nama Lengkap" />
         <Field name="nisn" type="number" component={renderField} validate={number} label="NISN" />
         <Field name="nik" type="number" component={renderField} validate={number} label="NIK" />
-        <div>
-          <label>Jenis Kelamin</label>
-          <div>
+        
+        <Form.Group style={{color:"black"}}>
+          <Form.Label>Jenis Kelamin</Form.Label>
+          <Form.Check>
             <Field name="jeniskelamin" component="input" type="radio" value="laki-laki" />{' '} Laki-laki
+          </Form.Check>
+          <Form.Check>
             <Field name="jeniskelamin" component="input" type="radio" value="perempuan" />{' '} Perempuan
-            <Field name="jeniskelamin" component={renderError} />
-          </div>
-        </div>
-        <Field name="tempatlahirsiswa" type="text" component={renderField} label="Tempat Lahir" />
-        <Field name="tgllahirsiswa" label="Tanggal Lahir" placeholder="Pilih tanggal.." component={renderTanggalSelector} />
-        <Field name="blnlahirsiswa" label="Bulan Lahir" placeholder="Pilih bulan.." component={renderBulanSelector} />
-        <Field name="tahunlahirsiswa" abel="Tahun Lahir" placeholder="Pilih tahun.." component={renderTahunSelector} />
-        <Field name="agama" label="Agama" placeholder="Agama.." component={renderAgamaSelector} />
-        <Field name="kewarganegaraan" label="Kewarganegaraan" placeholder="Warganegara.." component={renderKewarganegaraanSelector} />
-        <Field name="alamatsiswa" type="text" component={renderField} label="Alamat Siswa" />
-        <Field name="tinggalbersama" component={renderTinggalBersamaSelector} label="Tinggal Bersama" />
-        <Field name="anakkebrp" type="number" label="Anak ke" placeholder="Anak ke.." component={renderAnakKeBrp} />
-        <Field name="jmlsaudara" type="number" label="Jumlah Saudara" placeholder="Jumlah saudara.." component={renderJmlSaudara} />
-        <Field name="statusdlmkeluarga" label="Status dlm Keluarga" component={renderStatusDlmKeluarga} />        
-        <Field name="nohapesiswa" type="number" component={renderField} validate={phoneNumber} label="No. HP" />
-        <Field name="pilihan1" label="Pilihan Jurusan Pertama" placeholder="Pilihan pertama.." component={renderPilihanJurusan} />
-        <Field name="pilihan2" label="Pilihan Jurusan Kedua" placeholder="Pilihan kedua.." component={renderPilihanJurusan} />
+          </Form.Check>
+          <Field name="jeniskelamin" component={renderError} />
+        </Form.Group>        
 
-        <div>
-          <button type="button" className="previous" onClick={previousPage}>
-            Previous
-          </button>
-          <button type="submit" className="next">
-            Next
-          </button>
+        <Field name="tempatlahirsiswa" type="text" component={renderField} label="Tempat Lahir" />
+        <Field name="tgllahirsiswa" type="number" maxInt={31} label="Tanggal Lahir" placeholder="Pilih tanggal.." component={renderSelectorWithInteger} />
+        <Field name="blnlahirsiswa" array={bulan} label="Bulan Lahir" placeholder="Pilih bulan.." component={renderSelectorWithArray} />
+        <Field name="tahunlahirsiswa" array={years} label="Tahun Lahir" placeholder="Pilih tahun.." component={renderSelectorWithArray} />
+        <Field name="agamaSiswa" array={agama} label="Agama" placeholder="Pilih agama.." component={renderSelectorWithArray} />
+        <Field name="kewarganegaraan" array={kewarganegaraan} label="Kewarganegaraan" placeholder="Warganegara.." component={renderSelectorWithArray} />
+        <Field name="alamatsiswa" type="text" component={renderField} label="Alamat Siswa" />
+        <Field name="tinggalbersama" array={tinggalbersama} placeholder="Tinggal bersama.." component={renderSelectorWithArray} label="Tinggal Bersama" />
+        <Field name="anakkebrp" type="number" maxInt={15} label="Anak ke" placeholder="Anak ke.." component={renderSelectorWithInteger} />
+        <Field name="jmlsaudara" type="number" maxInt={16} label="Jumlah Saudara" placeholder="Jumlah saudara.." component={renderSelectorWithIntegerBeginNull} />
+        <Field name="statusdlmkeluarga" array={statuskeluarga} placeholder="Status anak.." label="Status dlm Keluarga" component={renderSelectorWithArray} />        
+        <Field name="nohapesiswa" type="number" component={renderField} validate={phoneNumber} label="No. HP" />
+        <Field name="pilihan1" array={pilihanjur} label="Pilihan Jurusan Pertama" placeholder="Pilihan pertama.." component={renderSelectorWithArray} />
+        <Field name="pilihan2" array={pilihanjur} label="Pilihan Jurusan Kedua" placeholder="Pilihan kedua.." component={renderSelectorWithArray} />
+        <div className="d-flex justify-content-between">
+          <Button type="button" className="previous" onClick={previousPage}>
+            Sebelum
+          </Button>            
+          <Button type="submit" className="next">
+            Lanjut
+          </Button>            
         </div>
       </form>
     </div>
@@ -237,8 +123,8 @@ const WizardFormFirstPage = props => {
 }
 
 export default reduxForm({
-  form: 'wizard', // <------ same form name
-  destroyOnUnmount: false, // <------ preserve form data
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  form: 'wizard', 
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true, 
   validate
 })(WizardFormFirstPage)

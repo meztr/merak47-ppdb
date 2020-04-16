@@ -18,6 +18,14 @@ import { reactReduxFirebase } from "react-redux-firebase";
 import firebase from "./services/firebase";
 import config from './config';
 
+// logrocket init
+// import LogRocket from 'logrocket';
+
+// if (process.env.NODE_ENV = 'production') {
+//   LogRocket.init('ozkk6o/merak47-ppdb-prod-log');
+//   console.log('LogRocket init');
+// }
+
 const createStoreWithFirebase = compose(reactReduxFirebase(firebase))(
   createStore
 );

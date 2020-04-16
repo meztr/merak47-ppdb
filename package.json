@@ -6,7 +6,7 @@
     "npm": "6.13.1"
   },
   "private": true,
-  "homepage": "http://ppdb.smkmuhsampit.id/merak47/",
+  "homepage": "http://ppdb.smkmuhsampit.id/",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "firebase": "^7.13.2",

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {Dropdown} from 'react-bootstrap';
+// import {Dropdown} from 'react-bootstrap';
 
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -10,6 +10,7 @@ import NavContent from './NavContent';
 import OutsideClick from './OutsideClick';
 import Aux from '../../../hoc/_Aux';
 import * as actionTypes from './../../../../store/actions';
+import meraklogo from '../../../../assets/logo60.png';
 // import navigation from '../../../../menu-scratch-items';
 // import navigation from '../../../../menu-ppdb-items';
 
@@ -100,7 +101,7 @@ class Navigation extends Component {
                                     })
                                 } id="mainNav">
                     <div className="container">
-                        <img style={{width:"55px", marginRight: "10px"}} src="/assets/logo60.png"/>
+                        <img style={{width:"55px", marginRight: "10px"}} src={meraklogo}/>
                         <a className="navbar-brand js-scroll-trigger" href="#page-top">
                             <h2>PPDB ONLINE</h2></a>
                         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>

@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import WizardForm0Ketentuan from './WizardForm0Ketentuan'
-import WizardForm1DataSiswa from './WizardForm1DataSiswa'
-import WizardForm2DataWali from './WizardForm2DataWali'
-import WizardForm3DataSekolah from './WizardForm3DataSekolah'
+import WizardFormTest0 from './WizardFormTest0'
+import WizardFormTest1 from './WizardFormTest1'
 
-import { Container, Row, Col } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 import '../../../assets/scss/style.scss';
 import Aux from "../../hoc/_Aux";
 import Loader from "../../layout/Loader"
 
-class WizardForm extends Component {
+class WizardTest extends Component {
   constructor(props) {
     super(props)
     this.nextPage = this.nextPage.bind(this)
@@ -37,25 +35,13 @@ class WizardForm extends Component {
                 <Col>
                   <h3 className="mt-4">Form Online PPDB SMK Muhammadiyah Sampit</h3> 
                   <div>        
-                    {page === 1 && <WizardForm0Ketentuan onSubmit={this.nextPage} />}
+                    {page === 1 && <WizardFormTest0 onSubmit={this.nextPage} />}
                     {page === 2 && (
-                      <WizardForm1DataSiswa
-                        previousPage={this.previousPage}
-                        onSubmit={this.nextPage}
-                      />
-                    )}
-                    {page === 3 && (
-                      <WizardForm2DataWali
-                        previousPage={this.previousPage}
-                        onSubmit={this.nextPage}
-                      />
-                    )}
-                    {page === 4 && (
-                      <WizardForm3DataSekolah
+                      <WizardFormTest1
                         previousPage={this.previousPage}
                         onSubmit={onSubmit}
                       />
-                    )}
+                    )}                    
                   </div>
                 </Col>
             </Row>
@@ -65,8 +51,8 @@ class WizardForm extends Component {
   }
 }
 
-WizardForm.propTypes = {
+WizardTest.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export default WizardForm
+export default WizardTest

@@ -5,60 +5,77 @@ import Aux from "../../../../hoc/_Aux";
 import Card from "../../../../../App/components/MainCard";
 // import DEMO from "../../../../store/constant";
 
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { signout } from "../../../../../store/actions/auth";
+import requireAuth from "../../../../hoc/requireAuth"
+
+const Beranda = () => {
+    const user = "Anis Baswedan";
 
 
-// import avatar1 from '../../../../assets/images/user/avatar-1.jpg';
-// import avatar2 from '../../../../assets/images/user/avatar-2.jpg';
-// import avatar3 from '../../../../assets/images/user/avatar-3.jpg';
+    let bContent = (            
+        <Aux>
+            <Col md={12} xl={12}>
+                <Card title={"Selamat datang " + user + " calon siswa SMK Muhammadiyah Sampit" }>
+                    <p>
+                        Belum ada pengumuman
+                    </p>
+                </Card>
+            </Col>
+                    
+            <Col md={6} xl={4}>
+                <Card title='Biodata Pendaftaran'>
+                    <p>
+                        Lihat biodata
+                    </p>
+                </Card>
+            </Col>
+                    
+            <Col md={6} xl={4}>
+                <Card title='Cetak Bukti Pendaftaran'>
+                    <p>
+                        Cetak bukti Pendaftaran
+                    </p>
+                </Card>
+            </Col>
+                    
+            <Col md={6} xl={4}>
+                <Card title='Download Panduan'>
+                    <p>
+                        Download panduan di sini                        
+                    </p>
+                </Card>
+            </Col>
+        </Aux>
+    )
+    return (
+        <Aux>
+            <Row>
+                {bContent}   
+            </Row>
+        </Aux>
+    );
+  };
 
-class Beranda extends React.Component {
-    
-    render() {
-        const user = "Anis Baswedan";        
+  export default Beranda;
 
-        let bContent = (            
-            <Aux>
-                <Col md={12} xl={12}>
-                    <Card title={"Selamat datang " + user + " calon siswa SMK Muhammadiyah Sampit" }>
-                        <p>
-                            Belum ada pengumuman
-                        </p>
-                    </Card>
-                </Col>
-                        
-                <Col md={6} xl={4}>
-                    <Card title='Biodata Pendaftaran'>
-                        <p>
-                            Lihat biodata
-                        </p>
-                    </Card>
-                </Col>
-                        
-                <Col md={6} xl={4}>
-                    <Card title='Cetak Bukti Pendaftaran'>
-                        <p>
-                            Cetak bukti Pendaftaran
-                        </p>
-                    </Card>
-                </Col>
-                        
-                <Col md={6} xl={4}>
-                    <Card title='Download Panduan'>
-                        <p>
-                           Download panduan di sini                        
-                        </p>
-                    </Card>
-                </Col>
-            </Aux>
-        )
-        return (
-            <Aux>
-                <Row>
-                    {bContent}   
-                </Row>
-            </Aux>
-        );
-    }
-}
-
-export default Beranda;
+// function mapStateToProps(state) {
+//     return {
+//       auth: state.firebaseReducer.auth
+//     };
+//   }
+  
+// function mapDispatchToProps(dispatch) {
+// return {
+//     signout: () => dispatch(signout())
+// };
+// }
+  
+// export default compose(
+//     connect(
+//         mapStateToProps,
+//         mapDispatchToProps
+//     ),
+//     requireAuth
+// )(Beranda);

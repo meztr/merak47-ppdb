@@ -4,6 +4,11 @@ import {connect} from 'react-redux';
 import Fullscreen from "react-full-screen";
 import windowSize from 'react-window-size';
 
+// import { compose } from "redux";
+// // import { connect } from "react-redux";
+// import { signout } from "../../../store/actions/auth";
+// import requireAuth from "../../hoc/requireAuth";
+
 import Navigation from './Navigation';
 import NavBar from './NavBar';
 import Breadcrumb from './Breadcrumb';
@@ -55,21 +60,23 @@ class AdminLayout extends Component {
             ) : (null);
         });
 
+        // TODO : in line 80 memory leaks issued by this.props.defaultPath = undefined, then caused by uncompatible Claire reducers vs AdminLayout reducers
         return (
             <Aux>
                 <Fullscreen enabled={this.props.isFullScreen}>
                     <Navigation />
-                    <NavBar />
+                    <NavBar />                    
                     <div className="pcoded-main-container" onClick={() => this.mobileOutClickHandler}>
                         <div className="pcoded-wrapper">
                             <div className="pcoded-content">
+                            {/* <h4>{this.props.auth.uid}</h4> */}
                                 <div className="pcoded-inner-content">
                                     <Breadcrumb />
                                     <div className="main-body">
                                         <div className="page-wrapper">
                                             <Suspense fallback={<Loader/>}>
                                                 <Switch>
-                                                    {menu}
+                                                    {menu}                                                    
                                                     <Redirect from="/" to={this.props.defaultPath} />
                                                 </Switch>
                                             </Suspense>
@@ -87,6 +94,8 @@ class AdminLayout extends Component {
 
 const mapStateToProps = state => {
     return {
+        // auth: state.firebaseReducer.auth,
+        // fire: state.firebaseReducer,
         defaultPath: state.defaultPath,
         isFullScreen: state.isFullScreen,
         collapseMenu: state.collapseMenu,
@@ -99,7 +108,28 @@ const mapDispatchToProps = dispatch => {
     return {
         onFullScreenExit: () => dispatch({type: actionTypes.FULL_SCREEN_EXIT}),
         onComponentWillMount: () => dispatch({type: actionTypes.COLLAPSE_MENU})
+        // signout: () => dispatch(signout())
     }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps) (windowSize(AdminLayout));
+
+// function mapStateToProps(state) {
+//     return {
+//       auth: state.firebaseReducer.auth
+//     };
+//   }
+  
+// function mapDispatchToProps(dispatch) {
+// return {
+//     signout: () => dispatch(signout())
+// };
+// }
+  
+// export default compose(
+//     connect(
+//         mapStateToProps,
+//         mapDispatchToProps
+//     ),
+//     requireAuth
+// )(windowSize(AdminLayout));

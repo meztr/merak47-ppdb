@@ -103,6 +103,9 @@ export const signinAnonim = (callback) => async dispatch => {
       .signInAnonymously()
       .then(() => {
         dispatch({ type: SIGNIN_SUCCESS });
+        // firebase.database()
+        //   .ref(`ppdb2020/`)
+        
         callback();
       })
       .catch(() => {

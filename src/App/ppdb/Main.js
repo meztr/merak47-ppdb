@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Home from './Home';
 import Login from "./Login";
@@ -16,7 +16,8 @@ const Main = ({ auth }) => {
 
 function mapStateToProps(state) {
   return {
-    auth: state.firebaseReducer.auth
+    auth: state.firebaseReducer.auth,
+    fire: state.firebaseReducer
   };
 }
 

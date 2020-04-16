@@ -66,8 +66,8 @@ const validate = values => {
   // }
 
   // -- agama
-  if (!values.agamasiswa) {
-    errors.agamasiswa = ' wajib diisi'
+  if (!values.agamaSiswa) {
+    errors.agamaSiswa = ' wajib diisi'
   }
   // -- kewarganegaraan
   if (!values.kewarganegaraan) {
@@ -196,13 +196,19 @@ const validate = values => {
   if (!values.sekolahasal) {
     errors.sekolahasal = ' wajib diisi'
   }
+
+  // -- Status sekolah asal
+  if (!values.statussekolah) {
+    errors.statussekolah = ' wajib diisi'
+  }
+
   // -- Alamat sekolah asal
   if (!values.alamatsekolah) {
-    errors.sekolahasal = ' wajib diisi'
+    errors.alamatsekolah = ' wajib diisi'
   }
   // -- Tahun lulus
   if (!values.tahunlulus) {
-    errors.sekolahasal = ' wajib diisi'
+    errors.tahunlulus = ' wajib diisi'
   }
   return errors
 }

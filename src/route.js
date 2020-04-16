@@ -2,7 +2,7 @@ import React from 'react';
 
 // Public Area
 // const SignUp1 = React.lazy(() => import('./Demo/Authentication/SignUp/SignUp1'));
-const cLogin = React.lazy(() => import('./App/ppdb/Login'));
+// const cLogin = React.lazy(() => import('./App/ppdb/Login'));
 
 // Landing
 // const Landing = React.lazy(() => import('./App/ppdb/Landing'));
@@ -19,6 +19,10 @@ const Wakasis = React.lazy(() => import('./App/ppdb/Wakasis'));
 
 // Pengumuman
 const Pengumuman = React.lazy(() => import('./App/ppdb/Pengumuman'));
+
+
+// Protected Area
+
 
 const route = [
     // { path: '/auth/signup-1', exact: true, name: 'Signup 1', component: SignUp1 },    

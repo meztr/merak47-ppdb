@@ -1,58 +1,33 @@
 import React from 'react'
+import { Form, Button } from 'react-bootstrap'
 import { Field, reduxForm } from 'redux-form'
 import validate from './validate'
 import renderField from './renderField'
 
-const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
-const renderColorSelector = ({ input, meta: { touched, error } }) => (
-  <div>
-    <select {...input}>
-      <option value="">Select a color...</option>
-      {colors.map(val => (
-        <option value={val} key={val}>
-          {val}
-        </option>
-      ))}
-    </select>
-    {touched && error && <span>{error}</span>}
-  </div>
-)
+const whiteStyle = {
+  backgroundColor: "white"
+}
+
+const renderError = ({ meta: { touched, error } }) =>
+  touched && error ? <span>{error}</span> : false
 
 const statusSekolah = ["Negeri", "Swasta"]
-const  renderStatusSekolah = ({ label, placeholder, input, meta: { touched, error } }) => ( 
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">{placeholder}</option>
-        {statusSekolah.map(val => (
-          <option value={val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-        { touched && error ? <span>{error}</span> : false }
-    </div>
-  </div>
-)
-
 const year = (new Date()).getFullYear();
 const years = Array.from(new Array(10),( val, index) => year - index);
-const renderTahunLulus = ({ label, placeholder, input, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        <option value="">{placeholder}</option>
-        {years.map(val => (
-          <option value={val} key={val}>
-            {val}
-          </option>
-        ))}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
+
+const renderSelectorWithArray = ({ array, label, placeholder, input, meta: { touched, error } }) => (
+  <Form.Group style={{color:"black"}} >
+    <Form.Label>{label}</Form.Label>
+    <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
+      <option value="">{placeholder}</option>
+      {array.map(val => (
+            <option value={val} key={val}>
+              {val}
+            </option>
+          ))}     
+    </Form.Control>
+    <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>    
+  </Form.Group >  
 )
 
 const WizardFormThirdPage = props => {
@@ -60,19 +35,19 @@ const WizardFormThirdPage = props => {
   return (
     <form onSubmit={handleSubmit}>
       <h4>Data Sekolah Asal</h4>
-      <Field name="namaSekolah" type="text" component={renderField} label="Nama Sekolah" />
-      <Field name="statusSekolah" type="text" label="Status Sekolah" placeholder="Pilih Status Sekolah.." component={renderStatusSekolah} label="Pendidikan Terakhir" />
+      <Field name="sekolahasal" type="text" component={renderField} label="Nama Sekolah" />
+      <Field name="statussekolah" array={statusSekolah} type="text" label="Status Sekolah" placeholder="Pilih Status Sekolah.." component={renderSelectorWithArray} label="Status Sekolah" />
       <Field name="alamatSekolah" type="text" component={renderField} label="Alamat Sekolah" />
-      <Field name="tahunLulus" type="number" type="text" component={renderTahunLulus} label="Tahun Lulus" />
-            
-      <div>
-        <button type="button" className="previous" onClick={previousPage}>
-          Previous
-        </button>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
-      </div>
+      <Field name="tahunlulus" array={years} type="number" type="text" placeholder="Tahun lulus.." component={renderSelectorWithArray} label="Tahun Lulus" />
+
+      <div className="d-flex justify-content-between">
+          <Button type="button" className="previous" onClick={previousPage}>
+            Sebelum
+          </Button>            
+          <Button type="submit" disabled={pristine || submitting}>
+            Lanjut
+          </Button>            
+        </div>
     </form>
   )
 }
