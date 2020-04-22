@@ -15,8 +15,8 @@ const whiteStyle = {
   backgroundColor: "white"
 }
 
-const renderError = ({ meta: { touched, error } }) =>
-  touched && error ? <span>{error}</span> : false
+// const renderError = ({ meta: { touched, error } }) =>
+//   touched && error ? <span>{error}</span> : false
 
 const renderSelectorWithArray = ({ array, label, placeholder, input, meta: { touched, error } }) => (
   <Form.Group style={{color:"black"}} >
@@ -33,7 +33,7 @@ const renderSelectorWithArray = ({ array, label, placeholder, input, meta: { tou
   </Form.Group >  
 )
 
-const number = value =>  value && isNaN(Number(value)) ? ' Harus angka' : undefined
+// const number = value =>  value && isNaN(Number(value)) ? ' Harus angka' : undefined
 
 const phoneNumber = value =>
   value && !/^08[0-9]{8,}$/i.test(value)
@@ -46,7 +46,7 @@ const WizardFormSecondPage = props => {
     <form onSubmit={handleSubmit}>
       <h4>Data Ayah Kandung</h4>
       <Field name="namaAyah" type="text" component={renderField} label="Nama Lengkap Ayah" />
-      <Field name="pendidikanAyah" type="text" array={pendidikan} label="Pendidikan" placeholder="Pilih Pendidikan Ayah.." component={renderSelectorWithArray} label="Pendidikan Terakhir" />
+      <Field name="pendidikanAyah" type="text" array={pendidikan} label="Pendidikan Terakhir" placeholder="Pilih Pendidikan Ayah.." component={renderSelectorWithArray} />
       <Field name="pekerjaanAyah" array={pekerjaan} type="text" placeholder="Pilih Pekerjaan.." component={renderSelectorWithArray} label="Pekerjaan" />
       <Field name="agamaAyah" array={agama} type="text" placeholder="Pilih Agama.." component={renderSelectorWithArray} label="Agama" />
       <Field name="penghasilanAyah" array={penghasilan} type="text" placeholder="Pilih Penghasilan.." component={renderSelectorWithArray} label="Penghasilan per bulan" />

@@ -8,7 +8,7 @@ import WizardForm3DataSekolah from './WizardForm3DataSekolah'
 import { Container, Row, Col } from 'react-bootstrap';
 import '../../../assets/scss/style.scss';
 import Aux from "../../hoc/_Aux";
-import Loader from "../../layout/Loader"
+// import Loader from "../../layout/Loader"
 
 class WizardForm extends Component {
   constructor(props) {

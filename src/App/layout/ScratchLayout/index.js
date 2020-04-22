@@ -6,7 +6,7 @@ import windowSize from 'react-window-size';
 
 import Navigation from './Navigation';
 // import Breadcrumb from './Breadcumb';
-import Loader from "../Loader";
+// import Loader from "../Loader";
 import Aux from "../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions";
 
@@ -16,8 +16,8 @@ import Footer from "./Footer/Footer";
 
 import './app.scss';
 
-import { signout } from "../../../store/actions/auth";
-import requireAuth from "../../hoc/requireAuth";
+// import { signout } from "../../../store/actions/auth";
+// import requireAuth from "../../hoc/requireAuth";
 
 class ScratchLayout extends Component {
 
@@ -88,11 +88,11 @@ class ScratchLayout extends Component {
 
 const mapStateToProps = state => {
     return {
-        defaultPath: state.defaultPath,
-        isFullScreen: state.isFullScreen,
-        collapseMenu: state.collapseMenu,
-        configBlock: state.configBlock,
-        layout: state.layout
+        defaultPath: state.adminReducer.defaultPath,
+        isFullScreen: state.adminReducer.isFullScreen,
+        collapseMenu: state.adminReducer.collapseMenu,
+        configBlock: state.adminReducer.configBlock,
+        layout: state.adminReducer.layout
     }
 };
 

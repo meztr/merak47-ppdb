@@ -10,36 +10,19 @@ import '../../../assets/scss/style.scss';
 // import Aux from "../../hoc/_Aux";
 import firebase from '../../../services/firebase'
 
+import { signinAnonim } from "../../../store/actions/auth"
+
 // import Loader from '../Loader'
 // import Beranda from '../Protected/Calon/Beranda/Beranda'
 
-// const dest = document.getElementById('content')
-// const reducer = combineReducers({
-//   form: reduxFormReducer // mounted under "form"
-// })
-
-// const store = (window.devToolsExtension
-//     ? window.devToolsExtension()(createStore)
-//     : createStore)(reducer)
-
-// const showResults = values =>
-//     new Promise(resolve => {
-//         setTimeout(() => {
-//         // simulate server latency
-//         console.log(`values=>\n\n ${JSON.stringify(values, null, 2)}` )
-//         // window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
-//         resolve()
-//         }, 500)
-// })
-
-
-
-const Wizard = ({ 
-        auth, 
-        history
+const Wizard = ({
+    signinAnonim,
+    authMsg,
+    calonSiswaValues, 
+    history,
+    loading
 }) => {
-    const [dataCalonSiswa, setDataCalonSiswa] = useState(false);
-        
+
     const registerCalonSiswa = values =>
         new Promise(resolve=> {
             firebase
@@ -47,77 +30,95 @@ const Wizard = ({
                 .signInAnonymously()
                 .then(data => {
 
-                    // const kodePendaftaran = Math.floor(100000 + Math.random() * 900000);
-                    // const namasiswa = values.namasiswa;
-                    // const nisn = values.nisn;
-                    // const verifikasi = false;
-                    // const diterima = false;
-                    // const lunasPembayaran = false;
-                    // const calonid = data.user.uid;
+                    const kodePendaftaran = Math.floor(100000 + Math.random() * 900000);
+                    const namasiswa = values.namasiswa;
+                    const nisn = values.nisn;
+                    const verifikasi = false;
+                    const diterima = false;
+                    const lunasPembayaran = false;
+                    const calonid = data.user.uid;
                     
-                    // firebase.database()
-                    //         .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`) //.ref(`ppdb2020/calonsiswa/${nisn}`)
-                    //         .set({
-                    //             calonid,
-                    //             nisn,
-                    //             namasiswa,
-                    //             verifikasi,
-                    //             diterima,
-                    //             lunasPembayaran,
-                    //             "data": values
-                    //         })
+                    firebase.database()
+                            .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`) //.ref(`ppdb2020/calonsiswa/${nisn}`)
+                            .set({
+                                calonid,
+                                nisn,
+                                namasiswa,
+                                verifikasi,
+                                diterima,
+                                lunasPembayaran,
+                                "data": values
+                            })
 
                     history.push({
                         pathname: "/user/beranda",
                         state: { values }
                     });
-                    console.log(`You've submitted values =>\n\n ${JSON.stringify(values, null, 2)}` )
-
-                    // firebase.database()
-                    //         .ref(`ppdb2020/calonsiswa/${nisn}`)
-                    //         .once('value', (snapshot) => {
-                    //             const val = snapshot.val();
-                                
-                    //             if (val === null) {
-
-                    //                 val.calonid = calonid;
-                    //                 val.nisn = nisn;
-                    //                 val.namasiswa = namasiswa;
-                    //                 val.verifikasi = verifikasi;
-                    //                 val.diterima = diterima;
-                    //                 val.lunasPembayaran = lunasPembayaran;
-                    //                 val.data = values;
-
-                    //                 history.push({
-                    //                     pathname: "/user/beranda",
-                    //                     state: { values }
-                    //                 });
-                                    
-                    //             } else {
-                                    
-                    //                 // return history to NISN sudah terdaftar
-                    //                 history.push({
-                    //                     pathname: "/pengumuman",
-                    //                     state: { values }
-                    //                 });
-                    //             }                           
-                    //         })
-                    
-                    // <Beranda />; 72344552
+                    console.log(`You've submitted values =>\n\n ${JSON.stringify(values, null, 2)}` )                    
                 });
     })
-
+    
     return (  
-        <WizardForm onSubmit={registerCalonSiswa} />
+        <WizardForm onSubmit={registerCalonSiswa} />        
     )
 }
 
 function mapStateToProps(state) {
     return {
-        auth: state.firebaseReducer.auth,
-        fire: state.firebaseReducer
-        // calonsiswadata : state.values
+        auth: state.firebaseReducer.auth,        
+        authMsg: state.authReducer.authMsg,
+        calonSiswaValues: state.authReducer.calonSiswaValues
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+      
+    };
+  }
+
 export default connect(mapStateToProps)(Wizard);
+
+
+    // const staticTest = {
+    //     "setuju": true,
+    //     "namasiswa": "Wahyuli Dwiki Nanda",
+    //     "nisn": "20181234",
+    //     "nik": "12342018",
+    //     "jeniskelamin": "laki-laki",
+    //     "tempatlahirsiswa": "Sampit",
+    //     "tgllahirsiswa": "0",
+    //     "blnlahirsiswa": "Januari",
+    //     "tahunlahirsiswa": "2020",
+    //     "agamaSiswa": "Islam",
+    //     "kewarganegaraan": "Indonesia",
+    //     "alamatsiswa": "Wengga Raya",
+    //     "tinggalbersama": "Bersama orang tua",
+    //     "anakkebrp": "0",
+    //     "jmlsaudara": "1",
+    //     "statusdlmkeluarga": "Anak Kandung",
+    //     "nohapesiswa": "08123456789",
+    //     "pilihan1": "TKJ",
+    //     "pilihan2": "OTKP",
+    //     "namaAyah": "Jaunari Dwiki",
+    //     "pendidikanAyah": "S1",
+    //     "pekerjaanAyah": "Wiraswasta",
+    //     "agamaAyah": "Islam",
+    //     "penghasilanAyah": "5jt-10jt",
+    //     "nohapeAyah": "0812345678",
+    //     "namaIbu": "Dwikinawati",
+    //     "pendidikanIbu": "S1",
+    //     "pekerjaanIbu": "Ibu Rumah Tangga",
+    //     "agamaIbu": "Islam",
+    //     "penghasilanIbu": "1jt-3jt",
+    //     "nohapeIbu": "0898213332",
+    //     "namaWali": "Nanda Dwinda",
+    //     "pendidikanWali": "S1",
+    //     "pekerjaanWali": "PNS",
+    //     "penghasilanWali": "3jt-5jt",
+    //     "nohapeWali": "0819238811",
+    //     "sekolahasal": "SMPN 14 Sampit",
+    //     "statussekolah": "Negeri",
+    //     "alamatSekolah": "Metro Belakang Banar",
+    //     "tahunlulus": "2020"
+    // }

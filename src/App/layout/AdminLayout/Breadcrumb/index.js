@@ -90,7 +90,7 @@ class Breadcrumb extends Component {
 
         }
 
-        document.title = title + ' | Datta Able Free React + Redux Admin Template';
+        document.title = title + ' | SMK Muhammadiyah Sampit';
 
         return (
             <Aux>

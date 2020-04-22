@@ -8,7 +8,8 @@ const initialState = {
     isFullScreen: false, // static can't change
 };
 
-const reducer = (state = initialState, action) => {
+// const adminReducer = (state = initialState, action) => {
+export default function(state = initialState, action) {
     let trigger = [];
     let open = [];
 
@@ -86,6 +87,6 @@ const reducer = (state = initialState, action) => {
         default:
             return state;
     }
-};
+}
 
-export default reducer;
+// export default adminReducer;

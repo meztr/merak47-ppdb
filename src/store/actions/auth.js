@@ -71,7 +71,9 @@ export const signin = (email, password, callback) => async dispatch => {
       .then(data => {
         if (data.user.emailVerified) {
           console.log("IF", data.user.emailVerified);
-          dispatch({ type: SIGNIN_SUCCESS });
+          dispatch({ 
+            type: SIGNIN_SUCCESS
+          });
           callback();
         } else {
           console.log("ELSE", data.user.emailVerified);
@@ -95,17 +97,38 @@ export const signin = (email, password, callback) => async dispatch => {
 };
 
 // Signing in Anonymously
-export const signinAnonim = (callback) => async dispatch => {
+export const signinAnonim = (values, callback) => async dispatch => {
   try {
     dispatch(beginApiCall());
     firebase
       .auth
       .signInAnonymously()
-      .then(() => {
-        dispatch({ type: SIGNIN_SUCCESS });
-        // firebase.database()
-        //   .ref(`ppdb2020/`)
+      .then(data => {        
+        const kodePendaftaran = Math.floor(100000 + Math.random() * 900000);
+        const namasiswa = values.namasiswa;
+        const nisn = values.nisn;
+        const verifikasi = false;
+        const diterima = false;
+        const lunasPembayaran = false;
+        const calonid = data.user.uid;
         
+        firebase.database()
+                .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`)
+                .set({
+                    calonid,
+                    nisn,
+                    namasiswa,
+                    verifikasi,
+                    diterima,
+                    lunasPembayaran,
+                    "data": values
+                })
+        
+        dispatch({ 
+          type: SIGNIN_SUCCESS,
+          dataValues: values
+        });
+
         callback();
       })
       .catch(() => {

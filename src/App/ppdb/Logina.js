@@ -96,6 +96,7 @@ function mapStateToProps(state) {
     return {
       auth: state.firebaseReducer.auth,
       authMsg: state.authReducer.authMsg,
+      calonSiswaValues: state.authReducer.calonSiswaValues,
       loading: state.apiStatusReducer.apiCallsInProgress > 0
     };
   }

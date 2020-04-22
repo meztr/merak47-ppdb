@@ -5,7 +5,7 @@ import { Button, Form, Container, Row, Col, ListGroup, ListGroupItem } from 'rea
 
 import '../../assets/scss/style.scss';
 import Aux from "../hoc/_Aux";
-import Loader from "../layout/Loader"
+// import Loader from "../layout/Loader"
 
 class Pendaftaran extends Component {
     constructor (props) {

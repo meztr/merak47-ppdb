@@ -6,8 +6,8 @@ import windowSize from 'react-window-size';
 
 // import { compose } from "redux";
 // // import { connect } from "react-redux";
-// import { signout } from "../../../store/actions/auth";
-// import requireAuth from "../../hoc/requireAuth";
+import { signout } from "../../../store/actions/auth";
+import requireAuth from "../../hoc/requireAuth";
 
 import Navigation from './Navigation';
 import NavBar from './NavBar';
@@ -20,6 +20,14 @@ import * as actionTypes from "../../../store/actions";
 import './app.scss';
 
 class AdminLayout extends Component {
+
+    // constructor() {
+    //     super();
+    //     const data = localStorage.getItem('data');
+    //     this.state = {
+    //         ppdbdata: data ? JSON.parse(data) : null
+    //     };
+    // }
 
     fullScreenExitHandler = () => {
         if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
@@ -94,25 +102,27 @@ class AdminLayout extends Component {
 
 const mapStateToProps = state => {
     return {
-        // auth: state.firebaseReducer.auth,
-        // fire: state.firebaseReducer,
-        defaultPath: state.defaultPath,
-        isFullScreen: state.isFullScreen,
-        collapseMenu: state.collapseMenu,
-        configBlock: state.configBlock,
-        layout: state.layout
+        auth: state.firebaseReducer.auth,
+        authMsg: state.authReducer.authMsg,
+        calonSiswaValues: state.authReducer.calonSiswaValues,
+        defaultPath: state.adminReducer.defaultPath,
+        isFullScreen: state.adminReducer.isFullScreen,
+        collapseMenu: state.adminReducer.collapseMenu,
+        configBlock: state.adminReducer.configBlock,
+        layout: state.adminReducer.layout
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onFullScreenExit: () => dispatch({type: actionTypes.FULL_SCREEN_EXIT}),
-        onComponentWillMount: () => dispatch({type: actionTypes.COLLAPSE_MENU})
-        // signout: () => dispatch(signout())
+        onComponentWillMount: () => dispatch({type: actionTypes.COLLAPSE_MENU}),
+        signout: () => dispatch(signout())
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (windowSize(AdminLayout));
+// export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(ScratchLayout)));
+export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(AdminLayout)));
 
 // function mapStateToProps(state) {
 //     return {

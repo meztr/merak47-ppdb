@@ -1,7 +1,7 @@
 export default {
-    defaultPath: '/default', //'/dashboard/default', //'/auth/signin-1', //'/dashboard/default',
+    defaultPath: '/', //'/dashboard/default', //'/auth/signin-1', //'/dashboard/default',
     basename: '/', //'/datta-able/react/default', // only at build time to set, like /datta-able
-    layout: 'horizontal', // vertical, horizontal (not available in lite version)
+    layout: 'vertical', // vertical, horizontal (not available in lite version)
     preLayout: null, // (not available in lite version)
     collapseMenu: false, // mini-menu
     layoutType: 'menu-light', // menu-dark, (menu-light, dark are not available in lite version)

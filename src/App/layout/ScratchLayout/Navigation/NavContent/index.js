@@ -96,8 +96,8 @@ class NavContent extends Component {
 
 const mapStateToProps = state => {
     return {
-        layout: state.layout,
-        collapseMenu: state.collapseMenu,
+        layout: state.adminReducer.layout,
+        collapseMenu: state.adminReducer.collapseMenu,
     }
 };
 

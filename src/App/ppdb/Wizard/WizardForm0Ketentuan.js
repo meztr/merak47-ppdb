@@ -5,10 +5,7 @@ import validate from './validate'
 
 import '../../../assets/scss/style.scss';
 import Aux from "../../hoc/_Aux";
-import Loader from "../../layout/Loader"
 
-// const renderError = ({ meta: { touched, error } }) =>
-//   touched && error ? <span>{error}</span> : false
 const renderCheckbox = ({ input, label, meta: { touched, error } }) => (
     <div style={{ border: touched && error ? "1px solid red" : "none" }}>
       <input type="checkbox" {...input} />
@@ -16,8 +13,6 @@ const renderCheckbox = ({ input, label, meta: { touched, error } }) => (
       {touched && error ? <span>{error}</span> : false}
     </div>
 )
-const renderError = ({ meta: { touched, error } }) =>
-  touched && error ? <span>{error}</span> : false
 
 const WizardForm0Ketentuan = props => {
   const { handleSubmit } = props

@@ -16,8 +16,7 @@ const Main = ({ auth }) => {
 
 function mapStateToProps(state) {
   return {
-    auth: state.firebaseReducer.auth,
-    fire: state.firebaseReducer
+    auth: state.firebaseReducer.auth
   };
 }
 

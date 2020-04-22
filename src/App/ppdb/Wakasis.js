@@ -1,13 +1,16 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Logina from "./Logina";
 import Loader from "./Loader";
 
 const Wakasis = ({ auth }) => {
+  // let history = useHistory();
   return (
     <div>
       {!auth.isLoaded ? <Loader /> : !auth.isEmpty ? <Redirect to={"/user/beranda"}/> : <Logina />}
+      {/* {!auth.isLoaded ? <Loader /> : !auth.isEmpty ? history.push("/user/beranda") : <Logina />} */}
     </div>
   );
 };

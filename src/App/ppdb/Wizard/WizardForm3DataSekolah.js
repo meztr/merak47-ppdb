@@ -8,9 +8,6 @@ const whiteStyle = {
   backgroundColor: "white"
 }
 
-const renderError = ({ meta: { touched, error } }) =>
-  touched && error ? <span>{error}</span> : false
-
 const statusSekolah = ["Negeri", "Swasta"]
 const year = (new Date()).getFullYear();
 const years = Array.from(new Array(10),( val, index) => year - index);
@@ -18,7 +15,7 @@ const years = Array.from(new Array(10),( val, index) => year - index);
 const renderSelectorWithArray = ({ array, label, placeholder, input, meta: { touched, error } }) => (
   <Form.Group style={{color:"black"}} >
     <Form.Label>{label}</Form.Label>
-    <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
+    <Form.Control size="sm" as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
       <option value="">{placeholder}</option>
       {array.map(val => (
             <option value={val} key={val}>
@@ -36,9 +33,9 @@ const WizardFormThirdPage = props => {
     <form onSubmit={handleSubmit}>
       <h4>Data Sekolah Asal</h4>
       <Field name="sekolahasal" type="text" component={renderField} label="Nama Sekolah" />
-      <Field name="statussekolah" array={statusSekolah} type="text" label="Status Sekolah" placeholder="Pilih Status Sekolah.." component={renderSelectorWithArray} label="Status Sekolah" />
+      <Field name="statussekolah" array={statusSekolah} type="text" label="Status Sekolah" placeholder="Pilih Status Sekolah.." component={renderSelectorWithArray} />
       <Field name="alamatSekolah" type="text" component={renderField} label="Alamat Sekolah" />
-      <Field name="tahunlulus" array={years} type="number" type="text" placeholder="Tahun lulus.." component={renderSelectorWithArray} label="Tahun Lulus" />
+      <Field name="tahunlulus" array={years} type="number" placeholder="Tahun lulus.." component={renderSelectorWithArray} label="Tahun Lulus" />
 
       <div className="d-flex justify-content-between">
           <Button type="button" className="previous" onClick={previousPage}>

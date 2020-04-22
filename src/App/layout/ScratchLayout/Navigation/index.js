@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import windowSize from 'react-window-size';
 
-import NavContent from './NavContent';
-import OutsideClick from './OutsideClick';
+// import NavContent from './NavContent';
+// import OutsideClick from './OutsideClick';
 import Aux from '../../../hoc/_Aux';
 import * as actionTypes from './../../../../store/actions';
 import meraklogo from '../../../../assets/logo60.png';
@@ -44,8 +44,8 @@ class Navigation extends Component {
     }
 
     handleScroll = () => {
-        const { prevScrollpos } = this.state;
-        const { marginScrollpos } = 150;
+        // const { prevScrollpos } = this.state;
+        // const { marginScrollpos } = 150;
 
         const currentScrollPos = window.pageYOffset;
         // const visible = prevScrollpos > currentScrollPos;
@@ -62,19 +62,19 @@ class Navigation extends Component {
     }
     
     render() {        
-        const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-            <a
-                className="nav-link dropdown-toggle js-scroll-trigger"
-                href=""
-                ref={ref}
-                onClick={(e) => {
-                    e.preventDefault();
-                    onClick(e);
-                }}
-            >
-              {children}
-            </a>
-        )); 
+        // const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+        //     <a
+        //         className="nav-link dropdown-toggle js-scroll-trigger"
+        //         href=""
+        //         ref={ref}
+        //         onClick={(e) => {
+        //             e.preventDefault();
+        //             onClick(e);
+        //         }}
+        //     >
+        //       {children}
+        //     </a>
+        // )); 
 
         const ScratchContent = (            
             <div className="collapse navbar-collapse" id="navbarResponsive">
@@ -86,9 +86,9 @@ class Navigation extends Component {
             </div>
         );
 
-        let navClass = [
-            'pcoded-navbar',
-        ];
+        // let navClass = [
+        //     'pcoded-navbar',
+        // ];
 
         let navContent = (
             <div className="navbar-wrapper">
@@ -101,11 +101,18 @@ class Navigation extends Component {
                                     })
                                 } id="mainNav">
                     <div className="container">
-                        <img style={{width:"55px", marginRight: "10px"}} src={meraklogo}/>
+                        <img style={{width:"55px", marginRight: "10px"}} src={meraklogo} alt="Logo"/>
                         <a className="navbar-brand js-scroll-trigger" href="#page-top">
                             <h2>PPDB ONLINE</h2></a>
                         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-                        {ScratchContent}
+                        {/* {ScratchContent} */}
+                        <div className="collapse navbar-collapse" id="navbarResponsive">
+                            <ul className="navbar-nav ml-auto my-2 my-lg-0">
+                                <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">TENTANG SEKOLAH</a></li>
+                                <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#info">INFORMASI</a></li>
+                                <li className="nav-item"><a className="nav-link js-scroll-trigger " href="#contact">HUBUNGI KAMI</a></li>                      
+                            </ul>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -126,24 +133,24 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
     return {
-        layout: state.layout,
-        preLayout: state.preLayout,
-        collapseMenu: state.collapseMenu,
-        layoutType: state.layoutType,
-        navBackColor: state.navBackColor,
-        navBackImage: state.navBackImage,
-        navIconColor: state.navIconColor,
-        navBrandColor: state.navBrandColor,
-        layout6Background: state.layout6Background,
-        layout6BackSize: state.layout6BackSize,
-        rtlLayout: state.rtlLayout,
-        navFixedLayout: state.navFixedLayout,
-        boxLayout: state.boxLayout,
-        navDropdownIcon: state.navDropdownIcon,
-        navListIcon: state.navListIcon,
-        navActiveListColor: state.navActiveListColor,
-        navListTitleColor: state.navListTitleColor,
-        navListTitleHide: state.navListTitleHide
+        layout: state.adminReducer.layout,
+        preLayout: state.adminReducer.preLayout,
+        collapseMenu: state.adminReducer.collapseMenu,
+        layoutType: state.adminReducer.layoutType,
+        navBackColor: state.adminReducer.navBackColor,
+        navBackImage: state.adminReducer.navBackImage,
+        navIconColor: state.adminReducer.navIconColor,
+        navBrandColor: state.adminReducer.navBrandColor,
+        layout6Background: state.adminReducer.layout6Background,
+        layout6BackSize: state.adminReducer.layout6BackSize,
+        rtlLayout: state.adminReducer.rtlLayout,
+        navFixedLayout: state.adminReducer.navFixedLayout,
+        boxLayout: state.adminReducer.boxLayout,
+        navDropdownIcon: state.adminReducer.navDropdownIcon,
+        navListIcon: state.adminReducer.navListIcon,
+        navActiveListColor: state.adminReducer.navActiveListColor,
+        navListTitleColor: state.adminReducer.navListTitleColor,
+        navListTitleHide: state.adminReducer.navListTitleHide
     }
 };
 

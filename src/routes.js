@@ -19,10 +19,10 @@ const Panduan = React.lazy(() => import('./App/ppdb/Protected/Calon/Panduan/Pand
 
 const routes = [
     { path: '/user/beranda', exact:true, name: 'Default', component: BerandaPrivate },
-    { path: '/user/news', exact:true, name: 'Default', component: News },
-    { path: '/user/biodata', exact:true, name: 'Default', component: Biodata },
-    { path: '/user/cetak', exact:true, name: 'Default', component: CetakBukti },
-    { path: '/user/panduan', exact:true, name: 'Default', component: Panduan },
+    { path: '/user/news', exact:true, name: 'News', component: News },
+    { path: '/user/biodata', exact:true, name: 'Biodata', component: Biodata },
+    { path: '/user/cetak', exact:true, name: 'CetakBukti', component: CetakBukti },
+    { path: '/user/panduan', exact:true, name: 'Panduan', component: Panduan },
 ];
 
 export default routes;

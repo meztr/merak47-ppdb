@@ -44,10 +44,10 @@ class NavBar extends Component {
 
 const mapStateToProps = state => {
     return {
-        rtlLayout: state.rtlLayout,
-        headerBackColor: state.headerBackColor,
-        headerFixedLayout: state.headerFixedLayout,
-        collapseMenu: state.collapseMenu
+        rtlLayout: state.adminReducer.rtlLayout,
+        headerBackColor: state.adminReducer.headerBackColor,
+        headerFixedLayout: state.adminReducer.headerFixedLayout,
+        collapseMenu: state.adminReducer.collapseMenu
     }
 };
 

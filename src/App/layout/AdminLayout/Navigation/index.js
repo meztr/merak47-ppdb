@@ -134,24 +134,24 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
     return {
-        layout: state.layout,
-        preLayout: state.preLayout,
-        collapseMenu: state.collapseMenu,
-        layoutType: state.layoutType,
-        navBackColor: state.navBackColor,
-        navBackImage: state.navBackImage,
-        navIconColor: state.navIconColor,
-        navBrandColor: state.navBrandColor,
-        layout6Background: state.layout6Background,
-        layout6BackSize: state.layout6BackSize,
-        rtlLayout: state.rtlLayout,
-        navFixedLayout: state.navFixedLayout,
-        boxLayout: state.boxLayout,
-        navDropdownIcon: state.navDropdownIcon,
-        navListIcon: state.navListIcon,
-        navActiveListColor: state.navActiveListColor,
-        navListTitleColor: state.navListTitleColor,
-        navListTitleHide: state.navListTitleHide
+        layout: state.adminReducer.layout,
+        preLayout: state.adminReducer.preLayout,
+        collapseMenu: state.adminReducer.collapseMenu,
+        layoutType: state.adminReducer.layoutType,
+        navBackColor: state.adminReducer.navBackColor,
+        navBackImage: state.adminReducer.navBackImage,
+        navIconColor: state.adminReducer.navIconColor,
+        navBrandColor: state.adminReducer.navBrandColor,
+        layout6Background: state.adminReducer.layout6Background,
+        layout6BackSize: state.adminReducer.layout6BackSize,
+        rtlLayout: state.adminReducer.rtlLayout,
+        navFixedLayout: state.adminReducer.navFixedLayout,
+        boxLayout: state.adminReducer.boxLayout,
+        navDropdownIcon: state.adminReducer.navDropdownIcon,
+        navListIcon: state.adminReducer.navListIcon,
+        navActiveListColor: state.adminReducer.navActiveListColor,
+        navListTitleColor: state.adminReducer.navListTitleColor,
+        navListTitleHide: state.adminReducer.navListTitleHide
     }
 };
 
