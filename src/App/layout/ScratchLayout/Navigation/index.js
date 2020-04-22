@@ -20,7 +20,9 @@ class Navigation extends Component {
     
     state = {
         prevScrollpos: window.pageYOffset,
-        visible: true        
+        visible: true,
+        navExpanded: false,
+        pakeH4: false
     }
 
     resize = () => {
@@ -60,24 +62,21 @@ class Navigation extends Component {
         window.removeEventListener('resize', this.resize);
         window.removeEventListener('scroll', this.handleScroll);
     }
+
+    toggleNavbar() {
+        this.setNavExpanded(!this.state.navExpanded);
+    }
+
+    setNavExpanded(expanded) {
+        this.setState({ navExpanded: expanded });
+    }
     
-    render() {        
-        // const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-        //     <a
-        //         className="nav-link dropdown-toggle js-scroll-trigger"
-        //         href=""
-        //         ref={ref}
-        //         onClick={(e) => {
-        //             e.preventDefault();
-        //             onClick(e);
-        //         }}
-        //     >
-        //       {children}
-        //     </a>
-        // )); 
+    render() {  
+
+        const isNavExpanded = this.state.navExpanded ? 'show' : '';
 
         const ScratchContent = (            
-            <div className="collapse navbar-collapse" id="navbarResponsive">
+            <div className={`${isNavExpanded}` + "collapse navbar-collapse"} id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">TENTANG SEKOLAH</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#info">INFORMASI</a></li>
@@ -85,10 +84,11 @@ class Navigation extends Component {
                 </ul>
             </div>
         );
-
-        // let navClass = [
-        //     'pcoded-navbar',
-        // ];
+        
+        const styleSatu = ( <a className="navbar-brand js-scroll-trigger" href="#page-top"> <h3>PPDB ONLINE</h3> </a> );
+        // const styleDua = ( <a className="navbar-brand js-scroll-trigger" href="#page-top"> <h4>PPDB ONLINE</h4> </a> );
+        const headerStyle = this.state.pakeH4 ? styleSatu : styleSatu;
+        
 
         let navContent = (
             <div className="navbar-wrapper">
@@ -102,17 +102,25 @@ class Navigation extends Component {
                                 } id="mainNav">
                     <div className="container">
                         <img style={{width:"55px", marginRight: "10px"}} src={meraklogo} alt="Logo"/>
-                        <a className="navbar-brand js-scroll-trigger" href="#page-top">
-                            <h2>PPDB ONLINE</h2></a>
-                        <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-                        {/* {ScratchContent} */}
-                        <div className="collapse navbar-collapse" id="navbarResponsive">
+                        {headerStyle}
+                        <button onClick={ () => this.toggleNavbar() }
+                                className="navbar-toggler navbar-toggler-right" 
+                                type="button" data-toggle="collapse" 
+                                data-target="#navbarResponsive" 
+                                aria-controls="navbarResponsive" 
+                                aria-expanded="false" 
+                                aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                        </button>
+
+                        {ScratchContent}
+                        {/* <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav ml-auto my-2 my-lg-0">
                                 <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">TENTANG SEKOLAH</a></li>
                                 <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#info">INFORMASI</a></li>
                                 <li className="nav-item"><a className="nav-link js-scroll-trigger " href="#contact">HUBUNGI KAMI</a></li>                      
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                 </nav>
             </div>
@@ -125,7 +133,7 @@ class Navigation extends Component {
                     {navContent}
                 </nav>
                  */}                
-                 {navContent}                 
+                {navContent}                 
             </Aux>
         );
     }
