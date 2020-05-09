@@ -5,7 +5,7 @@ import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
 import Aux from "../../../hoc/_Aux";
 import DEMO from "../../../../store/constant";
-import * as actionTypes from "../../../../store/actions";
+import * as actionTypes from "../../../../store/actions/adminLayoutActions";
 
 class NavBar extends Component {
     render() {
@@ -28,7 +28,7 @@ class NavBar extends Component {
                             <div className="b-bg">
                                 <i className="feather icon-trending-up"/>
                             </div>
-                            <span className="b-title">Datta AbleC</span>
+                            <span className="b-title">PPDB 2020/2021</span>
                         </a>
                     </div>
                     <a className="mobile-menu" id="mobile-header" href={DEMO.BLANK_LINK}><i className="feather icon-more-horizontal"/></a>

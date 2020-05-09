@@ -52,7 +52,7 @@ class Home extends React.Component {
                             </div>
                         </div>
                     </section>
-                                       
+
                     <section className="page-section bg-dark text-white" id="prosedur">
                         <div className="container text-center">
                             <h2 className="mb-4">Free Download at Start Bootstrap!</h2>
@@ -86,11 +86,7 @@ class Home extends React.Component {
         )
         return (
             <Aux>
-                <Row>
-                    <Col>
-                        {content}
-                    </Col>
-                </Row>
+                {content}
             </Aux>
         );
     }

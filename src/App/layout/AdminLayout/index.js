@@ -15,11 +15,17 @@ import Breadcrumb from './Breadcrumb';
 import Loader from "../Loader";
 import routes from "../../../routes";
 import Aux from "../../hoc/_Aux";
-import * as actionTypes from "../../../store/actions";
+import * as actionTypes from "../../../store/actions/adminLayoutActions";
 
 import './app.scss';
 
 class AdminLayout extends Component {
+
+    state = {
+        userdata: {},
+        data: {},
+        logMessages: ""
+    }
 
     // constructor() {
     //     super();
@@ -35,14 +41,19 @@ class AdminLayout extends Component {
         }
     };
 
+    componentDidMount() {
+        this.props.onFetchCalonData();     //FETCH_CALON_DATA
+    }
+
     componentWillMount() {
-        if (this.props.windowWidth > 992 && this.props.windowWidth <= 1024 && this.props.layout !== 'horizontal') {
+        // this.props.onFetchCalonData();     //FETCH_CALON_DATA
+        if (this.props.adminReducer.windowWidth > 992 && this.props.adminReducer.windowWidth <= 1024 && this.props.adminReducer.layout !== 'horizontal') {
             this.props.onComponentWillMount();
         }
     }
 
     mobileOutClickHandler() {
-        if (this.props.windowWidth < 992 && this.props.collapseMenu) {
+        if (this.props.adminReducer.windowWidth < 992 && this.props.adminReducer.collapseMenu) {
             this.props.onComponentWillMount();
         }
     }
@@ -63,7 +74,7 @@ class AdminLayout extends Component {
                     exact={route.exact}
                     name={route.name}
                     render={props => (
-                        <route.component {...props} />
+                        <route.component {...props} data={this.props.adminReducer.ppdbAuthData} calonData={this.props.adminReducer.ppdbCalonData} gg="gg aja deh" />
                     )} />
             ) : (null);
         });
@@ -71,7 +82,7 @@ class AdminLayout extends Component {
         // TODO : in line 80 memory leaks issued by this.props.defaultPath = undefined, then caused by uncompatible Claire reducers vs AdminLayout reducers
         return (
             <Aux>
-                <Fullscreen enabled={this.props.isFullScreen}>
+                <Fullscreen enabled={this.props.adminReducer.isFullScreen}>
                     <Navigation />
                     <NavBar />                    
                     <div className="pcoded-main-container" onClick={() => this.mobileOutClickHandler}>
@@ -85,7 +96,7 @@ class AdminLayout extends Component {
                                             <Suspense fallback={<Loader/>}>
                                                 <Switch>
                                                     {menu}                                                    
-                                                    <Redirect from="/" to={this.props.defaultPath} />
+                                                    <Redirect from="/" to={this.props.adminReducer.defaultPath} />
                                                 </Switch>
                                             </Suspense>
                                         </div>
@@ -100,46 +111,30 @@ class AdminLayout extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        auth: state.firebaseReducer.auth,
-        authMsg: state.authReducer.authMsg,
-        calonSiswaValues: state.authReducer.calonSiswaValues,
-        defaultPath: state.adminReducer.defaultPath,
-        isFullScreen: state.adminReducer.isFullScreen,
-        collapseMenu: state.adminReducer.collapseMenu,
-        configBlock: state.adminReducer.configBlock,
-        layout: state.adminReducer.layout
-    }
-};
+// const mapStateToProps = state => {
+//     return {
+//         auth: state.firebaseReducer.auth,
+//         authMsg: state.authReducer.authMsg,
+//         calonSiswaValues: state.authReducer.calonSiswaValues,
+//         defaultPath: state.adminReducer.defaultPath,
+//         isFullScreen: state.adminReducer.isFullScreen,
+//         collapseMenu: state.adminReducer.collapseMenu,
+//         configBlock: state.adminReducer.configBlock,
+//         layout: state.adminReducer.layout
+//     }
+// };
+
+const mapStateToProps = state => ({
+    ...state
+});
 
 const mapDispatchToProps = dispatch => {
     return {
         onFullScreenExit: () => dispatch({type: actionTypes.FULL_SCREEN_EXIT}),
         onComponentWillMount: () => dispatch({type: actionTypes.COLLAPSE_MENU}),
+        onFetchCalonData: () => dispatch({type: actionTypes.FETCH_CALON_DATA}),
         signout: () => dispatch(signout())
     }
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(ScratchLayout)));
 export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(AdminLayout)));
-
-// function mapStateToProps(state) {
-//     return {
-//       auth: state.firebaseReducer.auth
-//     };
-//   }
-  
-// function mapDispatchToProps(dispatch) {
-// return {
-//     signout: () => dispatch(signout())
-// };
-// }
-  
-// export default compose(
-//     connect(
-//         mapStateToProps,
-//         mapDispatchToProps
-//     ),
-//     requireAuth
-// )(windowSize(AdminLayout));

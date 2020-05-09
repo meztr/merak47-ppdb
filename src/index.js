@@ -5,33 +5,12 @@ import App from './App/index';
 import "./css/index.css";
 import * as serviceWorker from './serviceWorker';
 
-// SETTING UP REDUX STORE
 import { Provider} from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import reduxThunk from "redux-thunk";
-import reducers from './store/reducers'
-// import adminReducer from './store/reducer'
-
-
-// ENHANCING STORE WITH FIREBASE
-import { reactReduxFirebase } from "react-redux-firebase";
-import firebase from "./services/firebase";
+import configureStore from "./store/store";
 import config from './config';
 
-const createStoreWithFirebase = compose(reactReduxFirebase(firebase))(  
-  createStore
-);
-
-const store = createStoreWithFirebase(
-    reducers,
-    {},
-    applyMiddleware(reduxThunk)
-);
-
-// const store = createStore(adminReducer); // old reducer version
-
 const app = (
-    <Provider store={store}>
+    <Provider store={configureStore}>
         <BrowserRouter basename={config.basename}>
             <App />
         </BrowserRouter>

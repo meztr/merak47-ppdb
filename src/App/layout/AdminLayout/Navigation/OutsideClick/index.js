@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import windowSize from 'react-window-size';
 
-import * as actionTypes from "../../../../../store/actions";
+import * as actionTypes from "../../../../../store/actions/adminLayoutActions";
 
 class OutsideClick extends Component {
     constructor(props) {

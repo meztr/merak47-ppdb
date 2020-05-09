@@ -9,7 +9,7 @@ import windowSize from 'react-window-size';
 // import NavContent from './NavContent';
 // import OutsideClick from './OutsideClick';
 import Aux from '../../../hoc/_Aux';
-import * as actionTypes from './../../../../store/actions';
+import * as actionTypes from './../../../../store/actions/adminLayoutActions';
 import meraklogo from '../../../../assets/logo60.png';
 // import navigation from '../../../../menu-scratch-items';
 // import navigation from '../../../../menu-ppdb-items';
@@ -114,13 +114,6 @@ class Navigation extends Component {
                         </button>
 
                         {ScratchContent}
-                        {/* <div className="collapse navbar-collapse" id="navbarResponsive">
-                            <ul className="navbar-nav ml-auto my-2 my-lg-0">
-                                <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">TENTANG SEKOLAH</a></li>
-                                <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#info">INFORMASI</a></li>
-                                <li className="nav-item"><a className="nav-link js-scroll-trigger " href="#contact">HUBUNGI KAMI</a></li>                      
-                            </ul>
-                        </div> */}
                     </div>
                 </nav>
             </div>

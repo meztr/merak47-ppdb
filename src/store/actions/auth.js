@@ -7,7 +7,9 @@ import {
   SIGNOUT_SUCCESS,
   SIGNOUT_ERROR,
   RESET_SUCCESS,
-  RESET_ERROR
+  RESET_ERROR,
+  REGISTER_CALONSISWA_SUCCESS,
+  REGISTER_CALONSISWA_ERROR
 } from "./actionTypes";
 import { beginApiCall, apiCallError } from "./apiStatus";
 import firebase from "../../services/firebase";
@@ -125,7 +127,7 @@ export const signinAnonim = (values, callback) => async dispatch => {
                 })
         
         dispatch({ 
-          type: SIGNIN_SUCCESS,
+          type: REGISTER_CALONSISWA_SUCCESS,
           dataValues: values
         });
 
@@ -134,13 +136,23 @@ export const signinAnonim = (values, callback) => async dispatch => {
       .catch(() => {
         dispatch(apiCallError());
         dispatch({
-          type: SIGNIN_ERROR,
+          type: REGISTER_CALONSISWA_ERROR,
           payload: "auth/operation-not-allowed"
       });
     });
   } catch (err) {
     dispatch(apiCallError());
-    dispatch({ type: SIGNIN_ERROR, payload: "invalid registrasi anonim" });
+    dispatch({ type: REGISTER_CALONSISWA_ERROR, payload: "invalid registrasi anonim" });
+  }
+}
+
+function registerCalonSiswaSuccess(payload) {
+  return { type: REGISTER_CALONSISWA_SUCCESS, payloadValues: payload}
+}
+
+export function registerCalonSiswa(values) {
+  return function(dispatch) {
+    return dispatch(registerCalonSiswaSuccess(values))
   }
 }
 

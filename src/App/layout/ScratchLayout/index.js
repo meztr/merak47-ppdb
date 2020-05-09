@@ -8,7 +8,7 @@ import Navigation from './Navigation';
 // import Breadcrumb from './Breadcumb';
 // import Loader from "../Loader";
 import Aux from "../../hoc/_Aux";
-import * as actionTypes from "../../../store/actions";
+import * as actionTypes from "../../../store/actions/adminLayoutActions";
 
 // import bgImage from "../../../assets/bg-masthead.jpg"
 import Home from "./Home/Home";
@@ -28,13 +28,13 @@ class ScratchLayout extends Component {
     };
 
     componentWillMount() {
-        if (this.props.windowWidth > 992 && this.props.windowWidth <= 1024 && this.props.layout !== 'horizontal') {
+        if (this.props.adminReducer.windowWidth > 992 && this.props.adminReducer.windowWidth <= 1024 && this.props.adminReducer.layout !== 'horizontal') {
             this.props.onComponentWillMount();
         }
     }
 
     mobileOutClickHandler() {
-        if (this.props.windowWidth < 992 && this.props.collapseMenu) {
+        if (this.props.adminReducer.windowWidth < 992 && this.props.adminReducer.collapseMenu) {
             this.props.onComponentWillMount();
         }
     }
@@ -48,13 +48,13 @@ class ScratchLayout extends Component {
 
         return (
             <Aux>                
-                <Fullscreen enabled={this.props.isFullScreen}>
-                    <Navigation />                   
+                <Fullscreen enabled={this.props.adminReducer.isFullScreen}>
+                    <Navigation />
                     
                     {/* <!-- Masthead--> */}
                     <header className="masthead">
                         <div className="container h-100">
-                            <div className="row h-100 align-items-center justify-content-center text-center">
+                            <div className="row h-100 align-items-center justify-content-center text-center">                                
                                 <div className="col-lg-10 align-self-end">
                                     <h1 className="text-uppercase text-white font-weight-bold">PPDB ONLINE</h1>
                                     <h2 className="text-uppercase text-white font-weight-bold">SMK Muhammadiyah Sampit</h2>
@@ -76,25 +76,29 @@ class ScratchLayout extends Component {
                                 </div>
                             </div>
                         </div>
-                    </header>                    
-                    
-                    <Home/>
-                    <Footer/>          
+                    </header>
+
+                    <Home />
+                    <Footer/>
                 </Fullscreen>
             </Aux>
         );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        defaultPath: state.adminReducer.defaultPath,
-        isFullScreen: state.adminReducer.isFullScreen,
-        collapseMenu: state.adminReducer.collapseMenu,
-        configBlock: state.adminReducer.configBlock,
-        layout: state.adminReducer.layout
-    }
-};
+// const mapStateToProps = state => {
+//     return {
+//         defaultPath: state.adminReducer.defaultPath,
+//         isFullScreen: state.adminReducer.isFullScreen,
+//         collapseMenu: state.adminReducer.collapseMenu,
+//         configBlock: state.adminReducer.configBlock,
+//         layout: state.adminReducer.layout
+//     }
+// };
+
+const mapStateToProps = state => ({
+    ...state
+});
 
 const mapDispatchToProps = dispatch => {
     return {

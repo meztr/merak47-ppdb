@@ -25,7 +25,7 @@ const Logina = ({
     function login() {
         signin(credentials.email, credentials.password, () =>
             history.push("/user/beranda")
-        );     
+        );
     }
 
     return (

@@ -15,11 +15,7 @@ class Footer extends React.Component {
         );
         return (
             <Aux>
-                <Row>
-                    <Col>
-                        {content}
-                    </Col>
-                </Row>
+                {content}
             </Aux>
         );
     }
