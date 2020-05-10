@@ -23,6 +23,7 @@ class Navigation extends Component {
     componentDidMount() {
         this.resize();
         window.addEventListener('resize', this.resize)
+        this.props.onChangeLayout('vertical');
     }
 
     componentWillUnmount() {

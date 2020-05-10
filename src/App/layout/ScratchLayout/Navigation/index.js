@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 // import {Dropdown} from 'react-bootstrap';
-
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import windowSize from 'react-window-size';

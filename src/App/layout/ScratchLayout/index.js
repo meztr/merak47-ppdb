@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import {Route, Switch, Redirect} from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import {connect} from 'react-redux';
 import Fullscreen from "react-full-screen";
 import windowSize from 'react-window-size';
@@ -13,11 +13,11 @@ import * as actionTypes from "../../../store/actions/adminLayoutActions";
 // import bgImage from "../../../assets/bg-masthead.jpg"
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
+import Loader from "../Loader";
 
 import './app.scss';
 
 // import { signout } from "../../../store/actions/auth";
-// import requireAuth from "../../hoc/requireAuth";
 
 class ScratchLayout extends Component {
 
@@ -39,6 +39,13 @@ class ScratchLayout extends Component {
         }
     }
     render() {
+
+        // Redirect if user auth
+
+        // TODO: bug Check the render method of `windowSize(Connect(ComposedComponent))`.
+        if (!this.props.firebaseReducer.auth.isEmpty) {                        
+            return <Redirect from="/" to="/user/beranda"/>
+        }
        
         /* full screen exit call */
         document.addEventListener('fullscreenchange', this.fullScreenExitHandler);
@@ -46,8 +53,8 @@ class ScratchLayout extends Component {
         document.addEventListener('mozfullscreenchange', this.fullScreenExitHandler);
         document.addEventListener('MSFullscreenChange', this.fullScreenExitHandler);
 
-        return (
-            <Aux>                
+        return ( 
+            <Aux>
                 <Fullscreen enabled={this.props.adminReducer.isFullScreen}>
                     <Navigation />
                     
@@ -107,5 +114,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(ScratchLayout)));
 export default connect(mapStateToProps, mapDispatchToProps) (windowSize(ScratchLayout));

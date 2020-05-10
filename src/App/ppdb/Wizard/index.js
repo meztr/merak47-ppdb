@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // import { Provider } from 'react-redux'
 // import { createStore, combineReducers } from 'redux'
 // import { reducer as reduxFormReducer } from 'redux-form'
-import WizardForm from "./WizardForm"
+// import WizardForm from "./WizardForm"
 // import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 import WizardTest from './WizardTest'
@@ -11,7 +11,7 @@ import '../../../assets/scss/style.scss';
 import firebase from '../../../services/firebase'
 
 // import { signinAnonim } from "../../../store/actions/auth"
-import { registerCalonSiswa } from "../../../store/actions/auth";
+// import { registerCalonSiswa } from "../../../store/actions/auth";
 
 // import Loader from '../Loader'
 // import Beranda from '../Protected/Calon/Beranda/Beranda'
@@ -23,6 +23,8 @@ const Wizard = ({
     history,
     loading
 }) => {
+
+    
 
     const proceedRegisterCalonSiswa = values =>
         new Promise(resolve=> {
@@ -51,7 +53,12 @@ const Wizard = ({
                                 "data": values
                             })
                     
-                    this.props.registerCalonSiswa(values); // props undefined
+                    // this.props.registerCalonSiswa(values); // props undefined
+
+                    // dispatch({
+                    //     type:"FETCH_CALON_DATA",
+                    //     payload: snapshot.val() || {}
+                    // });
 
                     history.push({
                         pathname: "/user/beranda",
@@ -72,17 +79,17 @@ function mapStateToProps(state) {
     return {
         auth: state.firebaseReducer.auth,        
         authMsg: state.authReducer.authMsg,
-        calonSiswaValues: state.authReducer.calonSiswaValues,
-        registerCalonSiswa: state.authReducer.registerCalonSiswa
+        calonSiswaValues: state.authReducer.calonSiswaValues
+        // registerCalonSiswa: state.authReducer.registerCalonSiswa
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    // return { actions: bindActionCreators()
-    return {
-        registerCalonSiswa: values => dispatch(registerCalonSiswa(values))
-    }
-  }
+// function mapDispatchToProps(dispatch) {
+//     // return { actions: bindActionCreators()
+//     return {
+//         registerCalonSiswa: values => dispatch(registerCalonSiswa(values))
+//     }
+//   }
 
 export default connect(mapStateToProps)(Wizard);
 

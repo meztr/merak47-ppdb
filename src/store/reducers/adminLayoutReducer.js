@@ -137,7 +137,7 @@ export default function(state = initialState, action) {
             console.log('fetch_calon_data');
             return {
                 ...state,
-                ppdbCalonData: staticCalonData
+                ppdbCalonData: staticCalonData //Object.values(action.payload)
             }
         case actionTypes.FETCH_AUTH_DATA:
             console.log('FETCH_AUTH_DATA');

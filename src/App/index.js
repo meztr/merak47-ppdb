@@ -41,7 +41,7 @@ class App extends Component {
                     <Suspense fallback={<Loader/>}>
                         <Switch>       
                             {publicMenu}                     
-                            <Route path="/" component={AdminLayout} />
+                            <Route path="/user" component={AdminLayout} />
                         </Switch>
                     </Suspense>
                 </ScrollToTop>

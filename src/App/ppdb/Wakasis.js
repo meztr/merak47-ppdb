@@ -10,7 +10,6 @@ const Wakasis = ({ auth }) => {
   return (
     <div>
       {!auth.isLoaded ? <Loader /> : !auth.isEmpty ? <Redirect from="/" to="/user/beranda"/> : <Logina />}
-      {/* {!auth.isLoaded ? <Loader /> : !auth.isEmpty ? history.push("/user/beranda") : <Logina />} */}
     </div>
   );
 };

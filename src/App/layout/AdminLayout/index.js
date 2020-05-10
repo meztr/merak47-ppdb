@@ -7,7 +7,9 @@ import windowSize from 'react-window-size';
 // import { compose } from "redux";
 // // import { connect } from "react-redux";
 import { signout } from "../../../store/actions/auth";
-import requireAuth from "../../hoc/requireAuth";
+
+// MARKBUG : 10May2020
+// import requireAuth from "../../hoc/requireAuth";
 
 import Navigation from './Navigation';
 import NavBar from './NavBar';
@@ -137,4 +139,5 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(AdminLayout)));
+//export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(AdminLayout)));
+export default connect(mapStateToProps, mapDispatchToProps) (windowSize(AdminLayout));

@@ -146,15 +146,15 @@ export const signinAnonim = (values, callback) => async dispatch => {
   }
 }
 
-function registerCalonSiswaSuccess(payload) {
-  return { type: REGISTER_CALONSISWA_SUCCESS, payloadValues: payload}
-}
+// function registerCalonSiswaSuccess(payload) {
+//   return { type: REGISTER_CALONSISWA_SUCCESS, payloadValues: payload}
+// }
 
-export function registerCalonSiswa(values) {
-  return function(dispatch) {
-    return dispatch(registerCalonSiswaSuccess(values))
-  }
-}
+// export function registerCalonSiswa(values) {
+//   return function(dispatch) {
+//     return dispatch(registerCalonSiswaSuccess(values))
+//   }
+// }
 
 // Signing out with Firebase
 export const signout = () => async dispatch => {
