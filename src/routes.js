@@ -17,12 +17,15 @@ const CetakBukti = React.lazy(() => import('./App/ppdb/Protected/Calon/CetakBukt
 // Panduan
 const Panduan = React.lazy(() => import('./App/ppdb/Protected/Calon/Panduan/Panduan'));
 
+const Logout = React.lazy(() => import('./App/ppdb/Protected/Logout'))
+
 const routes = [
     { path: '/user/beranda', exact:true, name: 'Default', component: BerandaPrivate },
     { path: '/user/news', exact:true, name: 'News', component: News },
     { path: '/user/biodata', exact:true, name: 'Biodata', component: Biodata },
     { path: '/user/cetak', exact:true, name: 'CetakBukti', component: CetakBukti },
     { path: '/user/panduan', exact:true, name: 'Panduan', component: Panduan },
+    { path: '/user/logout', exact:true, name: 'logout', component: Logout },
 ];
 
 export default routes;

@@ -1,7 +1,7 @@
 import React from 'react';
 // import React, { useState } from 'react';
 import { connect } from "react-redux";
-// import {NavLink} from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
 import '../../assets/scss/style.scss';
 import Aux from "../hoc/_Aux";
@@ -24,7 +24,9 @@ const Logina = ({
 
     function login() {
         signin(credentials.email, credentials.password, () =>
-            history.push("/user/beranda")
+            // history.push("/user/beranda")
+            // history.push("/")
+            <Redirect from="/" to="/user/beranda"/>
         );
     }
 

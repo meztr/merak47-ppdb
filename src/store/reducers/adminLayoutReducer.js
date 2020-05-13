@@ -132,19 +132,19 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 layout: action.layout
-            };
-        case actionTypes.FETCH_CALON_DATA:
-            console.log('fetch_calon_data');
-            return {
-                ...state,
-                ppdbCalonData: staticCalonData //Object.values(action.payload)
             }
-        case actionTypes.FETCH_AUTH_DATA:
-            console.log('FETCH_AUTH_DATA');
-            return {
-                ...state,
-                ppdbAdminData: staticAdminData
-            }
+        // case actionTypes.FETCH_CALON_DATA:
+        //     console.log('fetch_calon_data');
+        //     return {
+        //         ...state,
+        //         ppdbCalonData: staticCalonData //Object.values(action.payload) || {}  //Object.values(action.payload)
+        //     }
+        // case actionTypes.FETCH_AUTH_DATA:
+        //     console.log('FETCH_AUTH_DATA');
+        //     return {
+        //         ...state,
+        //         ppdbAdminData: staticAdminData
+        //     }
         default:
             return state;
     }

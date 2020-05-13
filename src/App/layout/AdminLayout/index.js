@@ -6,7 +6,7 @@ import windowSize from 'react-window-size';
 
 // import { compose } from "redux";
 // // import { connect } from "react-redux";
-import { signout } from "../../../store/actions/auth";
+import { signout, fetchAllAdminData } from "../../../store/actions/auth";
 
 // MARKBUG : 10May2020
 // import requireAuth from "../../hoc/requireAuth";
@@ -25,8 +25,9 @@ class AdminLayout extends Component {
 
     state = {
         userdata: {},
+        isAdmin: false,
         data: {},
-        logMessages: ""
+        loading: false
     }
 
     // constructor() {
@@ -44,7 +45,17 @@ class AdminLayout extends Component {
     };
 
     componentDidMount() {
-        this.props.onFetchCalonData();     //FETCH_CALON_DATA
+        // this.props.onFetchCalonData();     //FETCH_CALON_DATA
+        // this.fetchAllCalonData();
+
+        const doesAdmin = this.props.fbReducer.isAnonymous;
+        if (!doesAdmin) {
+            this.setState( {isAdmin: true} );
+            this.props.fetchAllAdminData();
+        } else {
+            console.log("Not Admin");
+        }
+        
     }
 
     componentWillMount() {
@@ -59,6 +70,13 @@ class AdminLayout extends Component {
             this.props.onComponentWillMount();
         }
     }
+
+    // fetchAllCalonData() {
+        // const doesAdmin = this.props.auth.isAnonymous;
+        // if (!doesAdmin) {
+        //     this.setState( {isAdmin: true} );
+        // }
+    // }
 
     render() {
 
@@ -76,7 +94,7 @@ class AdminLayout extends Component {
                     exact={route.exact}
                     name={route.name}
                     render={props => (
-                        <route.component {...props} data={this.props.adminReducer.ppdbAuthData} calonData={this.props.adminReducer.ppdbCalonData} gg="gg aja deh" />
+                        <route.component {...props} data={this.props.adminReducer.ppdbAuthData} calonData={this.props.authReducer.ppdbNewRegister} gg="gg aja deh" />
                     )} />
             ) : (null);
         });
@@ -127,15 +145,17 @@ class AdminLayout extends Component {
 // };
 
 const mapStateToProps = state => ({
-    ...state
+    ...state,
+    fbReducer: state.firebaseReducer.auth
 });
 
 const mapDispatchToProps = dispatch => {
     return {
         onFullScreenExit: () => dispatch({type: actionTypes.FULL_SCREEN_EXIT}),
         onComponentWillMount: () => dispatch({type: actionTypes.COLLAPSE_MENU}),
-        onFetchCalonData: () => dispatch({type: actionTypes.FETCH_CALON_DATA}),
-        signout: () => dispatch(signout())
+        // onFetchCalonData: () => dispatch({type: actionTypes.FETCH_CALON_DATA}),
+        signout: () => dispatch(signout()),
+        fetchAllAdminData: () => dispatch(fetchAllAdminData())
     }
 };
 

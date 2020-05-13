@@ -9,10 +9,14 @@ import {
   RESET_SUCCESS,
   RESET_ERROR,
   REGISTER_CALONSISWA_SUCCESS,
-  REGISTER_CALONSISWA_ERROR
+  REGISTER_CALONSISWA_ERROR,
+  FETCH_SUCCESS,
+  FETCH_ERROR
 } from "./actionTypes";
 import { beginApiCall, apiCallError } from "./apiStatus";
 import firebase from "../../services/firebase";
+
+const refCalonSiswa = process.env.REACT_APP_DB_VERSION + "/calonsiswa";
 
 // Signing up with Firebase
 export const signup = (email, password) => async dispatch => {
@@ -63,6 +67,26 @@ export const signup = (email, password) => async dispatch => {
   }
 };
 
+export const fetchAllAdminData = () => async dispatch => {
+  try {
+    dispatch(beginApiCall());
+    firebase
+      .database()
+      .ref( refCalonSiswa )
+      .on("value", snapshot => {
+        dispatch({ 
+          type: FETCH_SUCCESS,
+          payload: snapshot.val() || {}
+        });
+        console.log("FETCH_SUCCESS ");
+      });
+  } catch (err) {
+    console.log("FETCH_ERROR ", err)
+    dispatch(apiCallError());
+    dispatch({ type: FETCH_ERROR, payload: "Fetch authData error" });
+  }
+}
+
 // Signing in with Firebase Claire version
 export const signin = (email, password, callback) => async dispatch => {
   try {
@@ -73,10 +97,47 @@ export const signin = (email, password, callback) => async dispatch => {
       .then(data => {
         if (data.user.emailVerified) {
           console.log("IF", data.user.emailVerified);
+          // const allCalonData = [{ data100: "data sratus"}, { data200: "data duaratus"}]
+          // firebase
+          //   .child('calonsiswa')
+          //   .on('value', snapshot => {
+          //     allCalonData = snapshot.val();          
+              
+          // })
+
           dispatch({ 
             type: SIGNIN_SUCCESS
+            // datas: allCalonData
           });
           callback();
+
+          // // fetch authData from firebase for Admin/Panitia User
+          // const authData = "";
+          // const databaseRef = firebase.database().ref();
+          // const authDataRef = databaseRef.child("calonsiswa");
+          // // authDataRef.on("value", snapshot => {
+          // //   data: snapshot.val()
+          // // })
+          // authDataRef.on("value", function(snapshot) {
+          //   console.log("authDatas: " + snapshot.val());
+          //   authData: snapshot.val();
+          // }, function (errorObject) {
+          //   console.log("The authDatas read failed: " + errorObject.code)
+          // });
+
+          // firebase
+          //   .child('calonsiswa')
+          //   .on('value', snapshot => {
+          //     const allCalonData = snapshot.val();
+          //     dispatch({ 
+          //       type: SIGNIN_SUCCESS,
+          //       datas: [{ data1: "data satu"}, { data2: "data dua"}]
+          //     });
+          //     callback();
+          //   })
+          // dispatch({ type: SIGNIN_SUCCESS });
+          // callback();
+         
         } else {
           console.log("ELSE", data.user.emailVerified);
           dispatch({
@@ -85,12 +146,14 @@ export const signin = (email, password, callback) => async dispatch => {
           });
         }
       })
-      .catch(() => {
-        dispatch(apiCallError());
-        dispatch({
-          type: SIGNIN_ERROR,
-          payload: "Invalid login credentials"
-        });
+      .catch((err) => {
+        if (err) {
+          dispatch(apiCallError());
+          dispatch({
+            type: SIGNIN_ERROR,
+            payload: "Invalid login credentials"
+          });
+        }        
       });
   } catch (err) {
     dispatch(apiCallError());
@@ -99,6 +162,13 @@ export const signin = (email, password, callback) => async dispatch => {
 };
 
 // Signing in Anonymously
+export const registerWithValue = (values) => async dispatch => {
+  dispatch({ 
+    type: REGISTER_CALONSISWA_SUCCESS,
+    payload: values
+  });
+}
+
 export const signinAnonim = (values, callback) => async dispatch => {
   try {
     dispatch(beginApiCall());
@@ -128,7 +198,7 @@ export const signinAnonim = (values, callback) => async dispatch => {
         
         dispatch({ 
           type: REGISTER_CALONSISWA_SUCCESS,
-          dataValues: values
+          payload: values
         });
 
         callback();
@@ -180,6 +250,16 @@ export const signout = () => async dispatch => {
       payload: "Error, we were not able to log you out. Please try again."
     });
   }
+};
+
+// New Register Calon Siswa
+export const newRegisterCalonSiswa = data => async dispatch => {  
+    // dispatch(beginApiCall());
+    dispatch({
+      type: RESET_SUCCESS,
+      payload:
+        "Check your inbox. We've sent you a secured reset link by e-mail."
+    })    
 };
 
 // Reset password with Firebase

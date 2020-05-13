@@ -7,7 +7,11 @@ import {
   SIGNOUT_SUCCESS,
   SIGNOUT_ERROR,
   RESET_SUCCESS,
-  RESET_ERROR
+  RESET_ERROR,
+  FETCH_SUCCESS,
+  FETCH_ERROR,
+  REGISTER_CALONSISWA_SUCCESS,
+  REGISTER_CALONSISWA_ERROR
 } from "../actions/actionTypes";
 
 const staticValues = {
@@ -54,23 +58,85 @@ const staticValues = {
 }
 
 const INITIAL_STATE = {
-  authMsg: ""
+  authMsg: "",
+  fetchMsg: "",
+  ppdbNewRegister: staticValues,
+  calonData: {},
+  authData: []
 };
 
 export default function(state = INITIAL_STATE, action) {
-  if (action.type === SIGNIN_SUCCESS || action.type === SIGNOUT_SUCCESS) {
-    return { ...state, authMsg: "" };
-  } else if (
-    action.type === SIGNUP_SUCCESS ||
-    action.type === SIGNUP_ERROR ||
-    action.type === SIGNIN_ERROR ||
-    action.type === EMAIL_NOT_VERIFIED ||
-    action.type === SIGNOUT_ERROR ||
-    action.type === RESET_SUCCESS ||
-    action.type === RESET_ERROR
-  ) {
-    return { ...state, authMsg: action.payload };
-  } else {
+  // if (action.type === SIGNIN_SUCCESS || action.type === SIGNOUT_SUCCESS) {
+  //   return { ...state, authMsg: "" };
+  // } else if (
+  //   action.type === SIGNUP_SUCCESS ||
+  //   action.type === SIGNUP_ERROR ||
+  //   action.type === SIGNIN_ERROR ||
+  //   action.type === EMAIL_NOT_VERIFIED ||
+  //   action.type === SIGNOUT_ERROR ||
+  //   action.type === RESET_SUCCESS ||
+  //   action.type === RESET_ERROR
+  // ) {
+  //   return { ...state, authMsg: action.payload };
+  // } else {
+  //   return state;
+  // }
+  switch (action.type) {
+    case "SIGNIN_SUCCESS":
+      console.log("SIGNIN_SUCCESS ", action.datas);
+      return {
+        ...state,
+        authMsg: "",
+        authData: Object.values(action.datas)
+    }
+    case "SIGNOUT_SUCCESS" :
+      console.log("SIGNIN_SIGNOUT_SUCCESS ", action.payload);
+      return {
+        ...state,
+        authMsg: "",
+        authData: []
+      }
+  case "SIGNUP_SUCCESS":
+    console.log("SIGNUP_SUCCESS ", action.payload);
+    return {
+      ...state,
+    }
+  case "SIGNUP_ERROR" || "SIGNIN_ERROR" || "EMAIL_NOT_VERIFIED" || "SIGNOUT_ERROR" :
+    console.log("ERROR ", action.payload);
+    return {
+      ...state,
+      authMsg: action.payload
+    }
+  case "RESET_SUCCESS" || "RESET_ERROR":
+    console.log("RESET_SUCCESS||RESET_ERROR ", action.payload);
+    return {
+      ...state
+    }
+  case "FETCH_SUCCESS":
+    console.log("FETCH_SUCCESS", action.payload);
+    return {
+      ...state,
+      authData: action.payload
+    }
+  case "FETCH_ERROR":
+    console.log("FETCH_ERROR", action.payload);
+    return {
+      ...state,
+      fetchMsg: action.payload
+    }
+  case "REGISTER_CALONSISWA_SUCCESS":
+    console.log("REGISTER_CALONSISWA_SUCCESS", action.payload);
+    return {
+      ...state,
+      calonData: action.payload
+    }
+  case "REGISTER_CALONSISWA_ERROR":
+    console.log("REGISTER_CALONSISWA_ERROR", action.payload);
+    return {
+      ...state,
+      fetchMsg: action.payload
+    }
+  default:
     return state;
   }
 }

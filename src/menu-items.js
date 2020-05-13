@@ -89,27 +89,12 @@ export default {
                     },
                     {
                         id: 'logout',
-                        title: 'Keluar',
+                        title: 'Log out',
                         type: 'item',
-                        url: '/pengumuman',
+                        url: '/user/logout',
                         icon: 'feather icon-log-out',
                     }
                 ]
-        },
-        {
-            id: 'test',
-                title: 'Test',
-                type: 'group',
-                icon: 'icon-test',
-                children: [
-                    {
-                        id: 'form-pendaftaran',
-                        title: 'Pendaftaran PPDB Online',
-                        type: 'item',
-                        url: '/pendaftaran',
-                        icon: 'feather icon-help-circle',
-                    }
-                ]
-        },
+        },        
     ]
 }

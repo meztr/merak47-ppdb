@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // import { Provider } from 'react-redux'
 // import { createStore, combineReducers } from 'redux'
 // import { reducer as reduxFormReducer } from 'redux-form'
-// import WizardForm from "./WizardForm"
+import WizardForm from "./WizardForm"
 // import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 import WizardTest from './WizardTest'
@@ -15,19 +15,43 @@ import firebase from '../../../services/firebase'
 
 // import Loader from '../Loader'
 // import Beranda from '../Protected/Calon/Beranda/Beranda'
+// import { adminAction } from '../../../store/reducers/adminLayoutReducer'
+import { registerWithValue } from '../../../store/actions/auth';
+import { REGISTER_CALONSISWA_SUCCESS } from '../../../store/actions/actionTypes';
+
+// import { REGISTER_CALONSISWA_SUCCESS } from '../../../store/reducers/auth'
 
 const Wizard = ({
     registerCalonSiswa,
     authMsg,
-    calonSiswaValues, 
+    registerWithValue, 
     history,
     loading
+    // sendDispatchCalonData
 }) => {
 
-    
+    // const signinAnonim = (data) => async dispatch => {
+    //     console.log("sendDispatchCalonData" + data);
+    //     dispatch({
+    //         type:'REGISTER_CALONSISWA_SUCCESS',
+    //         payload: data
+    //     });
+    // }
+
+    // signin(credentials.email, credentials.password, () =>
+    //         // history.push("/user/beranda")
+    //         // history.push("/")
+    //         <Redirect from="/" to="/user/beranda"/>
+    //     );
 
     const proceedRegisterCalonSiswa = values =>
         new Promise(resolve=> {
+
+            // GAGAL
+            // signinAnonim(values, () =>
+            //     history.push("/user/beranda")               
+            // );
+
             firebase
                 .auth()
                 .signInAnonymously()
@@ -59,6 +83,14 @@ const Wizard = ({
                     //     type:"FETCH_CALON_DATA",
                     //     payload: snapshot.val() || {}
                     // });
+                    // sendDispatchCalonData(values);
+                    
+                    // this.props.registerWithValue(values);
+                    // dispatch({
+                    //     type: REGISTER_CALONSISWA_SUCCESS,
+                    //     payload: values
+                    // })
+                    
 
                     history.push({
                         pathname: "/user/beranda",
@@ -71,6 +103,7 @@ const Wizard = ({
     return (  
         // <WizardForm onSubmit={registerCalonSiswa} />
         <WizardTest onSubmit={proceedRegisterCalonSiswa} />
+        // <WizardForm onSubmit={proceedRegisterCalonSiswa} />
 
     )
 }
@@ -84,14 +117,21 @@ function mapStateToProps(state) {
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        registerWithValue: (values) => dispatch(registerWithValue(values))
+    }
+}
+
 // function mapDispatchToProps(dispatch) {
 //     // return { actions: bindActionCreators()
 //     return {
-//         registerCalonSiswa: values => dispatch(registerCalonSiswa(values))
+//         //registerCalonSiswa: values => dispatch(registerCalonSiswa(values))
+//         sendDispatchCalonData: (data) => dispatch(sendDispatchCalonData(data))
 //     }
-//   }
+// }
 
-export default connect(mapStateToProps)(Wizard);
+export default connect(mapStateToProps, mapDispatchToProps)(Wizard);
 
 
     // const staticTest = {
