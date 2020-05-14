@@ -60,7 +60,7 @@ const staticValues = {
 const INITIAL_STATE = {
   authMsg: "",
   fetchMsg: "",
-  ppdbNewRegister: staticValues,
+  ppdbNewRegister: {},
   calonData: {},
   authData: []
 };

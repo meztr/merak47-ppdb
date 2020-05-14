@@ -8,6 +8,7 @@ import DEMO from "../../../../../store/constant";
 import Avatar1 from '../../../../../assets/images/user/avatar-1.jpg';
 import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
 import Avatar3 from '../../../../../assets/images/user/avatar-3.jpg';
+import { Redirect } from 'react-router-dom';
 
 class NavRight extends Component {
     state = {
@@ -16,9 +17,13 @@ class NavRight extends Component {
 
     render() {
 
+        const displayName = this.props.userProfile.displayName ? this.props.userProfile.displayName : this.props.userProfile.email;
+        const userDisplayName = this.props.status.isAdmin ? displayName : "Calon Siswa";
+
         return (
             <Aux>
                 <ul className="navbar-nav ml-auto">
+                    {/* Notifikasi */}
                     <li>
                         <Dropdown alignRight={!this.props.rtlLayout}>
                             <Dropdown.Toggle variant={'link'} id="dropdown-basic">
@@ -26,59 +31,28 @@ class NavRight extends Component {
                             </Dropdown.Toggle>
                             <Dropdown.Menu alignRight className="notification">
                                 <div className="noti-head">
-                                    <h6 className="d-inline-block m-b-0">Notifications</h6>
-                                    <div className="float-right">
-                                        <a href={DEMO.BLANK_LINK} className="m-r-10">mark as read</a>
-                                        <a href={DEMO.BLANK_LINK}>clear all</a>
-                                    </div>
+                                    <h6 className="d-inline-block m-b-0">Notifikasi</h6>
                                 </div>
                                 <ul className="noti-body">
                                     <li className="n-title">
-                                        <p className="m-b-0">NEW</p>
+                                        <p className="m-b-0">LAMA</p>
                                     </li>
                                     <li className="notification">
                                         <div className="media">
                                             <img className="img-radius" src={Avatar1} alt="Generic placeholder"/>
                                             <div className="media-body">
-                                                <p><strong>John Doe</strong><span className="n-time text-muted"><i
-                                                    className="icon feather icon-clock m-r-10"/>30 min</span></p>
-                                                <p>New ticket Added</p>
+                                                <p><strong>Admin</strong><span className="n-time text-muted"><i
+                                                    className="icon feather icon-clock m-r-10"/>30 hari</span></p>
+                                                <p>Belum ada pengumuman</p>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li className="n-title">
-                                        <p className="m-b-0">EARLIER</p>
-                                    </li>
-                                    <li className="notification">
-                                        <div className="media">
-                                            <img className="img-radius" src={Avatar2} alt="Generic placeholder"/>
-                                            <div className="media-body">
-                                                <p><strong>Joseph William</strong><span className="n-time text-muted"><i
-                                                    className="icon feather icon-clock m-r-10"/>30 min</span></p>
-                                                <p>Prchace New Theme and make payment</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="notification">
-                                        <div className="media">
-                                            <img className="img-radius" src={Avatar3} alt="Generic placeholder"/>
-                                            <div className="media-body">
-                                                <p><strong>Sara Soudein</strong><span className="n-time text-muted"><i
-                                                    className="icon feather icon-clock m-r-10"/>30 min</span></p>
-                                                <p>currently login</p>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    </li>                                    
                                 </ul>
-                                <div className="noti-footer">
-                                    <a href={DEMO.BLANK_LINK}>show all</a>
-                                </div>
                             </Dropdown.Menu>
                         </Dropdown>
                     </li>
-                    <li className={this.props.rtlLayout ? 'm-r-15' : 'm-l-15'}>
-                        <a href={DEMO.BLANK_LINK} className="displayChatbox" onClick={() => {this.setState({listOpen: true});}}><i className="icon feather icon-mail"/></a>
-                    </li>
+                    
+                    {/* Gear  */}
                     <li>
                         <Dropdown alignRight={!this.props.rtlLayout} className="drp-user">
                             <Dropdown.Toggle variant={'link'} id="dropdown-basic">
@@ -87,8 +61,8 @@ class NavRight extends Component {
                             <Dropdown.Menu alignRight className="profile-notification">
                                 <div className="pro-head">
                                     <img src={Avatar1} className="img-radius" alt="User Profile"/>
-                                    <span>John Doe</span>
-                                    <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">
+                                    <span>{userDisplayName}</span>
+                                    <a href="/user/logout" className="dud-logout" title="Logout">
                                         <i className="feather icon-log-out"/>
                                     </a>
                                 </div>

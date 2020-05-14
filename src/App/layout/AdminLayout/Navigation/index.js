@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import windowSize from 'react-window-size';
@@ -11,6 +11,11 @@ import * as actionTypes from './../../../../store/actions/adminLayoutActions';
 import navigation from '../../../../menu-items';
 
 class Navigation extends Component {
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = { usera: this.props.userProfile }
+    // }
 
     resize = () => {
         const contentWidth = document.getElementById('root').clientWidth;
@@ -107,7 +112,7 @@ class Navigation extends Component {
         }
 
         let navContent = (
-            <div className="navbar-wrapper">
+            <div className="navbar-wrapper">                
                 <NavLogo collapseMenu={this.props.collapseMenu} windowWidth={this.props.windowWidth} onToggleNavigation={this.props.onToggleNavigation} />
                 <NavContent navigation={navigation.items} />
             </div>
@@ -135,6 +140,7 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
     return {
+        // authReducer: state.authReducer.userdata,
         layout: state.adminReducer.layout,
         preLayout: state.adminReducer.preLayout,
         collapseMenu: state.adminReducer.collapseMenu,

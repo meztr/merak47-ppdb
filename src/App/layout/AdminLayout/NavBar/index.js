@@ -33,8 +33,8 @@ class NavBar extends Component {
                     </div>
                     <a className="mobile-menu" id="mobile-header" href={DEMO.BLANK_LINK}><i className="feather icon-more-horizontal"/></a>
                     <div className="collapse navbar-collapse">
-                        <NavLeft/>
-                        <NavRight rtlLayout={this.props.rtlLayout} />
+                        <NavLeft {...this.props} />
+                        <NavRight {...this.props} rtlLayout={this.props.rtlLayout} />
                     </div>
                 </header>
             </Aux>

@@ -78,12 +78,26 @@ export const fetchAllAdminData = () => async dispatch => {
           type: FETCH_SUCCESS,
           payload: snapshot.val() || {}
         });
-        console.log("FETCH_SUCCESS ");
+        console.log("fetchAllAdminData FETCH_SUCCESS ");
       });
   } catch (err) {
-    console.log("FETCH_ERROR ", err)
+    console.log("fetchAllAdminData FETCH_ERROR ", err)
     dispatch(apiCallError());
-    dispatch({ type: FETCH_ERROR, payload: "Fetch authData error" });
+    dispatch({ type: FETCH_ERROR, payload: "fetchAllAdminData error" });
+  }
+}
+
+export const fetchCalonUserById = (id, nisn) => async dispatch => {
+  try {
+    dispatch(beginApiCall());
+    firebase
+      .database()
+      .ref( refCalonSiswa )
+
+  } catch (err) {
+    console.log("fetchCalonUserById FETCH_ERROR")
+    dispatch(apiCallError());
+    dispatch({ type: FETCH_ERROR, payload: "fetchCalonUserById error" });
   }
 }
 
@@ -235,6 +249,9 @@ export const signout = () => async dispatch => {
       .signOut()
       .then(() => {
         dispatch({ type: SIGNOUT_SUCCESS });
+        // clear localStorage
+        localStorage.removeItem('ppdbcalondata')
+        console.log('localStorage ppdbcalondata cleared')
       })
       .catch(() => {
         dispatch(apiCallError());

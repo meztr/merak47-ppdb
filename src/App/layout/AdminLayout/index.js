@@ -24,19 +24,12 @@ import './app.scss';
 class AdminLayout extends Component {
 
     state = {
-        userdata: {},
+        // userdata: {},
         isAdmin: false,
-        data: {},
-        loading: false
+        localcalondata: {},
+        // data: [],
+        loading: true
     }
-
-    // constructor() {
-    //     super();
-    //     const data = localStorage.getItem('data');
-    //     this.state = {
-    //         ppdbdata: data ? JSON.parse(data) : null
-    //     };
-    // }
 
     fullScreenExitHandler = () => {
         if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
@@ -45,21 +38,21 @@ class AdminLayout extends Component {
     };
 
     componentDidMount() {
-        // this.props.onFetchCalonData();     //FETCH_CALON_DATA
-        // this.fetchAllCalonData();
 
         const doesAdmin = this.props.fbReducer.isAnonymous;
-        if (!doesAdmin) {
-            this.setState( {isAdmin: true} );
+        if (!doesAdmin) {            
             this.props.fetchAllAdminData();
+            this.setState( {isAdmin: true} );
+            this.setState( {loading:false} );
         } else {
             console.log("Not Admin");
+            this.setState({ localcalondata: localStorage.getItem('ppdbcalondata')})
+            this.setState( {loading:false} );            
         }
-        
     }
 
     componentWillMount() {
-        // this.props.onFetchCalonData();     //FETCH_CALON_DATA
+
         if (this.props.adminReducer.windowWidth > 992 && this.props.adminReducer.windowWidth <= 1024 && this.props.adminReducer.layout !== 'horizontal') {
             this.props.onComponentWillMount();
         }
@@ -71,15 +64,15 @@ class AdminLayout extends Component {
         }
     }
 
-    // fetchAllCalonData() {
-        // const doesAdmin = this.props.auth.isAnonymous;
-        // if (!doesAdmin) {
-        //     this.setState( {isAdmin: true} );
-        // }
-    // }
-
     render() {
 
+        if (this.state.loading) {
+            console.log ('masih loading bro')
+            return (
+                <Loader />
+            )            
+        }
+        
         /* full screen exit call */
         document.addEventListener('fullscreenchange', this.fullScreenExitHandler);
         document.addEventListener('webkitfullscreenchange', this.fullScreenExitHandler);
@@ -87,14 +80,15 @@ class AdminLayout extends Component {
         document.addEventListener('MSFullscreenChange', this.fullScreenExitHandler);
 
         const menu = routes.map((route, index) => {
-            return (route.component) ? (
+            const usingData = this.state.isAdmin ? this.props.data : this.props.calondata;
+            return (route.component) ? (                
                 <Route
                     key={index}
                     path={route.path}
                     exact={route.exact}
                     name={route.name}
                     render={props => (
-                        <route.component {...props} data={this.props.adminReducer.ppdbAuthData} calonData={this.props.authReducer.ppdbNewRegister} gg="gg aja deh" />
+                        <route.component {...props} data={usingData} calonData={this.props.authReducer.ppdbNewRegister} />
                     )} />
             ) : (null);
         });
@@ -103,8 +97,8 @@ class AdminLayout extends Component {
         return (
             <Aux>
                 <Fullscreen enabled={this.props.adminReducer.isFullScreen}>
-                    <Navigation />
-                    <NavBar />                    
+                    <Navigation status={this.state} userProfile={this.props.fbReducer} />
+                    <NavBar status={this.state} userProfile={this.props.fbReducer} />            
                     <div className="pcoded-main-container" onClick={() => this.mobileOutClickHandler}>
                         <div className="pcoded-wrapper">
                             <div className="pcoded-content">
@@ -146,7 +140,9 @@ class AdminLayout extends Component {
 
 const mapStateToProps = state => ({
     ...state,
-    fbReducer: state.firebaseReducer.auth
+    fbReducer: state.firebaseReducer.auth,
+    data: state.authReducer.authData,
+    calondata: state.authReducer.calonData
 });
 
 const mapDispatchToProps = dispatch => {
