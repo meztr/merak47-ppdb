@@ -51,8 +51,6 @@ const initialState = {
     isTrigger: [], //for active default menu, set blank for horizontal
     ...config,
     isFullScreen: false, // static can't change
-    ppdbAdminData: [],
-    ppdbCalonData: {},
 };
 
 export default function(state = initialState, action) {

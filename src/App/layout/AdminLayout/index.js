@@ -81,7 +81,7 @@ class AdminLayout extends Component {
 
         const menu = routes.map((route, index) => {
             const usingData = this.state.isAdmin ? this.props.data : this.props.calondata;
-            return (route.component) ? (                
+            return (route.component) ? (
                 <Route
                     key={index}
                     path={route.path}

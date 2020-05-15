@@ -109,21 +109,29 @@ export const signin = (email, password, callback) => async dispatch => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(data => {
-        if (data.user.emailVerified) {
-          console.log("IF", data.user.emailVerified);
-          // const allCalonData = [{ data100: "data sratus"}, { data200: "data duaratus"}]
-          // firebase
-          //   .child('calonsiswa')
-          //   .on('value', snapshot => {
-          //     allCalonData = snapshot.val();          
-              
-          // })
 
-          dispatch({ 
-            type: SIGNIN_SUCCESS
-            // datas: allCalonData
-          });
-          callback();
+        // console.log("IF", data.user.emailVerified);
+        dispatch({ 
+          type: SIGNIN_SUCCESS,
+          payload: "Sign In succeed"
+        });
+        callback();
+
+        // if (data.user.emailVerified) {
+        //   console.log("IF", data.user.emailVerified);
+        //   // const allCalonData = [{ data100: "data sratus"}, { data200: "data duaratus"}]
+        //   // firebase
+        //   //   .child('calonsiswa')
+        //   //   .on('value', snapshot => {
+        //   //     allCalonData = snapshot.val();          
+              
+        //   // })
+
+        //   dispatch({ 
+        //     type: SIGNIN_SUCCESS
+        //     // datas: allCalonData
+        //   });
+        //   callback();
 
           // // fetch authData from firebase for Admin/Panitia User
           // const authData = "";
@@ -152,23 +160,23 @@ export const signin = (email, password, callback) => async dispatch => {
           // dispatch({ type: SIGNIN_SUCCESS });
           // callback();
          
-        } else {
-          console.log("ELSE", data.user.emailVerified);
-          dispatch({
-            type: EMAIL_NOT_VERIFIED,
-            payload: "You haven't verified your e-mail address."
-          });
-        }
+        // } else {
+        //   console.log("ELSE", data.user.emailVerified);
+        //   dispatch({
+        //     type: EMAIL_NOT_VERIFIED,
+        //     payload: "You haven't verified your e-mail address."
+        //   });
+        // }
       })
-      .catch((err) => {
-        if (err) {
-          dispatch(apiCallError());
-          dispatch({
-            type: SIGNIN_ERROR,
-            payload: "Invalid login credentials"
-          });
-        }        
-      });
+      // .catch((err) => {
+      //   if (err) {
+      //     dispatch(apiCallError());
+      //     dispatch({
+      //       type: SIGNIN_ERROR,
+      //       payload: "Invalid login credentials"
+      //     });
+      //   }        
+      // });
   } catch (err) {
     dispatch(apiCallError());
     dispatch({ type: SIGNIN_ERROR, payload: "Invalid login credentials" });

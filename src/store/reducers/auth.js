@@ -62,7 +62,8 @@ const INITIAL_STATE = {
   fetchMsg: "",
   ppdbNewRegister: {},
   calonData: {},
-  authData: []
+  authData: [],
+  role: ''
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -82,55 +83,59 @@ export default function(state = INITIAL_STATE, action) {
   //   return state;
   // }
   switch (action.type) {
-    case "SIGNIN_SUCCESS":
-      console.log("SIGNIN_SUCCESS ", action.datas);
+    case SIGNIN_SUCCESS:
+      console.log("SIGNIN_SUCCESS ", action.payload);
       return {
         ...state,
-        authMsg: "",
-        authData: Object.values(action.datas)
+        authMsg: action.payload,
+        role: 'user'
+        // authData: Object.values(action.datas),
+        
     }
-    case "SIGNOUT_SUCCESS" :
+    case SIGNOUT_SUCCESS :
       console.log("SIGNIN_SIGNOUT_SUCCESS ", action.payload);
       return {
         ...state,
         authMsg: "",
-        authData: []
+        authData: [],
+        role: ''
       }
-  case "SIGNUP_SUCCESS":
+  case SIGNUP_SUCCESS:
     console.log("SIGNUP_SUCCESS ", action.payload);
     return {
       ...state,
     }
-  case "SIGNUP_ERROR" || "SIGNIN_ERROR" || "EMAIL_NOT_VERIFIED" || "SIGNOUT_ERROR" :
+  case SIGNUP_ERROR || SIGNIN_ERROR || EMAIL_NOT_VERIFIED || SIGNOUT_ERROR :
     console.log("ERROR ", action.payload);
     return {
       ...state,
       authMsg: action.payload
     }
-  case "RESET_SUCCESS" || "RESET_ERROR":
+  case RESET_SUCCESS || RESET_ERROR:
     console.log("RESET_SUCCESS||RESET_ERROR ", action.payload);
     return {
       ...state
     }
-  case "FETCH_SUCCESS":
+  case FETCH_SUCCESS:
     console.log("FETCH_SUCCESS", action.payload);
     return {
       ...state,
       authData: action.payload
     }
-  case "FETCH_ERROR":
+  case FETCH_ERROR:
     console.log("FETCH_ERROR", action.payload);
     return {
       ...state,
       fetchMsg: action.payload
     }
-  case "REGISTER_CALONSISWA_SUCCESS":
+  case REGISTER_CALONSISWA_SUCCESS:
     console.log("REGISTER_CALONSISWA_SUCCESS", action.payload);
     return {
       ...state,
-      calonData: action.payload
+      calonData: action.payload,
+      role: 'calon'
     }
-  case "REGISTER_CALONSISWA_ERROR":
+  case REGISTER_CALONSISWA_ERROR:
     console.log("REGISTER_CALONSISWA_ERROR", action.payload);
     return {
       ...state,
