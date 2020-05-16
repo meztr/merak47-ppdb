@@ -28,6 +28,7 @@ class AdminLayout extends Component {
         role: "calon",
         // userprofila: {},
         // localcalondata: {},
+        
         loading: true
     }
 
