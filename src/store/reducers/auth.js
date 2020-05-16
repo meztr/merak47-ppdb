@@ -60,35 +60,19 @@ const staticValues = {
 const INITIAL_STATE = {
   authMsg: "",
   fetchMsg: "",
-  ppdbNewRegister: {},
   calonData: {},
   authData: [],
-  role: ''
+  // role: ''
 };
 
-export default function(state = INITIAL_STATE, action) {
-  // if (action.type === SIGNIN_SUCCESS || action.type === SIGNOUT_SUCCESS) {
-  //   return { ...state, authMsg: "" };
-  // } else if (
-  //   action.type === SIGNUP_SUCCESS ||
-  //   action.type === SIGNUP_ERROR ||
-  //   action.type === SIGNIN_ERROR ||
-  //   action.type === EMAIL_NOT_VERIFIED ||
-  //   action.type === SIGNOUT_ERROR ||
-  //   action.type === RESET_SUCCESS ||
-  //   action.type === RESET_ERROR
-  // ) {
-  //   return { ...state, authMsg: action.payload };
-  // } else {
-  //   return state;
-  // }
+export default function(state = INITIAL_STATE, action) { 
   switch (action.type) {
     case SIGNIN_SUCCESS:
       console.log("SIGNIN_SUCCESS ", action.payload);
       return {
         ...state,
         authMsg: action.payload,
-        role: 'user'
+        // role: 'user'
         // authData: Object.values(action.datas),
         
     }

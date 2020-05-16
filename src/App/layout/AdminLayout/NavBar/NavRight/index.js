@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import {Dropdown} from 'react-bootstrap';
 
-import ChatList from './ChatList';
+// import ChatList from './ChatList';
 import Aux from "../../../../hoc/_Aux";
 import DEMO from "../../../../../store/constant";
 
-import Avatar1 from '../../../../../assets/images/user/avatar-1.jpg';
 import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
-import Avatar3 from '../../../../../assets/images/user/avatar-3.jpg';
-import { Redirect } from 'react-router-dom';
 
 class NavRight extends Component {
     state = {
@@ -17,7 +14,7 @@ class NavRight extends Component {
 
     render() {
 
-        const displayName = this.props.userProfile.displayName ? this.props.userProfile.displayName : this.props.userProfile.email;
+        const displayName = this.props.userprofile.displayName ? this.props.userprofile.displayName : this.props.userprofile.email;
         const userDisplayName = this.props.status.isAdmin ? displayName : "Calon Siswa";
 
         return (
@@ -25,7 +22,7 @@ class NavRight extends Component {
                 <ul className="navbar-nav ml-auto">
                     {/* Notifikasi */}
                     <li><span>{userDisplayName}</span></li>
-                    <li><span>role: {}</span></li>
+                    <li><span>role: {this.props.status.role}</span></li>
                     <li>
                         <Dropdown alignRight={!this.props.rtlLayout}>
                             <Dropdown.Toggle variant={'link'} id="dropdown-basic">
@@ -41,7 +38,7 @@ class NavRight extends Component {
                                     </li>
                                     <li className="notification">
                                         <div className="media">
-                                            <img className="img-radius" src={Avatar1} alt="Generic placeholder"/>
+                                            <img className="img-radius" src={Avatar2} alt="Generic placeholder"/>
                                             <div className="media-body">
                                                 <p><strong>Admin</strong><span className="n-time text-muted"><i
                                                     className="icon feather icon-clock m-r-10"/>30 hari</span></p>
@@ -62,7 +59,7 @@ class NavRight extends Component {
                             </Dropdown.Toggle>
                             <Dropdown.Menu alignRight className="profile-notification">
                                 <div className="pro-head">
-                                    <img src={Avatar1} className="img-radius" alt="User Profile"/>
+                                    <img src={Avatar2} className="img-radius" alt="User Profile"/>
                                     <span>{userDisplayName}</span>
                                     <a href="/user/logout" className="dud-logout" title="Logout">
                                         <i className="feather icon-log-out"/>
@@ -79,7 +76,7 @@ class NavRight extends Component {
                         </Dropdown>
                     </li>
                 </ul>
-                <ChatList listOpen={this.state.listOpen} closed={() => {this.setState({listOpen: false});}} />
+                {/* <ChatList listOpen={this.state.listOpen} closed={() => {this.setState({listOpen: false});}} /> */}
             </Aux>
         );
     }

@@ -15,7 +15,7 @@ class Beranda extends Component {
         let bContent = (            
             <Aux>
                 <Col md={12} xl={12}>
-                    <Card   title={"Selamat datang " + this.props.calonData.namasiswa + " calon siswa SMK Muhammadiyah Sampit" } 
+                    <Card   title={"Selamat datang " + this.props.data.namasiswa + " calon siswa SMK Muhammadiyah Sampit" } 
                             isOption = {true}
                             collapseCard = {false}
                     >

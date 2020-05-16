@@ -140,7 +140,6 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
     return {
-        // authReducer: state.authReducer.userdata,
         layout: state.adminReducer.layout,
         preLayout: state.adminReducer.preLayout,
         collapseMenu: state.adminReducer.collapseMenu,

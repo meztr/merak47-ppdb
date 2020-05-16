@@ -23,11 +23,11 @@ import './app.scss';
 
 class AdminLayout extends Component {
 
-    state = {
-        // userdata: {},
+    state = {        
         isAdmin: false,
-        localcalondata: {},
-        // data: [],
+        role: "calon",
+        // userprofila: {},
+        // localcalondata: {},
         loading: true
     }
 
@@ -39,11 +39,19 @@ class AdminLayout extends Component {
 
     componentDidMount() {
 
-        const doesAdmin = this.props.fbReducer.isAnonymous;
+        const doesAdmin = this.props.userprofile.isAnonymous;
         if (!doesAdmin) {            
             this.props.fetchAllAdminData();
-            this.setState( {isAdmin: true} );
-            this.setState( {loading:false} );
+
+            // const displayName = this.props.userprofile.displayName ? this.props.userprofile.displayName : this.props.userprofile.email;
+            // const userDisplayName = doesAdmin ? displayName : "Calon Siswa";
+
+            // TODO: setup userprofile
+            this.setState({
+                isAdmin: true,
+                role: "user",
+                loading:false
+            });
         } else {
             console.log("Not Admin");
             this.setState({ localcalondata: localStorage.getItem('ppdbcalondata')})
@@ -71,7 +79,7 @@ class AdminLayout extends Component {
             return (
                 <Loader />
             )            
-        }
+        }        
         
         /* full screen exit call */
         document.addEventListener('fullscreenchange', this.fullScreenExitHandler);
@@ -88,7 +96,7 @@ class AdminLayout extends Component {
                     exact={route.exact}
                     name={route.name}
                     render={props => (
-                        <route.component {...props} data={usingData} calonData={this.props.authReducer.ppdbNewRegister} />
+                        <route.component {...props} data={usingData} />
                     )} />
             ) : (null);
         });
@@ -97,8 +105,8 @@ class AdminLayout extends Component {
         return (
             <Aux>
                 <Fullscreen enabled={this.props.adminReducer.isFullScreen}>
-                    <Navigation status={this.state} userProfile={this.props.fbReducer} />
-                    <NavBar status={this.state} userProfile={this.props.fbReducer} />            
+                    <Navigation status={this.state} userprofile={this.props.userprofile} />
+                    <NavBar status={this.state} userprofile={this.props.userprofile} />            
                     <div className="pcoded-main-container" onClick={() => this.mobileOutClickHandler}>
                         <div className="pcoded-wrapper">
                             <div className="pcoded-content">
@@ -140,7 +148,7 @@ class AdminLayout extends Component {
 
 const mapStateToProps = state => ({
     ...state,
-    fbReducer: state.firebaseReducer.auth,
+    userprofile: state.firebaseReducer.auth,
     data: state.authReducer.authData,
     calondata: state.authReducer.calonData
 });
