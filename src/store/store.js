@@ -8,7 +8,7 @@ import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 // ENHANCING STORE WITH FIREBASE
-import { reactReduxFirebase } from "react-redux-firebase";
+import { reactReduxFirebase, firebaseReducer } from "react-redux-firebase";
 import firebase from "../services/firebase";
 
 

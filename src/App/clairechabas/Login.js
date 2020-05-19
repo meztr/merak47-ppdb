@@ -37,7 +37,7 @@ const Login = ({
       }
     }
   }
-
+  console.log('0--Claire')
   return (
     <div className="login">
       <h1>Hi there!</h1>

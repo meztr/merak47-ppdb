@@ -5,7 +5,7 @@ import CardSiswa from '../../../../../App/components/MainCard';
 import CollapseItem from '../../../Component/CollapseItem';
 import styled from 'styled-components';
 
-function Biodata(props) {
+function BerandaContent(props) {
 
   const BoxTitle = styled.div`
     font-size: 0.7em;
@@ -41,11 +41,11 @@ function Biodata(props) {
     text-transform: uppercase;
   `;
   
-  const datasiswa = props.dataC.data;
+  const datasiswa = props.data.data;
 
   return (
     <Aux>
-      <CardSiswa title="BIODATA CALON SISWA" isOption>
+      <CardSiswa title={`${datasiswa.namasiswa}`.toUpperCase()} isOption>
         <BoxTitle2 isPaddingTop>Data Siswa</BoxTitle2>
         <Container fluid={true}>
           <Row>
@@ -208,4 +208,4 @@ function Biodata(props) {
   );
 }
 
-export default Biodata;
+export default BerandaContent;

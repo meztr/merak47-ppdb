@@ -12,11 +12,11 @@ import {
   REGISTER_CALONSISWA_ERROR,
   FETCH_SUCCESS,
   FETCH_ERROR
-} from "./actionTypes";
-import { beginApiCall, apiCallError } from "./apiStatus";
-import firebase from "../../services/firebase";
+} from './actionTypes';
+import { beginApiCall, apiCallError } from './apiStatus';
+import firebase from '../../services/firebase';
 
-const refCalonSiswa = process.env.REACT_APP_DB_VERSION + "/calonsiswa";
+const refCalonSiswa = process.env.REACT_APP_DB_VERSION + '/calonsiswa';
 
 // Signing up with Firebase
 export const signup = (email, password) => async dispatch => {
@@ -37,14 +37,14 @@ export const signup = (email, password) => async dispatch => {
             dispatch({
               type: SIGNUP_SUCCESS,
               payload:
-                "Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox."
+                'Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox.'
             });
           } else {
             // Signup failed
             dispatch({
               type: SIGNUP_ERROR,
               payload:
-                "Something went wrong, we couldn't create your account. Please try again."
+                'Something went wrong, we couldn\'t create your account. Please try again.'
             });
           }
         });
@@ -54,7 +54,7 @@ export const signup = (email, password) => async dispatch => {
         dispatch({
           type: SIGNUP_ERROR,
           payload:
-            "Something went wrong, we couldn't create your account. Please try again."
+            'Something went wrong, we couldn\'t create your account. Please try again.'
         });
       });
   } catch (err) {
@@ -62,7 +62,7 @@ export const signup = (email, password) => async dispatch => {
     dispatch({
       type: SIGNUP_ERROR,
       payload:
-        "Something went wrong, we couldn't create your account. Please try again."
+        'Something went wrong, we couldn\'t create your account. Please try again.'
     });
   }
 };
@@ -73,33 +73,33 @@ export const fetchAllAdminData = () => async dispatch => {
     firebase
       .database()
       .ref( refCalonSiswa )
-      .on("value", snapshot => {
+      .on('value', snapshot => {
         dispatch({ 
           type: FETCH_SUCCESS,
-          payload: snapshot.val() || {}
+          payload: Object.values(snapshot.val()) || {}
         });
-        console.log("fetchAllAdminData FETCH_SUCCESS ");
+        // console.log('fetchAllAdminData FETCH_SUCCESS ');
       });
   } catch (err) {
-    console.log("fetchAllAdminData FETCH_ERROR ", err)
+    console.log('fetchAllAdminData FETCH_ERROR ', err);
     dispatch(apiCallError());
-    dispatch({ type: FETCH_ERROR, payload: "fetchAllAdminData error" });
+    dispatch({ type: FETCH_ERROR, payload: 'fetchAllAdminData error' });
   }
-}
+};
 
 export const fetchCalonUserById = (id, nisn) => async dispatch => {
   try {
     dispatch(beginApiCall());
     firebase
       .database()
-      .ref( refCalonSiswa )
+      .ref( refCalonSiswa );
 
   } catch (err) {
-    console.log("fetchCalonUserById FETCH_ERROR")
+    console.log('fetchCalonUserById FETCH_ERROR');
     dispatch(apiCallError());
-    dispatch({ type: FETCH_ERROR, payload: "fetchCalonUserById error" });
+    dispatch({ type: FETCH_ERROR, payload: 'fetchCalonUserById error' });
   }
-}
+};
 
 // Signing in with Firebase Claire version
 export const signin = (email, password, callback) => async dispatch => {
@@ -113,83 +113,32 @@ export const signin = (email, password, callback) => async dispatch => {
         // console.log("IF", data.user.emailVerified);
         dispatch({ 
           type: SIGNIN_SUCCESS,
-          payload: "Sign In succeed"
+          payload: 'Sign In succeed'
         });
         callback();
-
-        // if (data.user.emailVerified) {
-        //   console.log("IF", data.user.emailVerified);
-        //   // const allCalonData = [{ data100: "data sratus"}, { data200: "data duaratus"}]
-        //   // firebase
-        //   //   .child('calonsiswa')
-        //   //   .on('value', snapshot => {
-        //   //     allCalonData = snapshot.val();          
-              
-        //   // })
-
-        //   dispatch({ 
-        //     type: SIGNIN_SUCCESS
-        //     // datas: allCalonData
-        //   });
-        //   callback();
-
-          // // fetch authData from firebase for Admin/Panitia User
-          // const authData = "";
-          // const databaseRef = firebase.database().ref();
-          // const authDataRef = databaseRef.child("calonsiswa");
-          // // authDataRef.on("value", snapshot => {
-          // //   data: snapshot.val()
-          // // })
-          // authDataRef.on("value", function(snapshot) {
-          //   console.log("authDatas: " + snapshot.val());
-          //   authData: snapshot.val();
-          // }, function (errorObject) {
-          //   console.log("The authDatas read failed: " + errorObject.code)
-          // });
-
-          // firebase
-          //   .child('calonsiswa')
-          //   .on('value', snapshot => {
-          //     const allCalonData = snapshot.val();
-          //     dispatch({ 
-          //       type: SIGNIN_SUCCESS,
-          //       datas: [{ data1: "data satu"}, { data2: "data dua"}]
-          //     });
-          //     callback();
-          //   })
-          // dispatch({ type: SIGNIN_SUCCESS });
-          // callback();
-         
-        // } else {
-        //   console.log("ELSE", data.user.emailVerified);
-        //   dispatch({
-        //     type: EMAIL_NOT_VERIFIED,
-        //     payload: "You haven't verified your e-mail address."
-        //   });
-        // }
-      })
-      // .catch((err) => {
-      //   if (err) {
-      //     dispatch(apiCallError());
-      //     dispatch({
-      //       type: SIGNIN_ERROR,
-      //       payload: "Invalid login credentials"
-      //     });
-      //   }        
-      // });
+      });      
   } catch (err) {
     dispatch(apiCallError());
-    dispatch({ type: SIGNIN_ERROR, payload: "Invalid login credentials" });
+    dispatch({ type: SIGNIN_ERROR, payload: 'Invalid login credentials' });
   }
 };
 
 // Signing in Anonymously
-export const registerWithValue = (values) => async dispatch => {
+export const registerSuccessWithValue = (values) => async dispatch => {
+  console.log('-----------REGISTER_CALONSISWA_SUCCESS');
   dispatch({ 
     type: REGISTER_CALONSISWA_SUCCESS,
     payload: values
   });
-}
+};
+
+export const registerErrorWithValue = (err) => async dispatch => {
+  console.log('-----------REGISTER_CALONSISWA_ERROR');
+  dispatch({ 
+    type: REGISTER_CALONSISWA_ERROR,
+    payload: err
+  });
+};
 
 export const signinAnonim = (values, callback) => async dispatch => {
   try {
@@ -207,16 +156,16 @@ export const signinAnonim = (values, callback) => async dispatch => {
         const calonid = data.user.uid;
         
         firebase.database()
-                .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`)
-                .set({
-                    calonid,
-                    nisn,
-                    namasiswa,
-                    verifikasi,
-                    diterima,
-                    lunasPembayaran,
-                    "data": values
-                })
+          .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`)
+          .set({
+            calonid,
+            nisn,
+            namasiswa,
+            verifikasi,
+            diterima,
+            lunasPembayaran,
+            'data': values
+          });
         
         dispatch({ 
           type: REGISTER_CALONSISWA_SUCCESS,
@@ -229,14 +178,14 @@ export const signinAnonim = (values, callback) => async dispatch => {
         dispatch(apiCallError());
         dispatch({
           type: REGISTER_CALONSISWA_ERROR,
-          payload: "auth/operation-not-allowed"
+          payload: 'auth/operation-not-allowed'
+        });
       });
-    });
   } catch (err) {
     dispatch(apiCallError());
-    dispatch({ type: REGISTER_CALONSISWA_ERROR, payload: "invalid registrasi anonim" });
+    dispatch({ type: REGISTER_CALONSISWA_ERROR, payload: 'invalid registrasi anonim' });
   }
-}
+};
 
 // function registerCalonSiswaSuccess(payload) {
 //   return { type: REGISTER_CALONSISWA_SUCCESS, payloadValues: payload}
@@ -258,33 +207,33 @@ export const signout = () => async dispatch => {
       .then(() => {
         dispatch({ type: SIGNOUT_SUCCESS });
         // clear localStorage
-        localStorage.removeItem('ppdbcalondata')
-        console.log('localStorage ppdbcalondata cleared')
+        localStorage.removeItem('ppdbcalondata');
+        console.log('localStorage ppdbcalondata cleared');
       })
       .catch(() => {
         dispatch(apiCallError());
         dispatch({
           type: SIGNOUT_ERROR,
-          payload: "Error, we were not able to log you out. Please try again."
+          payload: 'Error, we were not able to log you out. Please try again.'
         });
       });
   } catch (err) {
     dispatch(apiCallError());
     dispatch({
       type: SIGNOUT_ERROR,
-      payload: "Error, we were not able to log you out. Please try again."
+      payload: 'Error, we were not able to log you out. Please try again.'
     });
   }
 };
 
 // New Register Calon Siswa
 export const newRegisterCalonSiswa = data => async dispatch => {  
-    // dispatch(beginApiCall());
-    dispatch({
-      type: RESET_SUCCESS,
-      payload:
-        "Check your inbox. We've sent you a secured reset link by e-mail."
-    })    
+  // dispatch(beginApiCall());
+  dispatch({
+    type: RESET_SUCCESS,
+    payload:
+        'Check your inbox. We\'ve sent you a secured reset link by e-mail.'
+  });    
 };
 
 // Reset password with Firebase
@@ -298,7 +247,7 @@ export const resetPassword = email => async dispatch => {
         dispatch({
           type: RESET_SUCCESS,
           payload:
-            "Check your inbox. We've sent you a secured reset link by e-mail."
+            'Check your inbox. We\'ve sent you a secured reset link by e-mail.'
         })
       )
       .catch(() => {
@@ -306,7 +255,7 @@ export const resetPassword = email => async dispatch => {
         dispatch({
           type: RESET_ERROR,
           payload:
-            "Oops, something went wrong we couldn't send you the e-mail. Try again and if the error persists, contact admin."
+            'Oops, something went wrong we couldn\'t send you the e-mail. Try again and if the error persists, contact admin.'
         });
       });
   } catch (err) {

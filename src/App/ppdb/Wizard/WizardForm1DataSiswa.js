@@ -86,10 +86,10 @@ const WizardFormFirstPage = props => {
         <Form.Group style={{color:"black"}}>
           <Form.Label>Jenis Kelamin</Form.Label>
           <Form.Check>
-            <Field name="jeniskelamin" component="input" type="radio" value="laki-laki" />{' '} Laki-laki
+            <Field name="jeniskelamin" component="input" type="radio" value="Laki-laki" />{' '} Laki-laki
           </Form.Check>
           <Form.Check>
-            <Field name="jeniskelamin" component="input" type="radio" value="perempuan" />{' '} Perempuan
+            <Field name="jeniskelamin" component="input" type="radio" value="Perempuan" />{' '} Perempuan
           </Form.Check>
           <Field name="jeniskelamin" component={renderError} />
         </Form.Group>        

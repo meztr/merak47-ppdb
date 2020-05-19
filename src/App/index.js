@@ -8,11 +8,17 @@ import Loader from './layout/Loader'
 import Aux from "./hoc/_Aux";
 import ScrollToTop from './layout/ScrollToTop';
 import publicRoute from "../route";
+// import AdminLayout from './layout/AdminLayout'
 
 const AdminLayout = Loadable({
-    loader: () => import('./layout/AdminLayout'),
-    loading: Loader
+  loader: () => import('./layout/AdminLayout'),
+  loading: Loader
 });
+
+// const Claire = Loadable({
+//   loader: () => import('./clairechabas/Login'),
+//   loading: Loader
+// });
 
 // const ScratchLayout = Loadable({
 //     loader: () => import('./layout/ScratchLayout'),
@@ -20,34 +26,34 @@ const AdminLayout = Loadable({
 // });
 
 class App extends Component {    
-
-    render() {
-        const publicMenu = publicRoute.map((route, index) => {
-          return (route.component) ? (
-              <Route             
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  name={route.name}
-                  render={props => (
-                      <route.component {...props} />
-                  )} />
-          ) : (null);
-        });
-
-        return (
-            <Aux>
-                <ScrollToTop>
-                    <Suspense fallback={<Loader/>}>
-                        <Switch>       
-                            {publicMenu}                     
-                            <Route path="/user" component={AdminLayout} />
-                        </Switch>
-                    </Suspense>
-                </ScrollToTop>
-            </Aux>
-        );
-    }
+  render() {        
+    const publicMenu = publicRoute.map((route, index) => {
+      return (route.component) ? (
+        <Route             
+          key={index}
+          path={route.path}
+          exact={route.exact}
+          name={route.name}
+          render={props => (
+            <route.component {...props} />
+          )} />
+      ) : (null);
+    });
+    
+    console.log('zz--App');
+    return (
+      <Aux>
+        <ScrollToTop>
+          <Suspense fallback={<Loader/>}>
+            <Switch>       
+                {publicMenu}                     
+                <Route path="/user" component={AdminLayout} />
+            </Switch>
+          </Suspense>
+        </ScrollToTop>
+      </Aux>
+    );
+  }
 }
 
 export default App;

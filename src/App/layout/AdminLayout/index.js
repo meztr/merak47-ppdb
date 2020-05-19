@@ -3,14 +3,6 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Fullscreen from "react-full-screen";
 import windowSize from 'react-window-size';
-
-// import { compose } from "redux";
-// // import { connect } from "react-redux";
-import { signout, fetchAllAdminData } from "../../../store/actions/auth";
-
-// MARKBUG : 10May2020
-// import requireAuth from "../../hoc/requireAuth";
-
 import Navigation from './Navigation';
 import NavBar from './NavBar';
 import Breadcrumb from './Breadcrumb';
@@ -18,6 +10,7 @@ import Loader from "../Loader";
 import routes from "../../../routes";
 import Aux from "../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions/adminLayoutActions";
+import { signout, fetchAllAdminData } from "../../../store/actions/auth";
 
 import './app.scss';
 
@@ -26,10 +19,9 @@ class AdminLayout extends Component {
     state = {        
         isAdmin: false,
         role: "calon",
-        // userprofila: {},
-        // localcalondata: {},
-        
-        loading: true
+        loading: true,
+        dataC:[],
+        dataA:[]
     }
 
     fullScreenExitHandler = () => {
@@ -38,25 +30,29 @@ class AdminLayout extends Component {
         }
     };
 
-    componentDidMount() {
-
-        const doesAdmin = this.props.userprofile.isAnonymous;
-        if (!doesAdmin) {            
+    componentDidMount() {        
+        // const doesAdmin = this.props.userprofile.isAnonymous;
+        if (this.props.data.role === 'user' || this.props.data.role === 'admin') {
             this.props.fetchAllAdminData();
-
-            // const displayName = this.props.userprofile.displayName ? this.props.userprofile.displayName : this.props.userprofile.email;
-            // const userDisplayName = doesAdmin ? displayName : "Calon Siswa";
-
             // TODO: setup userprofile
             this.setState({
                 isAdmin: true,
-                role: "user",
-                loading:false
+                role: 'user',                
+                loading:false,
+                dataA: this.props.data.authData || []
             });
+
+            this.setState()
+            
         } else {
-            console.log("Not Admin");
-            this.setState({ localcalondata: localStorage.getItem('ppdbcalondata')})
-            this.setState( {loading:false} );            
+            // console.log("Not Admin");
+            this.setState({ 
+                localcalondata: localStorage.getItem('ppdbcalondata'),
+                dataC: this.props.data.calonData || [],
+                role: 'calon',
+                loading:false
+            })
+            
         }
     }
 
@@ -73,13 +69,12 @@ class AdminLayout extends Component {
         }
     }
 
-    render() {
-
+    render() {   
         if (this.state.loading) {
             console.log ('masih loading bro')
             return (
                 <Loader />
-            )            
+            )
         }        
         
         /* full screen exit call */
@@ -89,7 +84,6 @@ class AdminLayout extends Component {
         document.addEventListener('MSFullscreenChange', this.fullScreenExitHandler);
 
         const menu = routes.map((route, index) => {
-            const usingData = this.state.isAdmin ? this.props.data : this.props.calondata;
             return (route.component) ? (
                 <Route
                     key={index}
@@ -97,7 +91,7 @@ class AdminLayout extends Component {
                     exact={route.exact}
                     name={route.name}
                     render={props => (
-                        <route.component {...props} data={usingData} />
+                        <route.component {...props} dataC={this.state.dataC} dataA={this.state.dataA} />
                     )} />
             ) : (null);
         });
@@ -150,8 +144,7 @@ class AdminLayout extends Component {
 const mapStateToProps = state => ({
     ...state,
     userprofile: state.firebaseReducer.auth,
-    data: state.authReducer.authData,
-    calondata: state.authReducer.calonData
+    data: state.authReducer
 });
 
 const mapDispatchToProps = dispatch => {
@@ -164,5 +157,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-//export default connect(mapStateToProps, mapDispatchToProps) (windowSize(requireAuth(AdminLayout)));
 export default connect(mapStateToProps, mapDispatchToProps) (windowSize(AdminLayout));

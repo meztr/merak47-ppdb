@@ -21,8 +21,8 @@ const WizardFormTest1 = props => {
           </button>
           <button type="submit" disabled={pristine || submitting}>
             Submit
-          </button>        </div>
-        
+          </button>
+        </div>        
       </form>
     </div>
     
