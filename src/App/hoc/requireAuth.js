@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 export default ChildComponent => {
   const ComposedComponent = props => {
     useEffect(() => {
-      if (props.auth.isLoaded && props.auth.isEmpty) props.history.push("/");
+      if (props.auth.isEmpty) props.history.push('/');
     }, [props.auth, props.history]);
 
     return <ChildComponent {...props} />;

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { signup, signin, resetPassword } from "../../store/actions/auth";
-import useForm from "../../utils/useForm";
-import validate from "../../utils/validateLoginForm";
-import Spinner from "./Spinner";
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { signup, signin, resetPassword } from '../../store/actions/auth';
+import useForm from '../../utils/useForm';
+import validate from '../../utils/validateLoginForm';
+import Spinner from './Spinner';
 
 const Login = ({
   signup,
@@ -32,7 +33,7 @@ const Login = ({
       } else {
         // signin
         signin(credentials.email, credentials.password, () =>
-          history.push("/")
+          history.push('/')
         );
       }
     }
@@ -42,7 +43,7 @@ const Login = ({
     <div className="login">
       <h1>Hi there!</h1>
       <h2>
-        {reset ? "Reset password" : newUser ? "Create an account" : "Sign in"}
+        {reset ? 'Reset password' : newUser ? 'Create an account' : 'Sign in'}
       </h2>
       {authMsg && <p className="auth-message">{authMsg}</p>}
       <form onSubmit={handleSubmit} noValidate>
@@ -58,7 +59,7 @@ const Login = ({
             onChange={handleChange}
             className={
               (errors.emailIsEmpty || errors.emailFormatInvalid) &&
-              "input-error"
+              'input-error'
             }
           />
           {errors.emailIsEmpty && <small>{errors.emailIsEmpty}</small>}
@@ -79,7 +80,7 @@ const Login = ({
               placeholder="Your password"
               onChange={handleChange}
               className={
-                (errors.passIsStrong || errors.passIsEmpty) && "input-error"
+                (errors.passIsStrong || errors.passIsEmpty) && 'input-error'
               }
             />
             {errors.passIsStrong && <small>{errors.passIsStrong}</small>}
@@ -93,11 +94,11 @@ const Login = ({
             {loading ? (
               <Spinner />
             ) : reset ? (
-              "Reset password"
+              'Reset password'
             ) : newUser ? (
-              "Create account"
+              'Create account'
             ) : (
-              "Sign in"
+              'Sign in'
             )}
           </button>
           {!newUser && !reset && (
@@ -114,7 +115,7 @@ const Login = ({
       </form>
       <footer className="login-footer">
         <p>
-          {newUser ? "Already have an account?" : "Don't have an account yet?"}
+          {newUser ? 'Already have an account?' : 'Don\'t have an account yet?'}
         </p>
         <button
           onClick={() => {
@@ -123,7 +124,7 @@ const Login = ({
           }}
           className="btn-switch"
         >
-          {newUser ? "Sign in" : "Create an account"}
+          {newUser ? 'Sign in' : 'Create an account'}
         </button>
       </footer>
     </div>

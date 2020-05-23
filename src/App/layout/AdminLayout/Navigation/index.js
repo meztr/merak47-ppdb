@@ -111,10 +111,14 @@ class Navigation extends Component {
             document.body.classList.remove('box-layout');
         }
 
+        // const whatRole = this.props.role;
+        // const whichObj = Object.keys(navigation);
+        // const navRole = navigation[this.props.role].items;
+
         let navContent = (
             <div className="navbar-wrapper">                
                 <NavLogo collapseMenu={this.props.collapseMenu} windowWidth={this.props.windowWidth} onToggleNavigation={this.props.onToggleNavigation} />
-                <NavContent navigation={navigation.items} />
+                <NavContent navigation={navigation[this.props.role].items} role={this.props.role} />
             </div>
         );
         if (this.props.windowWidth < 992) {
@@ -122,7 +126,8 @@ class Navigation extends Component {
                 <OutsideClick>
                     <div className="navbar-wrapper">
                         <NavLogo collapseMenu={this.props.collapseMenu} windowWidth={this.props.windowWidth} onToggleNavigation={this.props.onToggleNavigation} />
-                        <NavContent navigation={navigation.items} />
+                        <NavContent navigation={navigation[this.props.role].items} role={this.props.role}/>
+                        {/* <NavContent navigation={navigation.items} /> */}
                     </div>
                 </OutsideClick>
             );

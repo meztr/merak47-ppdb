@@ -1,9 +1,10 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React from 'react';
 // import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import Home from './Home';
-import Login from "./Login";
-import Loader from "./Loader";
+import Login from './Login';
+import Loader from './Loader';
 
 const Main = ({ auth }) => {
   return (

@@ -20,12 +20,12 @@ if(process.env.NODE_ENV === 'development') {
 
 const reduxFirebaseConfig = {
   userProfile: 'users',
-  enableLogging: false
+  enableLogging: false,
 }
 
 let mustReducer = rootReducer
 
-if(process.env.REACT_APP_PERSIST_STORE === "true") {
+if(process.env.REACT_APP_PERSIST_STORE === 'true') {
   console.log('persist true')
   const persistConfig = {
     key: 'root',
@@ -37,13 +37,13 @@ if(process.env.REACT_APP_PERSIST_STORE === "true") {
 
 
 const configureStore = createStore(
-    mustReducer,
-    {},
-    compose(
-      reactReduxFirebase(firebase, reduxFirebaseConfig),
-      applyMiddleware(reduxThunk),
-      ...enhancers,
-    )
+  mustReducer,
+  {},
+  compose(
+    reactReduxFirebase(firebase, reduxFirebaseConfig),
+    applyMiddleware(reduxThunk),
+    ...enhancers,
+  )
 );
 
 // persistStore(configureStore)

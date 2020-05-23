@@ -10,6 +10,8 @@ import {
   RESET_ERROR,
   REGISTER_CALONSISWA_SUCCESS,
   REGISTER_CALONSISWA_ERROR,
+  ANON_SIGNIN_SUCCESS,
+  ANON_SIGNIN_ERROR,
   FETCH_SUCCESS,
   FETCH_ERROR
 } from './actionTypes';
@@ -116,14 +118,76 @@ export const signin = (email, password, callback) => async dispatch => {
           payload: 'Sign In succeed'
         });
         callback();
-      });      
+      })
+      .catch(() => {
+        console.log('Catched Sigin Error')
+        dispatch(apiCallError());
+        dispatch({
+          type: SIGNIN_ERROR,
+          payload: 'Invalid login credentials'
+        });
+      })      
   } catch (err) {
     dispatch(apiCallError());
     dispatch({ type: SIGNIN_ERROR, payload: 'Invalid login credentials' });
   }
 };
 
-// Signing in Anonymously
+// Multi Signing received email/password or kodePendaftaran/nisn
+export const signinCalon = (kodePendaftaran, nisn, callback) => async dispatch => {
+  console.log ('SIGNIN CALON ' + kodePendaftaran + ' | ' + nisn);
+  try {
+    dispatch(beginApiCall());
+    // after State Auth
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then(() => firebase.database()
+        .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`)    //.ref(`ppdb2020/calonsiswa/${randomkode}`)
+        .once('value', (snapshot) => {
+          const val = snapshot.val();
+          if (val == null) {
+            const user = firebase.auth().currentUser;
+            user.delete()
+              .then(() => {
+                // console.log('signinCalon deleted user');
+                dispatch(apiCallError());
+                dispatch({ type: ANON_SIGNIN_ERROR, payload: 'No. Pendaftaran tidak ditemukan' });
+              })
+              .catch(err => console.log(err))            
+          } else {
+            console.log('kode ketemu ' + kodePendaftaran); //859245 | 876545552
+            if (val.nisn === nisn) {
+              console.log('kode ketemu dan cocok' + kodePendaftaran + ' | ' + nisn);
+              dispatch({
+                type: ANON_SIGNIN_SUCCESS,
+                payload: val
+              });
+              callback();
+            } else {
+              console.log('kode ketemu dan tdk cocok' + kodePendaftaran + ' | ' + nisn);
+              const user = firebase.auth().currentUser;
+              user.delete()
+                .then(() => {
+                // console.log('signinCalon deleted user');
+                  dispatch(apiCallError());
+                  dispatch({ type: ANON_SIGNIN_ERROR, payload: 'No.Pendaftaran tidak ditemukan' });
+                })
+                .catch(err => console.log(err));              
+            }
+          }
+        }
+        )
+      )
+      .catch( err => console.log(err))
+      
+  } catch (err) {
+    dispatch(apiCallError());
+    dispatch({ type: ANON_SIGNIN_ERROR, payload: 'Anon signin error' });
+  }
+};
+
+// Register with Signing in Anonymously
 export const registerSuccessWithValue = (values) => async dispatch => {
   console.log('-----------REGISTER_CALONSISWA_SUCCESS');
   dispatch({ 
@@ -138,6 +202,35 @@ export const registerErrorWithValue = (err) => async dispatch => {
     type: REGISTER_CALONSISWA_ERROR,
     payload: err
   });
+};
+
+// Signing out with Firebase
+export const signout = () => async dispatch => {
+  try {
+    dispatch(beginApiCall());
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        dispatch({ type: SIGNOUT_SUCCESS });
+        // clear localStorage
+        localStorage.removeItem('ppdbcalondata');
+        console.log('localStorage ppdbcalondata cleared');
+      })
+      .catch(() => {
+        dispatch(apiCallError());
+        dispatch({
+          type: SIGNOUT_ERROR,
+          payload: 'Error, we were not able to log you out. Please try again.'
+        });
+      });
+  } catch (err) {
+    dispatch(apiCallError());
+    dispatch({
+      type: SIGNOUT_ERROR,
+      payload: 'Error, we were not able to log you out. Please try again.'
+    });
+  }
 };
 
 export const signinAnonim = (values, callback) => async dispatch => {
@@ -184,45 +277,6 @@ export const signinAnonim = (values, callback) => async dispatch => {
   } catch (err) {
     dispatch(apiCallError());
     dispatch({ type: REGISTER_CALONSISWA_ERROR, payload: 'invalid registrasi anonim' });
-  }
-};
-
-// function registerCalonSiswaSuccess(payload) {
-//   return { type: REGISTER_CALONSISWA_SUCCESS, payloadValues: payload}
-// }
-
-// export function registerCalonSiswa(values) {
-//   return function(dispatch) {
-//     return dispatch(registerCalonSiswaSuccess(values))
-//   }
-// }
-
-// Signing out with Firebase
-export const signout = () => async dispatch => {
-  try {
-    dispatch(beginApiCall());
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        dispatch({ type: SIGNOUT_SUCCESS });
-        // clear localStorage
-        localStorage.removeItem('ppdbcalondata');
-        console.log('localStorage ppdbcalondata cleared');
-      })
-      .catch(() => {
-        dispatch(apiCallError());
-        dispatch({
-          type: SIGNOUT_ERROR,
-          payload: 'Error, we were not able to log you out. Please try again.'
-        });
-      });
-  } catch (err) {
-    dispatch(apiCallError());
-    dispatch({
-      type: SIGNOUT_ERROR,
-      payload: 'Error, we were not able to log you out. Please try again.'
-    });
   }
 };
 

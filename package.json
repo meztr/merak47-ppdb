@@ -1,6 +1,6 @@
 {
   "name": "merak47-ppdb-online",
-  "version": "0.1.0",
+  "version": "0.9.8",
   "engines": {
     "node": "12.9.1",
     "npm": "6.13.1"
@@ -8,11 +8,15 @@
   "private": true,
   "homepage": "http://ppdb.smkmuhsampit.id/",
   "dependencies": {
+    "@react-pdf/renderer": "^1.6.8",
     "bootstrap": "^4.3.1",
+    "draft-js": "^0.11.5",
     "firebase": "^7.13.2",
     "font-awesome": "^4.7.0",
     "google-maps-react": "^2.0.2",
     "jquery": "^3.4.0",
+    "moment": "^2.26.0",
+    "moment-timezone": "^0.5.31",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
@@ -20,6 +24,7 @@
     "react-dom": "^16.8.4",
     "react-full-screen": "^0.2.4",
     "react-loadable": "^5.5.0",
+    "react-moment": "^0.9.7",
     "react-nvd3": "^0.5.7",
     "react-perfect-scrollbar": "^1.4.4",
     "react-redux": "^7.1.0",

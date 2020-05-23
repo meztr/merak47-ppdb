@@ -1,18 +1,18 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { Alert, Container, Row, Col } from 'react-bootstrap';
-import Moment from 'react-moment';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 import Aux from '../../../../hoc/_Aux';
 import CardSiswa from '../../../../../App/components/MainCard';
 import CollapseItem from '../../../Component/CollapseItem';
 import styled from 'styled-components';
 
-function BerandaContent(props) {
+function CetakBukti(props) {
 
   const BoxTitle = styled.div`
     font-size: 0.7em;
     text-align: left;
     color: #202020;
-    background-color: #FFFFFF;
+    background-color: #F2F2F2;
     height: 30px;
     font-weight: bold;
     padding-left: 12px;
@@ -22,12 +22,10 @@ function BerandaContent(props) {
   `;
 
   const BoxContent = styled.div`
-    font-size: ${props => props.small ? '0.9em' : '1em'};
+    font-size: 1em;
     text-align: left;
-    font-style: ${props => props.italic ? 'italic' : ''};
-    font-weight: ${props => props.bold ? 'bold' : ''};
     color: #202020;
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
     height: 30px;
     padding-left: 12px;
     line-height: 32px;
@@ -44,58 +42,16 @@ function BerandaContent(props) {
     text-transform: uppercase;
   `;
   
-  const datasiswa = props.data.data;
-  return (    
-    <Aux>      
-      <CardSiswa title={`${datasiswa.namasiswa}`.toUpperCase()} isOption>
-        <BoxTitle2 isPaddingTop>STATUS REGISTRASI</BoxTitle2>
-        <Container fluid={true}>
-          <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Kode Pendaftaran</BoxTitle></Col>
-            <Col sm={6}><BoxContent>{props.data.kodePendaftaran}</BoxContent></Col>
-          </Row>
-          <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Login Username</BoxTitle></Col>
-            <Col sm={6}><BoxContent bold>{props.data.kodePendaftaran}</BoxContent></Col>
-          </Row>
-          <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Login Password</BoxTitle></Col>
-            <Col sm={6}><BoxContent bold>{props.data.nisn}</BoxContent></Col>
-          </Row>
-          <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Tanggal Registrasi</BoxTitle></Col>
-            <Col sm={6}><BoxContent>
-              {/* TODO : Moment refused to bring valid minutes:second */}
-              <Moment format='dddd, D MMMM YYYY, HH:mm:ss' utc local>
-                {props.data.createAt}
-              </Moment> 
+  const datasiswa = props.dataC.data;
 
-              {/* {Moment(props.data.createAt).format("dddd, MMMM Do YYYY, h:mm:ss a")} */}
-            </BoxContent></Col>
-          </Row>
-          <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Status Diterima</BoxTitle></Col>
-            <Col sm={6}>
-              <BoxContent bold italic small>
-                {
-                  props.data.verifikasi ? 'Berhasil' : 'menunggu proses verifikasi...'
-                }              
-              </BoxContent>
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Status Pendaftaran</BoxTitle></Col>
-            <Col sm={6}>
-              <BoxContent bold italic small>                
-                {
-                  props.data.diterima ? 'Selamat! Kamu diterima' : 'Masih Proses'
-                }
-              </BoxContent>
-            </Col>
-          </Row>
-        </Container>
-
-        <BoxTitle2>Data Siswa</BoxTitle2>
+  return (
+    <Aux>
+      <CardSiswa title="CETAK BUKTI FORMULIR PENDAFTARAN ONLINE" isOption>
+        <Row className="justify-content-md-center" style={{paddingBottom:'30px'}}>
+          <Col xs lg="4"><Button variant="outline-primary">Cetak</Button></Col>
+          <Col xs lg="4"><Button variant="outline-primary">Simpan PDF</Button></Col>
+        </Row>
+        <BoxTitle2 isPaddingTop>Data Siswa</BoxTitle2>
         <Container fluid={true}>
           <Row>
             <Col sm={3} md={3} xl={3}><BoxTitle>Nama Lengkap</BoxTitle></Col>
@@ -251,10 +207,11 @@ function BerandaContent(props) {
             <Col sm={3} md={3} xl={3}><BoxTitle>No.Hape Wali</BoxTitle></Col>
             <Col sm={6}><BoxContent>{datasiswa.nohapeWali}</BoxContent></Col>
           </Row>
-        </Container>
+        </Container>        
       </CardSiswa>
+      
     </Aux>
   );
 }
 
-export default BerandaContent;
+export default CetakBukti;

@@ -43,10 +43,10 @@ class ScratchLayout extends Component {
         // Redirect if user auth
 
         // TODO: bug Check the render method of `windowSize(Connect(ComposedComponent))`.
-        if (!this.props.firebaseReducer.auth.isEmpty) {                        
-            return <Redirect from="/" to="/user/beranda"/>
-        }
-       
+        // if (!this.props.firebaseReducer.auth.isEmpty) {                        
+        //     return <Redirect from="/" to="/main"/>
+        // }
+        
         /* full screen exit call */
         document.addEventListener('fullscreenchange', this.fullScreenExitHandler);
         document.addEventListener('webkitfullscreenchange', this.fullScreenExitHandler);
@@ -76,10 +76,10 @@ class ScratchLayout extends Component {
                                         style={{margin: "10px"}}
                                         href="/main"
                                     >Login Calon Peserta Didik</a>
-                                    <a className="btn btn-primary btn-xl js-scroll-trigger" 
+                                    {/* <a className="btn btn-primary btn-xl js-scroll-trigger" 
                                         style={{margin: "10px"}}
                                         href="/claire"
-                                    >Claire Test</a>
+                                    >Claire Test</a> */}
                                 </div>
                             </div>
                         </div>

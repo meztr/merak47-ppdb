@@ -42,7 +42,7 @@ const renderSelectorWithInteger = ({ maxInt, label, placeholder, input, meta: { 
     <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
       <option value="">{placeholder}</option>
       {[...Array(maxInt).keys()].map(val => (
-        <option value={val++} key={val}>
+        <option value={++val} key={val}>
           {val}
         </option>
       ))}   

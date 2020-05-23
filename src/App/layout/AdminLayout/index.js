@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
+import { compose } from 'redux';
 import {connect} from 'react-redux';
 import Fullscreen from "react-full-screen";
 import windowSize from 'react-window-size';
@@ -11,6 +12,7 @@ import routes from "../../../routes";
 import Aux from "../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions/adminLayoutActions";
 import { signout, fetchAllAdminData } from "../../../store/actions/auth";
+import requireAuth from '../../hoc/requireAuth';
 
 import './app.scss';
 
@@ -18,7 +20,7 @@ class AdminLayout extends Component {
 
     state = {        
         isAdmin: false,
-        role: "calon",
+        role: 'calon',
         loading: true,
         dataC:[],
         dataA:[]
@@ -32,27 +34,33 @@ class AdminLayout extends Component {
 
     componentDidMount() {        
         // const doesAdmin = this.props.userprofile.isAnonymous;
-        if (this.props.data.role === 'user' || this.props.data.role === 'admin') {
+        if (this.props.data.role === 'admin') {
             this.props.fetchAllAdminData();
             // TODO: setup userprofile
             this.setState({
                 isAdmin: true,
-                role: 'user',                
+                role: 'admin',
                 loading:false,
-                dataA: this.props.data.authData || []
-            });
+                dataA: this.props.data.authData || [],
+                dataC:[]
 
-            this.setState()
+            });
+        } else if (this.props.data.role === 'user') {
+            // console.log("Not Admin");
+            this.setState({
+                role: 'user',
+                loading:false,
+                dataA: this.props.data.authData || [],
+                dataC:[]
+            });
             
         } else {
-            // console.log("Not Admin");
             this.setState({ 
                 localcalondata: localStorage.getItem('ppdbcalondata'),
                 dataC: this.props.data.calonData || [],
                 role: 'calon',
                 loading:false
             })
-            
         }
     }
 
@@ -75,7 +83,14 @@ class AdminLayout extends Component {
             return (
                 <Loader />
             )
-        }        
+        }
+
+        // if (this.state.loading && this.props.userprofile.isEmpty) {
+        //     console.log ('unauthorized user')
+        //     return (
+        //         <Redirect to="/" />
+        //     )
+        // }
         
         /* full screen exit call */
         document.addEventListener('fullscreenchange', this.fullScreenExitHandler);
@@ -83,7 +98,7 @@ class AdminLayout extends Component {
         document.addEventListener('mozfullscreenchange', this.fullScreenExitHandler);
         document.addEventListener('MSFullscreenChange', this.fullScreenExitHandler);
 
-        const menu = routes.map((route, index) => {
+        const cMenu = routes.map((route, index) => {
             return (route.component) ? (
                 <Route
                     key={index}
@@ -92,7 +107,7 @@ class AdminLayout extends Component {
                     name={route.name}
                     render={props => (
                         <route.component {...props} dataC={this.state.dataC} dataA={this.state.dataA} />
-                    )} />
+                    )} />                            
             ) : (null);
         });
 
@@ -100,21 +115,22 @@ class AdminLayout extends Component {
         return (
             <Aux>
                 <Fullscreen enabled={this.props.adminReducer.isFullScreen}>
-                    <Navigation status={this.state} userprofile={this.props.userprofile} />
-                    <NavBar status={this.state} userprofile={this.props.userprofile} />            
+                    <Navigation status={this.state} userprofile={this.props.userprofile} role={this.state.role}/>
+                    <NavBar status={this.state} userprofile={this.props.userprofile} role={this.state.role} />            
                     <div className="pcoded-main-container" onClick={() => this.mobileOutClickHandler}>
                         <div className="pcoded-wrapper">
                             <div className="pcoded-content">
                             {/* <h4>{this.props.auth.uid}</h4> */}
                                 <div className="pcoded-inner-content">
-                                    <Breadcrumb />
+                                    <Breadcrumb role={this.state.role}/>
                                     <div className="main-body">
                                         <div className="page-wrapper">
                                             <Suspense fallback={<Loader/>}>
+                                                {/* {bigMenu} */}
                                                 <Switch>
-                                                    {menu}                                                    
+                                                    {cMenu}
                                                     <Redirect from="/" to={this.props.adminReducer.defaultPath} />
-                                                </Switch>
+                                                </Switch>     
                                             </Suspense>
                                         </div>
                                     </div>
@@ -158,3 +174,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps) (windowSize(AdminLayout));
+// export default compose(connect(mapStateToProps, mapDispatchToProps), requireAuth)(windowSize(AdminLayout));

@@ -9,7 +9,7 @@ import { registerSuccessWithValue, registerErrorWithValue } from '../../../store
 
 const Wizard = ({
   // registerCalonSiswa,
-  authMsg,
+  // authMsg,
   // registerWithValue, 
   registerSuccessWithValue,
   registerErrorWithValue,
@@ -31,10 +31,12 @@ const Wizard = ({
             'kodePendaftaran' : randomkode,
             'namasiswa' : values.namasiswa,
             'nisn' : values.nisn,
-            'verifikasi' : false,
+            'verifikasi' : 'belum',   // 3 state: #belum, #gagal, #berhasil
             'diterima' : false,
             'lunasPembayaran' : false,
-            'calonid' : data.user.uid
+            'calonid' : data.user.uid,
+            'createAt' : firebase.database.ServerValue.TIMESTAMP,
+            'dibuatSaat' : new Date()
           };
           // retVal = values
                     

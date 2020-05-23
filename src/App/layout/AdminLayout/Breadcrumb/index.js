@@ -13,7 +13,7 @@ class Breadcrumb extends Component {
     };
 
     componentDidMount() {
-        (navigation.items).map((item, index) => {
+        (navigation[this.props.role].items).map((item, index) => {
             if (item.type && item.type === 'group') {
                 this.getCollapse(item, index);
             }
@@ -22,7 +22,7 @@ class Breadcrumb extends Component {
     };
 
     componentWillReceiveProps = () => {
-        (navigation.items).map((item, index) => {
+        (navigation[this.props.role].items).map((item, index) => {
             if (item.type && item.type === 'group') {
                 this.getCollapse(item);
             }
@@ -48,7 +48,7 @@ class Breadcrumb extends Component {
     render() {
         let main, item;
         let breadcrumb = '';
-        let title = 'Welcome';
+        let title = 'Calon Siswa | PPDB SMKM Sampit 2020/2021 ';
         if (this.state.main && this.state.main.type === 'collapse') {
             main = (
                 <li className="breadcrumb-item">

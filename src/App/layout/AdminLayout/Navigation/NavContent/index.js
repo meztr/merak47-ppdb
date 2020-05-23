@@ -44,7 +44,7 @@ class NavContent extends Component {
         const navItems = this.props.navigation.map(item => {
                 switch (item.type) {
                     case 'group':
-                        return <NavGroup layout={this.props.layout} key={item.id} group={item}/>;
+                        return <NavGroup layout={this.props.layout} key={item.id} group={item} role={this.props.role} />;
                     default:
                         return false;
                 }
