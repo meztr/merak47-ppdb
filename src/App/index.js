@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   getPublicMenu = () =>  {
-    console.log('zz--App');
+    // console.log('zz--App');
     const mnnu = publicRoute.map((route, index) => {
       return (route.component) ? (
         <Route             

@@ -83,7 +83,7 @@ export const fetchAllAdminData = () => async dispatch => {
         // console.log('fetchAllAdminData FETCH_SUCCESS ');
       });
   } catch (err) {
-    console.log('fetchAllAdminData FETCH_ERROR ', err);
+    // console.log('fetchAllAdminData FETCH_ERROR ', err);
     dispatch(apiCallError());
     dispatch({ type: FETCH_ERROR, payload: 'fetchAllAdminData error' });
   }
@@ -97,7 +97,7 @@ export const fetchCalonUserById = (id, nisn) => async dispatch => {
       .ref( refCalonSiswa );
 
   } catch (err) {
-    console.log('fetchCalonUserById FETCH_ERROR');
+    // console.log('fetchCalonUserById FETCH_ERROR');
     dispatch(apiCallError());
     dispatch({ type: FETCH_ERROR, payload: 'fetchCalonUserById error' });
   }
@@ -120,7 +120,7 @@ export const signin = (email, password, callback) => async dispatch => {
         callback();
       })
       .catch(() => {
-        console.log('Catched Sigin Error')
+        // console.log('Catched Sigin Error')
         dispatch(apiCallError());
         dispatch({
           type: SIGNIN_ERROR,
@@ -135,7 +135,7 @@ export const signin = (email, password, callback) => async dispatch => {
 
 // Multi Signing received email/password or kodePendaftaran/nisn
 export const signinCalon = (kodePendaftaran, nisn, callback) => async dispatch => {
-  console.log ('SIGNIN CALON ' + kodePendaftaran + ' | ' + nisn);
+  // console.log ('SIGNIN CALON ' + kodePendaftaran + ' | ' + nisn);
   try {
     dispatch(beginApiCall());
     // after State Auth
@@ -156,16 +156,16 @@ export const signinCalon = (kodePendaftaran, nisn, callback) => async dispatch =
               })
               .catch(err => console.log(err))            
           } else {
-            console.log('kode ketemu ' + kodePendaftaran); //859245 | 876545552
+            // console.log('kode ketemu ' + kodePendaftaran); //859245 | 876545552
             if (val.nisn === nisn) {
-              console.log('kode ketemu dan cocok' + kodePendaftaran + ' | ' + nisn);
+              // console.log('kode ketemu dan cocok' + kodePendaftaran + ' | ' + nisn);
               dispatch({
                 type: ANON_SIGNIN_SUCCESS,
                 payload: val
               });
               callback();
             } else {
-              console.log('kode ketemu dan tdk cocok' + kodePendaftaran + ' | ' + nisn);
+              // console.log('kode ketemu dan tdk cocok' + kodePendaftaran + ' | ' + nisn);
               const user = firebase.auth().currentUser;
               user.delete()
                 .then(() => {
@@ -189,7 +189,7 @@ export const signinCalon = (kodePendaftaran, nisn, callback) => async dispatch =
 
 // Register with Signing in Anonymously
 export const registerSuccessWithValue = (values) => async dispatch => {
-  console.log('-----------REGISTER_CALONSISWA_SUCCESS');
+  // console.log('-----------REGISTER_CALONSISWA_SUCCESS');
   dispatch({ 
     type: REGISTER_CALONSISWA_SUCCESS,
     payload: values
@@ -197,7 +197,7 @@ export const registerSuccessWithValue = (values) => async dispatch => {
 };
 
 export const registerErrorWithValue = (err) => async dispatch => {
-  console.log('-----------REGISTER_CALONSISWA_ERROR');
+  // console.log('-----------REGISTER_CALONSISWA_ERROR');
   dispatch({ 
     type: REGISTER_CALONSISWA_ERROR,
     payload: err
@@ -211,11 +211,11 @@ export const signout = () => async dispatch => {
     firebase
       .auth()
       .signOut()
-      .then(() => {
-        dispatch({ type: SIGNOUT_SUCCESS });
+      .then(() => {        
         // clear localStorage
         localStorage.removeItem('ppdbcalondata');
-        console.log('localStorage ppdbcalondata cleared');
+        // console.log('localStorage ppdbcalondata cleared');
+        dispatch({ type: SIGNOUT_SUCCESS });
       })
       .catch(() => {
         dispatch(apiCallError());

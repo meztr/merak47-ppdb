@@ -23,10 +23,19 @@ export default function validate(credentials, isPanitia) {
       errors.emailIsEmpty = 'No. Pendaftaran tidak boleh kosong';
     }
 
+    if (credentials.email && !/\d+$/.test(credentials.email)) {
+      errors.emailFormatInvalid = 'Format Kode Pendaftaran Salah';
+    }
+
+
     // Checking if password is not empty
     if (!credentials.password) {
       // errors.nisnIsEmpty = 'NISN tidak boleh kosong';
       errors.passIsEmpty = 'NISN tidak boleh kosong';
+    }
+
+    if (credentials.password && !/\d+$/.test(credentials.password)) {
+      errors.passIsInvalid = 'Format NISN Salah';
     }
     return errors;
   }

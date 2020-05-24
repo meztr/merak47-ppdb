@@ -75,7 +75,7 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action) { 
   switch (action.type) {
   case SIGNIN_SUCCESS:
-    console.log('SIGNIN_SUCCESS ', action.payload);
+    // console.log('SIGNIN_SUCCESS ', action.payload);
     return {
       ...state,
       authMsg: action.payload,
@@ -83,9 +83,9 @@ export default function(state = INITIAL_STATE, action) {
       user_authorized: true
     };
   case SIGNOUT_SUCCESS :
-    console.log('SIGNIN_SIGNOUT_SUCCESS ', action.payload);
+    // console.log('SIGNIN_SIGNOUT_SUCCESS ', action.payload);
     return {
-      ...state,
+      // ...state,
       authMsg: '',
       fetchMsg: '',
       calonData: [],
@@ -98,24 +98,24 @@ export default function(state = INITIAL_STATE, action) {
       anon_authorized: false
     };
   case SIGNUP_SUCCESS:
-    console.log('SIGNUP_SUCCESS ', action.payload);
+    // console.log('SIGNUP_SUCCESS ', action.payload);
     return {
       ...state,
     };
   case SIGNUP_ERROR || EMAIL_NOT_VERIFIED || SIGNOUT_ERROR :
-    console.log('ERROR ', action.payload);
+    // console.log('ERROR ', action.payload);
     return {
       ...state,
       authMsg: action.payload
     };
   case SIGNIN_ERROR:
-    console.log('SIGNIN ERROR ', action.payload);
+    // console.log('SIGNIN ERROR ', action.payload);
     return {
       ...state,
       authMsg: action.payload
     };
   case RESET_SUCCESS || RESET_ERROR:
-    console.log('RESET_SUCCESS||RESET_ERROR ', action.payload);
+    // console.log('RESET_SUCCESS||RESET_ERROR ', action.payload);
     return {
       ...state
     };
@@ -126,13 +126,13 @@ export default function(state = INITIAL_STATE, action) {
       authData: action.payload
     };
   case FETCH_ERROR:
-    console.log('FETCH_ERROR', action.payload);
+    // console.log('FETCH_ERROR', action.payload);
     return {
       ...state,
       fetchMsg: action.payload
     };
   case REGISTER_CALONSISWA_SUCCESS:
-    console.log('REGISTER_CALONSISWA_SUCCESS', action.payload);
+    // console.log('REGISTER_CALONSISWA_SUCCESS', action.payload);
     return {
       ...state,
       calonData: action.payload,
@@ -140,13 +140,13 @@ export default function(state = INITIAL_STATE, action) {
       role: 'calon'
     };
   case REGISTER_CALONSISWA_ERROR:
-    console.log('REGISTER_CALONSISWA_ERROR', action.payload);
+    // console.log('REGISTER_CALONSISWA_ERROR', action.payload);
     return {
       ...state,
       fetchMsg: action.payload
     };
   case ANON_SIGNIN_SUCCESS:
-    console.log('ANON_SIGNIN_SUCCESS', action.payload);
+    // console.log('ANON_SIGNIN_SUCCESS', action.payload);
     return { 
       // unsafe method.. should filtering this with safe anonim state
       ...state,
@@ -156,7 +156,7 @@ export default function(state = INITIAL_STATE, action) {
       role: 'calon'
     }
   case ANON_SIGNIN_ERROR:
-    console.log('ANON_SIGNIN_ERROR ', action.payload);
+    // console.log('ANON_SIGNIN_ERROR ', action.payload);
     return {
       ...state,
       authMsg: action.payload,

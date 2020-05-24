@@ -102,7 +102,7 @@ const Logina = ({
                     className="form-control" 
                   />
                   <div className="input-group mb-3">
-                    {errors.passIsStrong && <small>{errors.passIsStrong}</small>}
+                    {errors.passIsInvalid && <small>{errors.passIsInvalid}</small>}
                     {errors.passIsEmpty && <small>{errors.passIsEmpty}</small>}
                   </div>
                 </div>
