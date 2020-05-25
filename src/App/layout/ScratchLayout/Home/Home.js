@@ -2,7 +2,7 @@ import React from 'react';
 // import {Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
 import {Row, Col } from 'react-bootstrap';
 
-import Aux from "../../../hoc/_Aux";
+import Aux from '../../../hoc/_Aux';
 // import DEMO from "../../store/constant";
 
 class Home extends React.Component {
@@ -11,7 +11,7 @@ class Home extends React.Component {
         (
           <div>
             {/* <!-- About section--> */}
-            <section className="page-section bg-primary" id="about">
+            {/* <section className="page-section bg-primary" id="about">
               <div className="container">
                 <div className="row justify-content-center">
                   <div className="col-lg-8 text-center">
@@ -22,7 +22,7 @@ class Home extends React.Component {
                   </div>
                 </div>
               </div>
-            </section>
+            </section> */}
             {/* <!-- Informasi section--> */}
             <section className="page-section" id="info">
               <div className="container">
@@ -46,7 +46,7 @@ class Home extends React.Component {
                       <p className="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
                     </div>
                     <div className="mt-4">
-                      <a className="btn btn-primary btn-xl" href="https://dev2.smkmuhsampit.id">Login Calon Peserta Didik</a>
+                      <a className="btn btn-primary btn-xl" href="/main">Login Calon Peserta Didik</a>
                     </div>
                   </div>
                 </div>

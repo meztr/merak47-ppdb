@@ -7,8 +7,10 @@ import WizardForm3DataSekolah from './WizardForm3DataSekolah'
 
 import { Container, Row, Col } from 'react-bootstrap';
 import '../../../assets/scss/style.scss';
-import Aux from "../../hoc/_Aux";
+import Aux from '../../hoc/_Aux';
 // import Loader from "../../layout/Loader"
+import styled from 'styled-components';
+
 
 class WizardForm extends Component {
   constructor(props) {
@@ -33,34 +35,55 @@ class WizardForm extends Component {
     return (
       <Aux>
         <Container>
-            <Row>
-                <Col>
-                  <h3 className="mt-4">Form Online PPDB SMK Muhammadiyah Sampit</h3> 
-                  <div>        
-                    {page === 1 && <WizardForm0Ketentuan onSubmit={this.nextPage} />}
-                    {page === 2 && (
-                      <WizardForm1DataSiswa
-                        previousPage={this.previousPage}
-                        onSubmit={this.nextPage}
-                      />
-                    )}
-                    {page === 3 && (
-                      <WizardForm2DataWali
-                        previousPage={this.previousPage}
-                        onSubmit={this.nextPage}
-                      />
-                    )}
-                    {page === 4 && (
-                      <WizardForm3DataSekolah
-                        previousPage={this.previousPage}
-                        onSubmit={onSubmit}
-                      />
-                    )}
-                  </div>
-                </Col>
-            </Row>
+          <Row>
+            <Col>
+              <h3 className="mt-4">Form Online PPDB SMK Muhammadiyah Sampit</h3>
+              {/* <div>
+                {page === 1 && <h3>1-Ketentuan</h3>}
+                {page === 2 && (
+                  <WizardForm1DataSiswa
+                    previousPage={this.previousPage}
+                    onSubmit={this.nextPage}
+                  />
+                )}
+                {page === 3 && (
+                  <WizardForm2DataWali
+                    previousPage={this.previousPage}
+                    onSubmit={this.nextPage}
+                  />
+                )}
+                {page === 4 && (
+                  <WizardForm3DataSekolah
+                    previousPage={this.previousPage}
+                    onSubmit={onSubmit}
+                  />
+                )}
+              </div>  */}
+              <div>        
+                {page === 1 && <WizardForm0Ketentuan onSubmit={this.nextPage} />}
+                {page === 2 && (
+                  <WizardForm1DataSiswa
+                    previousPage={this.previousPage}
+                    onSubmit={this.nextPage}
+                  />
+                )}
+                {page === 3 && (
+                  <WizardForm2DataWali
+                    previousPage={this.previousPage}
+                    onSubmit={this.nextPage}
+                  />
+                )}
+                {page === 4 && (
+                  <WizardForm3DataSekolah
+                    previousPage={this.previousPage}
+                    onSubmit={onSubmit}
+                  />
+                )}
+              </div>
+            </Col>
+          </Row>
         </Container>
-    </Aux>    
+      </Aux>    
     )
   }
 }

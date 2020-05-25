@@ -28,6 +28,14 @@ class Navigation extends Component {
 
         if (this.props.layout === 'horizontal' && contentWidth < 992) {
             this.props.onChangeLayout('vertical');
+            this.setState({
+                pakeH4: false
+            })
+        } else if (this.props.layout === 'horizontal' && contentWidth < 400) {
+            this.props.onChangeLayout('vertical');
+            this.setState({
+                pakeH4: true
+            })
         }
 
         // merak47: fixed bug windows resized change 
@@ -49,7 +57,7 @@ class Navigation extends Component {
 
         const currentScrollPos = window.pageYOffset;
         // const visible = prevScrollpos > currentScrollPos;
-        const visible = 150 > currentScrollPos;
+        const visible = 250 > currentScrollPos;
         this.setState({
             prevScrollpos: currentScrollPos,
             visible
@@ -76,18 +84,13 @@ class Navigation extends Component {
         const ScratchContent = (            
             <div className={`${isNavExpanded}` + "collapse navbar-collapse"} id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">TENTANG SEKOLAH</a></li>
+                    {/* <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">TENTANG SEKOLAH</a></li> */}
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#info">INFORMASI</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger " href="#contact">HUBUNGI KAMI</a></li>                      
                 </ul>
             </div>
         );
         
-        const styleSatu = ( <a className="navbar-brand js-scroll-trigger" href="#page-top"> <h3>PPDB ONLINE</h3> </a> );
-        // const styleDua = ( <a className="navbar-brand js-scroll-trigger" href="#page-top"> <h4>PPDB ONLINE</h4> </a> );
-        const headerStyle = this.state.pakeH4 ? styleSatu : styleSatu;
-        
-
         let navContent = (
             <div className="navbar-wrapper">
                 {/* <NavLogo collapseMenu={this.props.collapseMenu} windowWidth={this.props.windowWidth} onToggleNavigation={this.props.onToggleNavigation} /> */}
@@ -98,22 +101,22 @@ class Navigation extends Component {
                                         "navbar-scrolled": !this.state.visible
                                     })
                                 } id="mainNav">
+                    <img style={{width:"45px", marginRight: "10px"}} src={meraklogo} alt="Logo"/>
+                    { this.state.pakeH4 ? ( null ) : ( <a className="navbar-brand js-scroll-trigger" href="#page-top"> PPDB ONLINE </a> )
+                    }
+                    <button onClick={ () => this.toggleNavbar() }
+                        className="navbar-toggler navbar-toggler-right" 
+                        type="button" data-toggle="collapse" 
+                        data-target="#navbarResponsive" 
+                        aria-controls="navbarResponsive" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                    </button>
                     <div className="container">
-                        <img style={{width:"55px", marginRight: "10px"}} src={meraklogo} alt="Logo"/>
-                        {headerStyle}
-                        <button onClick={ () => this.toggleNavbar() }
-                                className="navbar-toggler navbar-toggler-right" 
-                                type="button" data-toggle="collapse" 
-                                data-target="#navbarResponsive" 
-                                aria-controls="navbarResponsive" 
-                                aria-expanded="false" 
-                                aria-label="Toggle navigation">
-                                    <span className="navbar-toggler-icon"></span>
-                        </button>
-
                         {ScratchContent}
-                    </div>
-                </nav>
+                    </div>              
+                </nav>                
             </div>
         );
         

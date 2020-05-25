@@ -1,26 +1,19 @@
 import React, { Component, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
+import Loader from './layout/Loader'
 
 import '../../node_modules/font-awesome/scss/font-awesome.scss';
-
-import Loader from './layout/Loader'
 import Aux from "./hoc/_Aux";
 import ScrollToTop from './layout/ScrollToTop';
 import publicRoute from "../route";
-// import AdminLayout from './layout/AdminLayout'
 import {connect} from 'react-redux';
 
 
 const AdminLayout = Loadable({
-  loader: () => import('./layout/AdminLayout'),
+  loader: () => import('./layout/AdminLayout' /* webpackChunkName: "adminlayout" */),
   loading: Loader
 });
-
-// const Claire = Loadable({
-//   loader: () => import('./clairechabas/Login'),
-//   loading: Loader
-// });
 
 // const ScratchLayout = Loadable({
 //   loader: () => import('./layout/ScratchLayout'),
@@ -31,7 +24,8 @@ const AdminLayout = Loadable({
 class App extends Component {
   state= {
     publicMnu: [],
-    isAuthe: false
+    // isAuthe: false
+    loading: true
   }
 
   getPublicMenu = () =>  {
@@ -51,15 +45,26 @@ class App extends Component {
     return mnnu;
   };
 
-  componentDidMount() {
+  componentDidMount() {    
+    // demoAsyncCall().then(() => {
+    //   const mountMnu = this.getPublicMenu();
+    //     this.setState({ 
+    //     publicMnu: mountMnu,
+    //     loading: false 
+    //   })
+    // });
     const mountMnu = this.getPublicMenu();
-    this.setState({
-      publicMnu: mountMnu
-    }) 
-  }
+      this.setState({ 
+      publicMnu: mountMnu,
+      loading: false 
+    })
+  }  
 
   render() {    
     // console.log("before --> " + this.props.userprofile.isEmpty);
+
+    const { loading } = this.state;
+    if (loading) { return null };
 
     const mnnu = publicRoute.map((route, index) => {
       return (route.component) ? (
@@ -86,35 +91,12 @@ class App extends Component {
         </ScrollToTop>
       </Aux>
     )
-
-    // return (
-    //   <>
-    //     <ScrollToTop>
-    //       <Suspense fallback={<Loader/>}>
-    //         <Switch>       
-    //           {this.state.publicMnu}
-
-    //           {/* <Route path="/user/beranda" component={AdminLayout} />  */}
-    //           <PrivateRoute authed={this.state.isAuthe} path="/" component={AdminLayout} />
-
-    //           <Route>
-    //             <div>
-    //               <h2>404 not found</h2>
-    //               <a href="https://ppdb.smkmuhsampit.id">Kembali ke ppdb.smkmuhsampit.id</a>
-    //             </div>
-    //           </Route>          
-    //         </Switch>
-    //       </Suspense>
-    //     </ScrollToTop>
-    //   </>
-    // );
   }
 }
 
-// const mapStateToProps = state => ({
-//   userprofile: state.firebaseReducer.auth
-// });
+// function demoAsyncCall() {
+//   return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+// }
 
-// export default connect(mapStateToProps)(App);
 export default App;
 
