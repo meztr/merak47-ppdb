@@ -56,15 +56,7 @@ export default {
         title: 'Settings',
         type: 'group',
         icon: 'icon-help',
-        children: [                    
-          {
-            id: 'user-profile',
-            title: 'Profile',
-            type: 'item',
-            url: '/user/profile',
-            icon: 'feather icon-github',
-            role: 'user'
-          },
+        children: [ 
           {
             id: 'logout',
             title: 'Log out',

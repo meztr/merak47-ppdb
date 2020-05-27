@@ -3,6 +3,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { signout } from '../../../store/actions/auth';
 import requireAuth from '../../hoc/requireAuth';
+// import '../../assets/scss/style.scss';
+import '../../../assets/scss/style.scss';
 
 const Logout = ({ signout }) => {
   return (
@@ -34,4 +36,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default compose( connect( mapStateToProps, mapDispatchToProps),  requireAuth) (Logout);
-// export default compose( connect( mapStateToProps, mapDispatchToProps),  requireAuth) (windowSize(Logout));

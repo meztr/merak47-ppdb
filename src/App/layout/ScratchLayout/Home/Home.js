@@ -1,7 +1,7 @@
 import React from 'react';
 // import {Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
-import {Row, Col } from 'react-bootstrap';
-
+import { ListGroup } from 'react-bootstrap';
+// import Map from '../Maps'
 import Aux from '../../../hoc/_Aux';
 // import DEMO from "../../store/constant";
 
@@ -23,65 +23,80 @@ class Home extends React.Component {
                 </div>
               </div>
             </section> */}
+            <section className="page-section bg-dark text-white" id="prosedur">
+              <div className="container text-center">
+                <h2 className="mb-4">Prosedur PPDB Online</h2>                
+                <div className="mt-5">
+                  <ListGroup className="text-left">
+                    <ListGroup.Item variant="dark" as="li">1. Calon Siswa mendaftarkan diri lewat <span style={{color:'blue'}}>PPDB Online SMK Muhammadiyah Sampit</span>  di website <a style={{color:'blue'}} href="https://ppdb.smkmuhsampit.id">ppdb.smkmuhsampit.id</a></ListGroup.Item>
+                    <ListGroup.Item variant="dark" as="li">2. Setelah seleasi melakukan registrasi pendaftaran online, Calon Siswa wajib melakukan Print Out Pendaftaran & mempersiapkan Kelengkapan Berkas PPDB SMK Muhammadiyah Sampit untuk keperluan Proses Daftar Ulang</ListGroup.Item>
+                    <ListGroup.Item variant="dark" as="li">3. Panitia PPDB melakukan Verifikasi dan Validasi Berkas Pendaftaran secara online</ListGroup.Item>
+                    <ListGroup.Item variant="dark" as="li">4. Hasil kelulusan Verifikasi PPDB Online dapat dilihat dengan cara login menggunakan No. Kode Pendaftaran dan NISN yang didapat dari web aplikasi PPDB saat selesai melakukan registrasi pendaftaran online</ListGroup.Item>
+                    <ListGroup.Item variant="dark" as="li">5. Lakukan cetak Pengumuman Hasil PPDB Online yang wajib disertakan saat melakukan Registrasi/Daftar Ulang.</ListGroup.Item>
+                    <ListGroup.Item variant="dark" as="li">6. Calon Siswa yang dinyatakan LULUS, selanjutnya melakukan Registrasi/Daftar Ulang di SMK Muhammadiyah Sampit</ListGroup.Item>
+                  </ListGroup>
+                  <a className="btn btn-light btn-xl mt-4" href="#">Download Panduan PPDB</a>
+                </div>
+              </div>              
+            </section>
+
             {/* <!-- Informasi section--> */}
             <section className="page-section" id="info">
               <div className="container">
                 <h2 className="text-center mt-0">Informasi PPDB Online</h2>
-                <hr className="divider my-4" />
+                <hr className="divider my-4" />                
+                <p className="text-center mb-0">Layanan Informasi via WhatsApp PPDB Online SMK Muhammadiyah Sampit</p>
                 <div className="row">                                
                   <div className="col-lg-6 col-md-6 text-center">
                     <div className="mt-5">
                       <i className="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-                      <h3 className="h4 mb-2">Info 2</h3>
-                      <p className="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
+                      <h3 className="h4 mb-2">Layanan Informasi #1</h3>
+                      <i className="fa fa-whatsapp fa-3x"></i>                       
                     </div>
                     <div className="mt-4">
-                      <a className="btn btn-primary btn-xl" href="#prosedur">Prosedur dan Ketentuan</a>
+                      <a className="btn btn-primary btn-xl" href="https://api.whatsapp.com/send?phone=6282255442822&text=*%5Bppdb%5D*%20AssalamualaikumWrWb..%20">Ayu Oktarizza</a>
                     </div>
                   </div>
                   <div className="col-lg-6 col-md-6 text-center">
-                    <div className="mt-5">
-                      <i className="fas fa-4x fa-gem text-primary mb-4"></i>
-                      <h3 className="h4 mb-2">Info 3</h3>
-                      <p className="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+                  <div className="mt-5">
+                      <i className="fas fa-4x fa-laptop-code text-primary mb-4"></i>
+                      <h3 className="h4 mb-2">Layanan Informasi #2</h3>
+                      <i className="fa fa-whatsapp fa-3x"></i>    
                     </div>
                     <div className="mt-4">
-                      <a className="btn btn-primary btn-xl" href="/main">Login Calon Peserta Didik</a>
+                      <a className="btn btn-primary btn-xl" href="https://api.whatsapp.com/send?phone=6281349292791&text=*%5Bppdb%5D*%20AssalamualaikumWrWb..%20">Ratih Plaraningrum</a>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
-
-            <section className="page-section bg-dark text-white" id="prosedur">
-              <div className="container text-center">
-                <h2 className="mb-4">Free Download at Start Bootstrap!</h2>
-                <a className="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
-              </div>
-            </section>
+            </section>          
 
             {/* <!-- Contact section--> */}
             <section className="page-section" id="contact">
               <div className="container">
                 <div className="row justify-content-center">
                   <div className="col-lg-8 text-center">
-                    <h2 className="mt-0">Let's Get In Touch!</h2>
+                    <h2 className="mt-0">Hubungi Kami</h2>
                     <hr className="divider my-4" />
-                    <p className="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                    <p className="text-muted mb-5">Jalan Merak No 47 A Sampit Kotawaringin Timur Kalimantan Tengah</p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                    <i className="fas fa-phone fa-3x mb-3 text-muted"></i>
-                    <div>+1 (555) 123-4567</div>
+                    <i className="fas feather icon-phone fa-2x mb3 text-muted"></i>
+                    <a href="tel:0531-21336" className="d-block mt-2">(0531) 21336</a>
                   </div>
-                  <div className="col-lg-4 mr-auto text-center">
-                    <i className="fas fa-envelope fa-3x mb-3 text-muted"></i>
-                    <a className="d-block" href="mailto:ict@smkmuhsampit.sch.id">smk.muhsampit@gmail.com</a>
+                  <div className="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                    <i className="feather icon-map-pin fa-2x mb3 text-muted"></i>
+                    <a href="https://goo.gl/maps/oi1sGug5DwV8bb2w5" className="d-block mt-2">Panduan Lokasi Sekolah via Google Map</a>
                   </div>
-                </div>
+                  <div className="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                    <i className="fas feather icon-mail fa-2x mb-3 text-muted"></i>
+                    <a className="d-block mt-2" href="mailto:ict@smkmuhsampit.sch.id">smk.muhsampit@gmail.com</a>
+                  </div>                  
+                </div>                
               </div>
-            </section>
+            </section>            
           </div>
         )
     return (

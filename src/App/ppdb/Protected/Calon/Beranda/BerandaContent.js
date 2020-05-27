@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Alert, Container, Row, Col } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import Moment from 'react-moment';
 import Aux from '../../../../hoc/_Aux';
 import CardSiswa from '../../../../../App/components/MainCard';
-import CollapseItem from '../../../Component/CollapseItem';
+// import CollapseItem from '../../../Component/CollapseItem';
 import styled from 'styled-components';
 
 function BerandaContent(props) {
@@ -55,11 +55,11 @@ function BerandaContent(props) {
             <Col sm={6}><BoxContent>{props.data.kodePendaftaran}</BoxContent></Col>
           </Row>
           <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Login Username</BoxTitle></Col>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Login No.Pendaftaran</BoxTitle></Col>
             <Col sm={6}><BoxContent bold>{props.data.kodePendaftaran}</BoxContent></Col>
           </Row>
           <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Login Password</BoxTitle></Col>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Login NISN/Password</BoxTitle></Col>
             <Col sm={6}><BoxContent bold>{props.data.nisn}</BoxContent></Col>
           </Row>
           <Row>

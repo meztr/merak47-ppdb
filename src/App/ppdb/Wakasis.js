@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logina from './Logina';
 import Loader from './Loader';
+import '../../css/index.css';
 
 const Wakasis = ({ auth, role }) => {
 

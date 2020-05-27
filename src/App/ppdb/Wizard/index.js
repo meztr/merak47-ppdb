@@ -31,7 +31,7 @@ const Wizard = ({
             'kodePendaftaran' : randomkode,
             'namasiswa' : values.namasiswa,
             'nisn' : values.nisn,
-            'verifikasi' : 'belum',   // 3 state: #belum, #gagal, #berhasil
+            'verifikasi' : false,   // 3 state: #belum, #gagal, #berhasil
             'diterima' : false,
             'lunasPembayaran' : false,
             'calonid' : data.user.uid,

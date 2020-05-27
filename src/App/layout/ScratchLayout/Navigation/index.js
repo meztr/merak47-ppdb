@@ -84,7 +84,7 @@ class Navigation extends Component {
         const ScratchContent = (            
             <div className={`${isNavExpanded}` + "collapse navbar-collapse"} id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
-                    {/* <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">TENTANG SEKOLAH</a></li> */}
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#prosedur">PROSEDUR PPDB</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#info">INFORMASI</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger " href="#contact">HUBUNGI KAMI</a></li>                      
                 </ul>

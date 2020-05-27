@@ -26,7 +26,7 @@ const reduxFirebaseConfig = {
 let mustReducer = rootReducer;
 
 if(process.env.REACT_APP_PERSIST_STORE === 'true') {
-  console.log('persist true');
+  // console.log('persist true');
   const persistConfig = {
     key: 'root',
     storage,

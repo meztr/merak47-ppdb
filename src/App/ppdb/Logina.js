@@ -14,6 +14,7 @@ import validate from '../../utils/validateLoginForm';
 import Spinner from './Spinner';
 import packageJson from '../../../package.json';
 import LogoMerak from '../../assets/images/merak2020.jpg';
+// import '../../css/index.css';
 
 const Logina = ({
   signin,
