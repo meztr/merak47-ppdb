@@ -40,15 +40,15 @@ export default {
             url: '/user/cetak',
             icon: 'feather icon-printer',
             role: 'calon',
-          },
-          {
-            id: 'help-pdf',
-            title: 'Download Panduan',
-            type: 'item',
-            url: '/user/panduan',
-            icon: 'feather icon-help-circle',
-            role: 'calon',
           }
+          // {
+          //   id: 'help-pdf',
+          //   title: 'Download Panduan',
+          //   type: 'item',
+          //   url: '/user/panduan',
+          //   icon: 'feather icon-help-circle',
+          //   role: 'calon',
+          // }
         ]
       },
       {

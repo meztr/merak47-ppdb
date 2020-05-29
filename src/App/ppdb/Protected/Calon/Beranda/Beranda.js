@@ -50,31 +50,19 @@ class Beranda extends React.Component {
               </p>
 
               <p>
-                Kamu bisa login kembali menggunakan No.Pendaftaran dan NISN ini untuk mendapatkan informasi terbaru :
-                <hr/>
-                {/* <code>
-                  <Row>
-                    <Col className="text-right"><h5>No. Pendaftaran:</h5></Col>
-                    <Col ><h4>{this.state.datasiswa.kodePendaftaran}</h4></Col>
-                  </Row>
-                  <Row>
-                    <Col className="text-right"><h5>NISN:</h5></Col>
-                    <Col><h4>{this.state.datasiswa.nisn}</h4></Col>
-                  </Row>                  
-                </code> */}
+                Kamu bisa login kembali menggunakan No.Pendaftaran dan NISN ini untuk mendapatkan informasi terbaru :                
                 <div className="table-responsive-md">
-                  <Table  striped borderless hover>
+                  <Table>
                     <tr>
-                      <td><h5>No.Pendaftaran:</h5></td>
-                      <td className="col-sm-2"><h4>{this.state.datasiswa.kodePendaftaran}</h4></td>                    
+                      <td><h6>No.Pendaftaran:</h6></td>
+                      <td className="col-sm-2"><h5>{this.state.datasiswa.kodePendaftaran}</h5></td>                    
                     </tr>
                     <tr>
-                      <td><h5>NISN:</h5></td>
-                      <td className="col-sm-2"><h4>{this.state.datasiswa.nisn}</h4></td>                    
+                      <td><h6>NISN:</h6></td>
+                      <td className="col-sm-2"><h5>{this.state.datasiswa.nisn}</h5></td>                    
                     </tr>
                   </Table>
                 </div>
-                <hr/>
                 
                 <Button variant="danger" onClick={() => window.open('https://www.instagram.com/smkmuhammadiyahsampit/', '_blank')} >
                   <i className="fa fa-instagram my-float"></i> Follow Instagram Kita

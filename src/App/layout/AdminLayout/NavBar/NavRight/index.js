@@ -21,8 +21,8 @@ class NavRight extends Component {
             <Aux>
                 <ul className="navbar-nav ml-auto">
                     {/* Notifikasi */}
-                    <li><span>{userDisplayName}</span></li>
-                    <li><span>role: {this.props.status.role}</span></li>
+                    {/* <li><span>{userDisplayName}</span></li>
+                    <li><span>role: {this.props.status.role}</span></li> */}
                     <li>
                         <Dropdown alignRight={!this.props.rtlLayout}>
                             <Dropdown.Toggle variant={'link'} id="dropdown-basic">

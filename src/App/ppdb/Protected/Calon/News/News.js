@@ -68,13 +68,18 @@ function News(props) {
           <Row>
             <Col sm={3} md={3} xl={3}><BoxTitle>Tanggal Registrasi</BoxTitle></Col>
             <Col sm={6}><BoxContent>
-              {/* TODO : Moment refused to bring valid minutes:second */}
               <Moment format='dddd, D MMMM YYYY, HH:mm:ss' utc local>
                 {props.dataC.createAt}
-              </Moment> 
-  
-              {/* {Moment(props.data.createAt).format("dddd, MMMM Do YYYY, h:mm:ss a")} */}
+              </Moment>
             </BoxContent></Col>
+          </Row>
+          <Row>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Pilihan 1</BoxTitle></Col>
+            <Col sm={6}><BoxContent>{props.dataC.data.pilihan1}</BoxContent></Col>
+          </Row>
+          <Row>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Pilihan 2</BoxTitle></Col>
+            <Col sm={6}><BoxContent>{props.dataC.data.pilihan2}</BoxContent></Col>
           </Row>
           <Row>
             <Col sm={3} md={3} xl={3}><BoxTitle>Status Diterima</BoxTitle></Col>

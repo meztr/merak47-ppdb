@@ -74,6 +74,14 @@ function BerandaContent(props) {
             </BoxContent></Col>
           </Row>
           <Row>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Pilihan 1</BoxTitle></Col>
+            <Col sm={6}><BoxContent>{datasiswa.pilihan1}</BoxContent></Col>
+          </Row>
+          <Row>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Pilihan 2</BoxTitle></Col>
+            <Col sm={6}><BoxContent>{datasiswa.pilihan2}</BoxContent></Col>
+          </Row>
+          <Row>
             <Col sm={3} md={3} xl={3}><BoxTitle>Status Diterima</BoxTitle></Col>
             <Col sm={6}>
               <BoxContent bold italic small>
@@ -92,7 +100,7 @@ function BerandaContent(props) {
                 }
               </BoxContent>
             </Col>
-          </Row>
+          </Row>          
         </Container>
 
         <BoxTitle2>Data Siswa</BoxTitle2>
@@ -196,7 +204,7 @@ function BerandaContent(props) {
             <Col sm={6}><BoxContent>{datasiswa.penghasilanIbu}</BoxContent></Col>
           </Row>
           <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>No.Hape Ibu</BoxTitle></Col>
+            <Col sm={3} md={3} xl={3}><BoxTitle>No.HP Ibu</BoxTitle></Col>
             <Col sm={6}><BoxContent>{datasiswa.nohapeIbu}</BoxContent></Col>
           </Row>
         </Container>
@@ -224,7 +232,7 @@ function BerandaContent(props) {
             <Col sm={6}><BoxContent>{datasiswa.penghasilanAyah}</BoxContent></Col>
           </Row>
           <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>No.Hape Ayah</BoxTitle></Col>
+            <Col sm={3} md={3} xl={3}><BoxTitle>No.HP Ayah</BoxTitle></Col>
             <Col sm={6}><BoxContent>{datasiswa.nohapeAyah}</BoxContent></Col>
           </Row>
         </Container>
@@ -248,7 +256,7 @@ function BerandaContent(props) {
             <Col sm={6}><BoxContent>{datasiswa.penghasilanWali}</BoxContent></Col>
           </Row>
           <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>No.Hape Wali</BoxTitle></Col>
+            <Col sm={3} md={3} xl={3}><BoxTitle>No.HP Wali</BoxTitle></Col>
             <Col sm={6}><BoxContent>{datasiswa.nohapeWali}</BoxContent></Col>
           </Row>
         </Container>

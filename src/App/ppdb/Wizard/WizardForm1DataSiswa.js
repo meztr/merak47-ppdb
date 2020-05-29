@@ -6,38 +6,38 @@ import renderField from './renderField'
 
 const year = (new Date()).getFullYear();
 const years = Array.from(new Array(30),( val, index) => year - index);
-const bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"]
-const agama = ["Islam", "Kristen", "Katolik", "Kristen Protestan", "Hindu", "Budha", "Konghucu"]
-const kewarganegaraan = ["Indonesia", "Asing"]
-const tinggalbersama = ["Bersama orang tua", "Bersama wali", "Asrama", "Panti asuhan", "Kos"]
-const statuskeluarga = ["Anak Kandung", "Anak Tiri", "Anak Angkat"]
-const pilihanjur = ["OTKP", "TKJ", "PBKS"]
+const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember']
+const agama = ['Islam', 'Kristen', 'Katolik', 'Kristen Protestan', 'Hindu', 'Budha', 'Konghucu']
+const kewarganegaraan = ['Indonesia', 'Asing']
+const tinggalbersama = ['Bersama orang tua', 'Bersama wali', 'Asrama', 'Panti asuhan', 'Kos']
+const statuskeluarga = ['Anak Kandung', 'Anak Tiri', 'Anak Angkat']
+const pilihanjur = ['OTKP (Otomatisasi Tata Kelola Perkantoran)', 'TKJ (Teknik Komputer Jaringan)', 'PBKS (Perbankan Syariah)']
 
 const whiteStyle = {
-  backgroundColor: "white"
+  backgroundColor: 'white'
 }
 
 // style={{ border: touched && error ? "1px solid red" : "none" }}
 const renderError = ({ meta: { touched, error } }) =>
-  touched && error ? <span style={{ border: touched && error ? "1px solid red" : "none" }}>{error}</span> : false
+  touched && error ? <span style={{ border: touched && error ? '1px solid red' : 'none' }}>{error}</span> : false
 
 const renderSelectorWithArray = ({ array, label, placeholder, input, meta: { touched, error } }) => (
-  <Form.Group style={{color:"black"}} >
+  <Form.Group style={{color:'black'}} >
     <Form.Label>{label}</Form.Label>
     <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
       <option value="">{placeholder}</option>
       {array.map(val => (
-            <option value={val} key={val}>
-              {val}
-            </option>
-          ))}     
+        <option value={val} key={val}>
+          {val}
+        </option>
+      ))}     
     </Form.Control>
     <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>    
   </Form.Group >  
 )
 
 const renderSelectorWithInteger = ({ maxInt, label, placeholder, input, meta: { touched, error } }) => (
-  <Form.Group style={{color:"black"}} >
+  <Form.Group style={{color:'black'}} >
     <Form.Label>{label}</Form.Label>
     <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
       <option value="">{placeholder}</option>
@@ -52,7 +52,7 @@ const renderSelectorWithInteger = ({ maxInt, label, placeholder, input, meta: { 
 )
 
 const renderSelectorWithIntegerBeginNull = ({ maxInt, label, placeholder, input, meta: { touched, error } }) => (
-  <Form.Group style={{color:"black"}} >
+  <Form.Group style={{color:'black'}} >
     <Form.Label>{label}</Form.Label>
     <Form.Control as="select" {...input} isInvalid= {touched && error} style = {whiteStyle}> 
       <option value="">{placeholder}</option>
@@ -83,7 +83,7 @@ const WizardFormFirstPage = props => {
         <Field name="nisn" type="number" component={renderField} validate={number} label="NISN" />
         <Field name="nik" type="number" component={renderField} validate={number} label="NIK" />
         
-        <Form.Group style={{color:"black"}}>
+        <Form.Group style={{color:'black'}}>
           <Form.Label>Jenis Kelamin</Form.Label>
           <Form.Check>
             <Field name="jeniskelamin" component="input" type="radio" value="Laki-laki" />{' '} Laki-laki
