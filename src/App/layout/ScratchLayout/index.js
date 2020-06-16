@@ -77,10 +77,10 @@ class ScratchLayout extends Component {
                                     <hr className="divider my-4" />
                                 </div>
                                 <div className="col-lg-12 align-self-baseline">                                                 
-                                    <a className="btn btn-info btn-xl js-scroll-trigger" 
+                                    <a className="btn btn-primary btn-xl js-scroll-trigger" 
                                         style={{margin: "10px"}}
                                         href="/main"
-                                    >Login Calon Peserta Didik</a>    
+                                    ><i className="fa fa-key" /> Login Calon Peserta Didik</a>    
                                     <a className="btn btn-primary btn-xl js-scroll-trigger" 
                                         style={{margin: "10px"}}
                                         href="/wizard"

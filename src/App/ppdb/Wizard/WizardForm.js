@@ -11,6 +11,65 @@ import Aux from '../../hoc/_Aux';
 // import Loader from "../../layout/Loader"
 import styled from 'styled-components';
 
+const LoginBackground = styled.div`
+  & {
+    width: 30%;
+    height: 10%;
+    padding: 0.5em;
+    background-color: #f8d05d;
+    margin: 0 auto;
+    position: auto;
+  }
+  &:after {
+    border-right: solid 20px transparent;
+    border-left: solid 20px transparent;
+    border-top: solid 20px #f8d05d;
+    transform: translateX(-50%);
+    position: absolute;
+    z-index: -1;
+    content: "";
+    top: 100%;
+    left: 50%;
+    height: 0;
+    width: 0;
+  }
+`;
+
+const Stepper = styled.ul`
+  & {
+    width: 80%;
+    height: 10%;
+    padding: 0.5em;
+    bacgkround-color: #f8d05d;
+    margin: 0 auto;
+    position: auto;
+  }
+  &:after {
+    border-right: solid 20px transparent;
+    border-left: solid 20px transparent;
+    border-top: solid 20px #f8d05d;
+    transform: translateX(-50%);
+    position: absolute;
+    z-index: -1;
+    content: "";
+    top: 100%;
+    left: 50%;
+    height: 0;
+    width: 0;
+  }
+`;
+
+
+const PageStepIndicator = (props) => {
+  return (
+    <div className="sticky-top">
+      <Stepper>
+        Step {props.page}
+      </Stepper>
+    </div>
+    
+  )
+}
 
 class WizardForm extends Component {
   constructor(props) {
@@ -37,7 +96,9 @@ class WizardForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3 className="mt-4">Form Online PPDB SMK Muhammadiyah Sampit</h3>
+              <h3 className="text-center font-weight-bold pt-4 pb-5 mb-2">Form Registrasi Calon Siswa</h3>
+              {/* <PageStepIndicator page={page} /> */}
+              {/* <LoginBackground className="sticky-top" /> */}
               {/* <div>
                 {page === 1 && <h3>1-Ketentuan</h3>}
                 {page === 2 && (
@@ -60,7 +121,7 @@ class WizardForm extends Component {
                 )}
               </div>  */}
               <div>        
-                {page === 1 && <WizardForm0Ketentuan onSubmit={this.nextPage} />}
+                {page === 1 &&  <WizardForm0Ketentuan onSubmit={this.nextPage} />} 
                 {page === 2 && (
                   <WizardForm1DataSiswa
                     previousPage={this.previousPage}
@@ -92,4 +153,4 @@ WizardForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export default WizardForm
+export default WizardForm;

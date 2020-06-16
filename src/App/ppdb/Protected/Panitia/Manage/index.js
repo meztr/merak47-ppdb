@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
-import {Row, Col, Card, Form, Button, Image, InputGroup, FormControl, DropdownButton, Dropdown, Container} from 'react-bootstrap';
+import {Row, Col, Card, Alert, Button, } from 'react-bootstrap';
 import Aux from "../../../../hoc/_Aux";
+
+function AlertDismissibleExample() {
+  const [show, setShow] = useState(true);
+
+  if (show) {
+    return (
+      <Alert variant="info" onClose={() => setShow(false)} dismissible>
+        <Alert.Heading><small>Note! Fitur ini belum ready!</small></Alert.Heading>
+        <p>
+          Fitur ini akan di-released pada versi major selanjutnya. Sementara gunakan dulu menu "Informasi Calon Siswa" untuk mengelola Calon Siswa
+        </p>
+      </Alert>
+    );
+  }
+  return <Button onClick={() => setShow(true)}>Info</Button>;
+}
+
 
 function Manage() {
   return (    
@@ -53,6 +70,7 @@ function Manage() {
                             Upload Photo
                         </Button>                        
                     </Col> */}
+                    <AlertDismissibleExample />
                   </Row>
                 </Card.Body>
               </Card>

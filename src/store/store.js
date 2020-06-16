@@ -14,9 +14,9 @@ import firebase from '../services/firebase';
 
 const enhancers = [];
 
-// if(process.env.NODE_ENV === 'development') {
-//   enhancers.push(typeof window === 'object' && typeof window.__REDUX_DEVTOOLS_EXTENSION__ === 'function' ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f)
-// }
+if(process.env.NODE_ENV === 'development') {
+  enhancers.push(typeof window === 'object' && typeof window.__REDUX_DEVTOOLS_EXTENSION__ === 'function' ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f)
+}
 
 const reduxFirebaseConfig = {
   userProfile: null, //'users',

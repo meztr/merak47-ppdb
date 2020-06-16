@@ -58,7 +58,7 @@ class Home extends React.Component {
                     </div>
                   </div>
                   <div className="col-lg-6 col-md-6 text-center">
-                  <div className="mt-5">
+                    <div className="mt-5">
                       <i className="fas fa-4x fa-laptop-code text-primary mb-4"></i>
                       <h3 className="h4 mb-2">Layanan Informasi #2</h3>
                       <i className="fa fa-whatsapp fa-3x"></i>    
@@ -98,7 +98,7 @@ class Home extends React.Component {
               </div>
             </section>            
           </div>
-        )
+        );
     return (
       <Aux>
         {content}

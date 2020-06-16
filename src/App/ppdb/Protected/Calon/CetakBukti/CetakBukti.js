@@ -42,7 +42,7 @@ const Formulir = (props) => (
       </View>
       
       <View style={styles.section}>
-        <Text style={[styles.boxsubjudul, {textAlign:'center'}]}>https://ppdb.smkmsampit.id</Text>        
+        <Text style={[styles.boxsubjudul, {textAlign:'left'}]}>Link login masuk: [https://ppdb.smkmuhsampit.id/main] [username:{props.data.kodePendaftaran}  password:{props.data.nisn}] </Text>        
         <Text style={styles.boxjudul}>Bukti Cetak PPDB Online 2020/2021 SMK Muhammadiyah Sampit</Text>
       </View>
 
@@ -149,7 +149,7 @@ class Cetak extends React.Component {
                 <Card style={{ width: '18rem' }}>
                   <Card.Body>
                     <Card.Title>Langkah Pertama</Card.Title>
-                    <Card.Text style={{paddingBottom:'20px'}}>
+                    <Card.Text>
                         Download berkas pertama Bukti Cetak PPDB Online pada tombol di bawah
                     </Card.Text>
                     <PDFDownloadLink 
@@ -164,7 +164,8 @@ class Cetak extends React.Component {
                             <Button variant="primary">Bukti Cetak PPDB Online</Button>
                         )
                       }
-                    </PDFDownloadLink>
+                    </PDFDownloadLink>                    
+                    <div><small>Gunakan <a href="https://play.google.com/store/apps/details?id=com.android.chrome&hl=id" target="_blank">Peramban Chrome</a> jika download gagal</small></div>
                   </Card.Body>
                 </Card>
               </Col>

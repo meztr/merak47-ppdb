@@ -1,25 +1,26 @@
-import React from 'react'
-import { Form, Button,} from 'react-bootstrap'
-import { Field, reduxForm } from 'redux-form'
-import validate from './validate'
-import renderField from './renderField'
+import React from 'react';
+import { Form, Button,} from 'react-bootstrap';
+import { Field, reduxForm } from 'redux-form';
+import validate from './validate';
+import renderField from './renderField';
 
 const year = (new Date()).getFullYear();
 const years = Array.from(new Array(30),( val, index) => year - index);
-const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember']
-const agama = ['Islam', 'Kristen', 'Katolik', 'Kristen Protestan', 'Hindu', 'Budha', 'Konghucu']
-const kewarganegaraan = ['Indonesia', 'Asing']
-const tinggalbersama = ['Bersama orang tua', 'Bersama wali', 'Asrama', 'Panti asuhan', 'Kos']
-const statuskeluarga = ['Anak Kandung', 'Anak Tiri', 'Anak Angkat']
-const pilihanjur = ['OTKP (Otomatisasi Tata Kelola Perkantoran)', 'TKJ (Teknik Komputer Jaringan)', 'PBKS (Perbankan Syariah)']
+const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember'];
+const agama = ['Islam', 'Kristen', 'Katolik', 'Kristen Protestan', 'Hindu', 'Budha', 'Konghucu'];
+const kewarganegaraan = ['Indonesia', 'Asing'];
+const tinggalbersama = ['Bersama orang tua', 'Bersama wali', 'Asrama', 'Panti asuhan', 'Kos'];
+const statuskeluarga = ['Anak Kandung', 'Anak Tiri', 'Anak Angkat'];
+const pilihanjur = ['OTKP (Otomatisasi Tata Kelola Perkantoran)', 'TKJ (Teknik Komputer Jaringan)', 'PBKS (Perbankan Syariah)'];
+const pilihJalurPendaftaran = ['Reguler/Umum', 'Prestasi', 'Sekolah Muhammadiyah'];
 
 const whiteStyle = {
   backgroundColor: 'white'
-}
+};
 
 // style={{ border: touched && error ? "1px solid red" : "none" }}
 const renderError = ({ meta: { touched, error } }) =>
-  touched && error ? <span style={{ border: touched && error ? '1px solid red' : 'none' }}>{error}</span> : false
+  touched && error ? <span style={{ border: touched && error ? '1px solid red' : 'none' }}>{error}</span> : false;
 
 const renderSelectorWithArray = ({ array, label, placeholder, input, meta: { touched, error } }) => (
   <Form.Group style={{color:'black'}} >
@@ -34,7 +35,7 @@ const renderSelectorWithArray = ({ array, label, placeholder, input, meta: { tou
     </Form.Control>
     <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>    
   </Form.Group >  
-)
+);
 
 const renderSelectorWithInteger = ({ maxInt, label, placeholder, input, meta: { touched, error } }) => (
   <Form.Group style={{color:'black'}} >
@@ -49,7 +50,7 @@ const renderSelectorWithInteger = ({ maxInt, label, placeholder, input, meta: { 
     </Form.Control>
     <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>    
   </Form.Group >
-)
+);
 
 const renderSelectorWithIntegerBeginNull = ({ maxInt, label, placeholder, input, meta: { touched, error } }) => (
   <Form.Group style={{color:'black'}} >
@@ -64,17 +65,17 @@ const renderSelectorWithIntegerBeginNull = ({ maxInt, label, placeholder, input,
     </Form.Control>
     <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>    
   </Form.Group >
-)
+);
 
-const number = value =>  value && isNaN(Number(value)) ? ' Harus angka' : undefined
+const number = value =>  value && isNaN(Number(value)) ? ' Harus angka' : undefined;
 
 const phoneNumber = value =>
   value && !/^08[0-9]{8,}$/i.test(value)
     ? ' Nomor hp tidak valid'
-    : undefined
+    : undefined;
 
 const WizardFormFirstPage = props => {
-  const { handleSubmit, previousPage } = props
+  const { handleSubmit, previousPage } = props;
   return (
     <div>
       <h4>Data Siswa</h4>
@@ -93,7 +94,7 @@ const WizardFormFirstPage = props => {
           </Form.Check>
           <Field name="jeniskelamin" component={renderError} />
         </Form.Group>        
-
+        <Field name="jalurPendaftaran" array={pilihJalurPendaftaran} label="Tipe Jalur Pendaftaran" placeholder="Pilih Tipe Jalur Pendaftaran.." component={renderSelectorWithArray} />
         <Field name="tempatlahirsiswa" type="text" component={renderField} label="Tempat Lahir" />
         <Field name="tgllahirsiswa" type="number" maxInt={31} label="Tanggal Lahir" placeholder="Pilih tanggal.." component={renderSelectorWithInteger} />
         <Field name="blnlahirsiswa" array={bulan} label="Bulan Lahir" placeholder="Pilih bulan.." component={renderSelectorWithArray} />
@@ -119,12 +120,12 @@ const WizardFormFirstPage = props => {
       </form>
     </div>
     
-  )
-}
+  );
+};
 
 export default reduxForm({
   form: 'wizard', 
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true, 
   validate
-})(WizardFormFirstPage)
+})(WizardFormFirstPage);

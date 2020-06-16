@@ -35,6 +35,7 @@ const Wizard = ({
             'diterima' : false,
             'lunasPembayaran' : false,
             'calonid' : data.user.uid,
+            'jalurPendaftaran': values.jalurPendaftaran,
             'createAt' : firebase.database.ServerValue.TIMESTAMP,
             'dibuatSaat' : new Date()
           };

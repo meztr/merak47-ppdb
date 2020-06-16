@@ -1,21 +1,21 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 import { Button, Container, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
-import validate from './validate'
+import validate from './validate';
 
 import '../../../assets/scss/style.scss';
-import Aux from "../../hoc/_Aux";
+import Aux from '../../hoc/_Aux';
 
 const renderCheckbox = ({ input, label, meta: { touched, error } }) => (
-  <div style={{ border: touched && error ? "1px solid red" : "none" }}>
+  <div style={{ border: touched && error ? '1px solid red' : 'none' }}>
     <input type="checkbox" {...input} />
-    <label style={{paddingLeft:"5px"}}>{label}</label>
+    <label style={{paddingLeft:'5px'}}>{label}</label>
     {touched && error ? <span>{error}</span> : false}
   </div>
-)
+);
 
 const WizardForm0Ketentuan = props => {
-  const { handleSubmit } = props
+  const { handleSubmit } = props;
   return (
     <Aux>
       <Container>
@@ -55,12 +55,12 @@ const WizardForm0Ketentuan = props => {
         </Row>
       </Container>
     </Aux>    
-  )
-}
+  );
+};
 
 export default reduxForm({
   form: 'wizard',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate
-})(WizardForm0Ketentuan)
+})(WizardForm0Ketentuan);

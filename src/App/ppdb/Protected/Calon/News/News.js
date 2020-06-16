@@ -82,11 +82,11 @@ function News(props) {
             <Col sm={6}><BoxContent>{props.dataC.data.pilihan2}</BoxContent></Col>
           </Row>
           <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Status Diterima</BoxTitle></Col>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Status Verifikasi Pendaftaran</BoxTitle></Col>
             <Col sm={6}>
               <BoxContent bold italic small>
                 {
-                  props.dataC.verifikasi ? 'Berhasil' : 'menunggu proses verifikasi...'
+                  props.dataC.verifikasi ? 'Berhasil (Berkas Pendaftaran Online diterima)' : 'menunggu proses verifikasi...'
                 }              
               </BoxContent>
             </Col>
