@@ -253,7 +253,7 @@ function DetilModal(props) {
             <Col sm={6}><BoxContent>{props.data.data.pilihan2}</BoxContent></Col>
           </Row>
           <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Status Verifikasi Pendaftaran</BoxTitle></Col>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Status Verifikasi</BoxTitle></Col>
             <Col sm={6}>
               <BoxContent bold italic small>
                 {
@@ -268,11 +268,11 @@ function DetilModal(props) {
             </Col> */}
           </Row>
           <Row>
-            <Col sm={3} md={3} xl={3}><BoxTitle>Status Pendaftaran</BoxTitle></Col>
+            <Col sm={3} md={3} xl={3}><BoxTitle>Status Lulus Pendaftaran</BoxTitle></Col>
             <Col sm={6}>
               <BoxContent bold italic small>                
                 {
-                  props.data.diterima ? 'Diterima' : 'Masih Proses'
+                  props.data.diterima ? 'Lulus' : 'Menunggu Proses Daftar Ulang'
                 }
               </BoxContent>
             </Col>

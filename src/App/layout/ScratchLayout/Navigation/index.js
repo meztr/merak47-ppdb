@@ -15,12 +15,15 @@ import meraklogo from '../../../../assets/logo60.png';
 import classnames from "classnames";
 
 class Navigation extends Component {
-    
-    state = {
-        prevScrollpos: window.pageYOffset,
-        visible: true,
-        navExpanded: false,
-        pakeH4: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            prevScrollpos: window.pageYOffset,
+            visible: true,
+            navExpanded: false,
+            pakeH4: false,
+            isSubMode: props.SubMode
+        }
     }
 
     resize = () => {
@@ -84,9 +87,15 @@ class Navigation extends Component {
         const ScratchContent = (            
             <div className={`${isNavExpanded}` + "collapse navbar-collapse"} id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#prosedur">PROSEDUR PPDB</a></li>
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#info">INFORMASI</a></li>
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger " href="#contact">HUBUNGI KAMI</a></li>                      
+                    {this.state.isSubMode ? 
+                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/">BERANDA</a></li>
+                    : 
+                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/pengumuman">PENGUMUMAN KELULUSAN</a></li>
+                    }
+                    {/* <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/pengumuman">PENGUMUMAN</a></li> */}
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#prosedur">PROSEDUR PPDB</a></li>
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#info">INFORMASI</a></li>
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger " href="/#contact">HUBUNGI KAMI</a></li>                      
                 </ul>
             </div>
         );
@@ -102,7 +111,7 @@ class Navigation extends Component {
                                     })
                                 } id="mainNav">
                     <img style={{width:"45px", marginRight: "10px"}} src={meraklogo} alt="Logo"/>
-                    { this.state.pakeH4 ? ( null ) : ( <a className="navbar-brand js-scroll-trigger" href="#page-top"> PPDB ONLINE </a> )
+                    { this.state.pakeH4 ? ( null ) : ( <a className="navbar-brand js-scroll-trigger" href="/#page-top"> PPDB ONLINE </a> )
                     }
                     <button onClick={ () => this.toggleNavbar() }
                         className="navbar-toggler navbar-toggler-right" 

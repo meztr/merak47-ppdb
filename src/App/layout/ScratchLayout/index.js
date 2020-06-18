@@ -5,13 +5,14 @@ import Fullscreen from "react-full-screen";
 import windowSize from 'react-window-size';
 
 import Navigation from './Navigation';
-import { Button, Modal, Image } from 'react-bootstrap';
+import { Button, Modal, Image, Card, Col } from 'react-bootstrap';
 // import Breadcrumb from './Breadcumb';
 // import Loader from "../Loader";
 import Aux from "../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions/adminLayoutActions";
 
 // import bgImage from "../../../assets/bg-masthead.jpg"
+import styled from 'styled-components';
 import Home from './Home/Home';
 import Footer from './Footer/Footer';
 import Loader from '../Loader';
@@ -19,6 +20,24 @@ import Loader from '../Loader';
 import './app.scss';
 
 // import { signout } from "../../../store/actions/auth";
+
+
+// const FloatMenu = styled.div`
+//     position: absolute;
+//     left: 238px;
+//     top: 168px;
+//     height: 42px;
+//     text-align: right;
+//     /*transition: height 250ms ease-in-out;*/,
+//     borderWidth:1,
+//     borderColor:'rgba(0,0,0,0.2)',
+//     alignItems:'center',
+//     justifyContent:'center',
+//     width:100,
+//     height:100,
+//     backgroundColor:'#fff',
+//     borderRadius:100,
+// `;
 
 class ScratchLayout extends Component {
     state = {
@@ -70,17 +89,22 @@ class ScratchLayout extends Component {
                     {/* <!-- Masthead--> */}
                     <header className="masthead">
                         <div className="container h-100">
-                            <div className="row h-100 align-items-center justify-content-center text-center">                                
+                            <div className="row h-100 align-items-center justify-content-center text-center">
+                                {/* <FloatMenu>
+                                    <a className="btn btn-info btn-xl"                                         
+                                        href="/pengumuman"
+                                    >Pengumuman Kelulusan</a>                                    
+                                </FloatMenu>                                 */}
                                 <div className="col-lg-10 align-self-end">
                                     <h1 className="text-uppercase text-white font-weight-bold">PPDB ONLINE</h1>
                                     <h2 className="text-uppercase text-white font-weight-bold">SMK Muhammadiyah Sampit</h2>
                                     <hr className="divider my-4" />
                                 </div>
-                                <div className="col-lg-12 align-self-baseline">                                                 
+                                <div className="col-lg-12 align-self-baseline">
                                     <a className="btn btn-primary btn-xl js-scroll-trigger" 
-                                        style={{margin: "10px"}}
-                                        href="/main"
-                                    ><i className="fa fa-key" /> Login Calon Peserta Didik</a>    
+                                            style={{margin: "10px"}}
+                                            href="/main"
+                                        >Login Calon Siswa</a>    
                                     <a className="btn btn-primary btn-xl js-scroll-trigger" 
                                         style={{margin: "10px"}}
                                         href="/wizard"
@@ -88,7 +112,12 @@ class ScratchLayout extends Component {
                                     <a className="btn btn-light btn-xl js-scroll-trigger" 
                                         style={{margin: "10px"}} 
                                         onClick={()=> this.handleModal()}
-                                    >Download Formulir Offline</a>        
+                                    >Download Formulir Offline</a>                                    
+                                </div>
+                                <div className="col-lg-4 align-self-baseline">
+                                    <a className="btn btn-info btn-xl"                                         
+                                            href="/pengumuman"
+                                        >Pengumuman Kelulusan</a>        
                                 </div>
                             </div>
                         </div>
