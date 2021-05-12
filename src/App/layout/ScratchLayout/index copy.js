@@ -1,28 +1,21 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Fullscreen from "react-full-screen";
 import windowSize from "react-window-size";
 
 import Navigation from "./Navigation";
-import { 
-  Button, 
-  Modal, 
-  Image, 
-  // Card, 
-  // Col 
-} from "react-bootstrap";
+import { Button, Modal, Image, Card, Col } from "react-bootstrap";
 // import Breadcrumb from './Breadcumb';
 // import Loader from "../Loader";
 import Aux from "../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions/adminLayoutActions";
 
 // import bgImage from "../../../assets/bg-masthead.jpg"
-// import styled from "styled-components";
+import styled from "styled-components";
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
-// import Loader from "../Loader";
-// import RightBar from "./Agenda";
+import Loader from "../Loader";
 
 import "./app.scss";
 
@@ -109,8 +102,8 @@ class ScratchLayout extends Component {
         <Fullscreen enabled={this.props.adminReducer.isFullScreen}>
           <Navigation />
 
-          {/* <div className="container pt-5"></div> */}
-          <header className="masthead " style={{ paddingTop: "120px" }}>
+          {/* <!-- Masthead--> */}
+          <header className="masthead">
             <div className="container h-100">
               <div className="row">
                 <div className="row h-100 align-items-center justify-content-center text-center">
@@ -129,59 +122,105 @@ class ScratchLayout extends Component {
                     <hr className="divider my-4" />
                   </div>
                   <div className="container-fluid">
-                    <div className="card-deck mb-3 text-center">
-                      <div className="card mb-4 box-shadow bg-primary mx-3">
+                    <div className="row">
+                      {/* <div className="col-sm">
                         <a
-                          className="btn btn-lg btn-block btn-primary"
-                          href="/wizard"
-                        >
-                          <i className="fa fa-edit mr-2"></i>
-                          Isi Formulir PPDB
-                        </a>
-                      </div>
-                      <div className="card mb-4 box-shadow bg-info mx-3">
-                        <a
-                          className="btn btn-lg btn-block btn-info"
+                          className="btn btn-primary btn-xl js-scroll-trigger"
+                          style={{ margin: "10px" }}
                           href="/main"
                         >
-                          <i className="fa fa-edit mr-2"></i>
-                          Cetak Formulir (Login)
+                          Login Calon Siswa
                         </a>
                       </div>
-                      <div className="card mb-4 box-shadow bg-success mx-3">
+                      <div className="col-sm">
                         <a
-                          className="btn btn-lg btn-block btn-success"
-                          href="/pengumuman"
+                          className="btn btn-primary btn-xl js-scroll-trigger"
+                          style={{ margin: "10px" }}
+                          href="/wizard"
                         >
-                          <i className="fa fa-print mr-2"></i>
-                          Hasil Penerimaan
+                          Pendaftaran PPDB Online
                         </a>
                       </div>
+                      <div className="col-sm">
+                        <a
+                          className="btn btn-light btn-xl js-scroll-trigger"
+                          style={{ margin: "10px" }}
+                          onClick={() => this.handleModal()}
+                        >
+                          Download Formulir Offline
+                        </a>
+                      </div> */}
+                      {/* <div className="card" style={{width: "18rem"}}>
+                          <img className="card-img-top" src="https://dummyimage.com/286x180" alt="Card image cap" />
+                          <div className="card-body">
+                              <h5 className="card-title">Login</h5>
+                              <p className="card-text">Login calon siswa yang sudah melakukan pendaftaran</p>
+                              <a href="#" class="btn btn-primary">Login</a>
+                          </div>
+                      </div>
+                      <div className="card" style={{width: "18rem"}}>
+                          <img className="card-img-top" src="https://dummyimage.com/286x180" alt="Card image cap" />
+                          <div className="card-body">
+                              <h5 className="card-title">Card title</h5>
+                              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                      </div>
+                      <div className="card" style={{width: "18rem"}}>
+                          <img className="card-img-top" src="https://dummyimage.com/286x180" alt="Card image cap" />
+                          <div className="card-body">
+                              <h5 className="card-title">Card title</h5>
+                              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                      </div> */}
                     </div>
-                    <hr className="divider my-4" />
+                    <div className="card-deck mb-3 text-center">
+                        <div className="card mb-4 box-shadow">
+                          <a
+                            className="btn btn-lg btn-block btn-primary"
+                            href="/wizard"
+                          >
+                            Isi Formulir PPDB
+                          </a>
+                        </div>
+                        <div className="card mb-4 box-shadow">
+                          <a
+                            className="btn btn-lg btn-block btn-outline"
+                            href="/main"
+                          >
+                              Cetak Formulir (Login)
+                          </a>
+                        </div>
+                        <div className="card mb-4 box-shadow">
+                            <a
+                              className="btn btn-lg btn-block btn-secondary"
+                              href="/pengumuman"
+                            >
+                              Hasil Penerimaan
+                            </a>
+                        </div>
+                      </div>
+                      <div className="col-sm">
+                        <a
+                          className="btn btn-light btn-xl js-scroll-trigger"
+                          style={{ margin: "10px" }}
+                          onClick={() => this.handleModal()}
+                        >
+                          Download Formulir Offline
+                        </a>
+                      </div>
                   </div>
-                </div>
-              </div>
-              <div className="row justify-content-center align-items-center my-3">
-                <div className="text-center w-50 text-light">
-                  Jika kamu terkendala koneksi internet, bisa mendownload
-                  formulir PPDB offline di sini jangan lupa di print, isi dan
-                  kembalikan ke Panitia PPDB
-                  <div className="my-4">
-                    <a
-                      className="btn btn-sm btn-light js-scroll-trigger"
-                      style={{ margin: "10px" }}
-                      href="#downloadoffline"
-                      onClick={() => this.handleModal()}
-                    >
-                      <i></i>
-                      Download Formulir Offline
+                  {/* <div className="col-lg-4 align-self-baseline">
+                    <a className="btn btn-info btn-xl" href="/pengumuman">
+                      Pengumuman Kelulusan
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
           </header>
+
           <Modal show={this.state.showHide}>
             <Modal.Header closeButton onClick={() => this.handleModal()}>
               <Modal.Title>Tahukah kamu?</Modal.Title>
@@ -214,23 +253,24 @@ class ScratchLayout extends Component {
               </Button>
             </Modal.Footer>
           </Modal>
+
           <Home />
           <Footer />
-          {/* </div> */}
-
-          {/* News Timeline */}
-          {/* <div
-              className="col-md-4 overflow-auto"
-              style={{ paddingTop: "100px", height: "500px" }}
-            >
-              <h1>RightBar</h1>
-            </div>
-          </div> */}
         </Fullscreen>
       </Aux>
     );
   }
 }
+
+// const mapStateToProps = state => {
+//     return {
+//         defaultPath: state.adminReducer.defaultPath,
+//         isFullScreen: state.adminReducer.isFullScreen,
+//         collapseMenu: state.adminReducer.collapseMenu,
+//         configBlock: state.adminReducer.configBlock,
+//         layout: state.adminReducer.layout
+//     }
+// };
 
 const mapStateToProps = (state) => ({
   ...state,

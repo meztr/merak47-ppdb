@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React from "react";
+// import React, { useState } from "react";
 // import {Editor, EditorState} from 'draft-js';
-import {Row, Col, Card, Form, Button, Image, InputGroup, FormControl, DropdownButton, Dropdown, Container} from 'react-bootstrap';
+import {
+  Row,
+  Col,
+  Card,
+  // Form,
+  // Button,
+  // Image,
+  // InputGroup,
+  // FormControl,
+  // DropdownButton,
+  // Dropdown,
+  // Container,
+} from "react-bootstrap";
 import Aux from "../../../../hoc/_Aux";
-import RichEditor from './Rich/Rich';
+import RichEditor from "./Rich/Rich";
 
 function Toa() {
   // const [editorState, setEditorState] = React.useState(
@@ -19,9 +32,9 @@ function Toa() {
   //   focusEditor()
   // }, []);
 
-  return (    
-    <Aux>      
-      <Row>        
+  return (
+    <Aux>
+      <Row>
         <Col>
           <Card>
             <Card.Header>
@@ -36,12 +49,11 @@ function Toa() {
                 />
               </div> */}
               <RichEditor />
-
             </Card.Body>
           </Card>
         </Col>
       </Row>
-    </Aux>    
+    </Aux>
   );
 }
 

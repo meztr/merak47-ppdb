@@ -1,11 +1,17 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/jsx-key */
-import React, { useState } from 'react';
-import { useTable, useFilters, useSortBy, useRowSelect, usePagination } from 'react-table';
+import React, { useState } from "react";
+import {
+  useTable,
+  useFilters,
+  useSortBy,
+  useRowSelect,
+  usePagination,
+} from "react-table";
 
 export default function TableNews({ columns, data }) {
-  const [filterNamaInput, setFilterNamaInput] = useState('');
-  const [filterNISNInput, setFilterNISNInput] = useState('');
+  const [filterNamaInput, setFilterNamaInput] = useState("");
+  const [filterNISNInput, setFilterNISNInput] = useState("");
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -31,11 +37,11 @@ export default function TableNews({ columns, data }) {
       initialState: {
         sortBy: [
           {
-            id: 'ranking',
-            desc: false
-          }
-        ]
-      }
+            id: "ranking",
+            desc: false,
+          },
+        ],
+      },
     },
     useFilters,
     useSortBy,
@@ -43,49 +49,90 @@ export default function TableNews({ columns, data }) {
     useRowSelect
   );
 
-  const handleFilterNamaChange = e => {
+  const handleFilterNamaChange = (e) => {
     const value = e.target.value || undefined;
-    setFilter('namasiswa', value);
+    setFilter("namasiswa", value);
     setFilterNamaInput(value);
   };
 
-  const handleFilterNISNChange = e => {
+  const handleFilterNISNChange = (e) => {
     const value = e.target.value || undefined;
-    setFilter('nisn', value);
+    setFilter("nisn", value);
     setFilterNISNInput(value);
   };
 
   // Render the UI for your table
   return (
     <>
-    
-      <input
-        value={filterNamaInput}
-        onChange={handleFilterNamaChange}
-        placeholder={'Cari Nama'}
-      /> {' '}
-      <input
-        value={filterNISNInput}
-        onChange={handleFilterNISNChange}
-        placeholder={'Cari NISN'}
-      /> {' '}
-      {/* <label style={{paddingLeft:'13px'}}>Jumlah Pendaftar: {data.length} orang</label>       */}
+      <div className="row">
+        <div className="col-sm-6">
+          <input
+            value={filterNamaInput}
+            onChange={handleFilterNamaChange}
+            placeholder={"Cari Nama"}
+          />{" "}
+          <input
+            value={filterNISNInput}
+            onChange={handleFilterNISNChange}
+            placeholder={"Cari NISN"}
+          />{" "}
+        </div>
+        <div className="col-sm-6 py-3">
+          <div className="pagination">
+            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+              {"<<"}
+            </button>{" "}
+            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+              {"<"}
+            </button>{" "}
+            <button onClick={() => nextPage()} disabled={!canNextPage}>
+              {">"}
+            </button>{" "}
+            <button
+              onClick={() => gotoPage(pageCount - 1)}
+              disabled={!canNextPage}
+            >
+              {">>"}
+            </button>{" "}
+            <span>
+              Hlm{" "}
+              <strong>
+                {pageIndex + 1} of {pageOptions.length}
+              </strong>{" "}
+            </span>
+            <select
+              value={pageSize}
+              onChange={(e) => {
+                setPageSize(Number(e.target.value));
+              }}
+            >
+              {[10, 20, 30, 40, 50].map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  Show {pageSize}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <label style={{paddingLeft:'13px'}}>Jumlah Pendaftar: {data.length} orang</label>      
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map(headerGroup => (
+          {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
+              {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className={
                     column.isSorted
                       ? column.isSortedDesc
-                        ? 'sort-desc'
-                        : 'sort-asc'
-                      : ''
+                        ? "sort-desc"
+                        : "sort-asc"
+                      : ""
                   }
                 >
-                  {column.render('Header')}
+                  {column.render("Header")}
                 </th>
               ))}
             </tr>
@@ -96,9 +143,9 @@ export default function TableNews({ columns, data }) {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
+                {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
               </tr>
@@ -106,39 +153,6 @@ export default function TableNews({ columns, data }) {
           })}
         </tbody>
       </table>
-
-      <div className="pagination">
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {'<<'}
-        </button>{' '}
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {'<'}
-        </button>{' '}
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          {'>'}
-        </button>{' '}
-        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {'>>'}
-        </button>{' '}
-        <span>
-          Page{' '}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>{' '}
-        </span>        
-        <select
-          value={pageSize}
-          onChange={e => {
-            setPageSize(Number(e.target.value));
-          }}
-        >
-          {[10, 20, 30, 40, 50].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
     </>
   );
 }

@@ -2,8 +2,8 @@
   "name": "merak47-ppdb-online",
   "version": "0.9.8",
   "engines": {
-    "node": "12.9.1",
-    "npm": "6.13.1"
+    "node": "12.16.3",
+    "npm": "6.14.4"
   },
   "private": true,
   "homepage": "http://ppdb.smkmuhsampit.id/",
@@ -22,6 +22,7 @@
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.4",
     "react-full-screen": "^0.2.4",
+    "react-google-recaptcha-v3": "^1.9.4",
     "react-loadable": "^5.5.0",
     "react-moment": "^0.9.7",
     "react-nvd3": "^0.5.7",
@@ -49,9 +50,6 @@
     "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
     "heroku-postbuild": "echo This runs afterwards."
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -59,7 +57,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^4.0.2",
     "react-to-print": "^2.1.1"
   }
 }

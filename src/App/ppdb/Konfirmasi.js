@@ -1,5 +1,16 @@
 import React, { Component, useState, useMemo, useEffect } from "react";
-import { Row, Col, Card } from "react-bootstrap";
+import {
+  // Container,
+  Row,
+  Col,
+  // Button,
+  // Modal,
+  // Image,
+  Card,
+  // ListGroup,
+  // Tab,
+  // Nav,
+} from "react-bootstrap";
 // import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Fullscreen from "react-full-screen";
@@ -8,16 +19,14 @@ import Navigation from "../layout/ScratchLayout/Navigation";
 import Aux from "../hoc/_Aux";
 import * as actionTypes from "../../store/actions/adminLayoutActions";
 import "../layout/ScratchLayout/app.scss";
-// import BlueCard from "../../App/components/BlueCard";
+// import BlueCard from "../components/BlueCard";
 
 // import Moment from "react-moment";
 import styled from "styled-components";
 import MLoader from "../layout/Loader/Spinner";
 import firebase from "../../services/firebase";
-import TableNews from "../ppdb/Component/TableNews";
+import TableNews from "./Component/TableNews";
 import "./Protected/Panitia/Progress/Table.css";
-// import Agenda from "../layout/ScratchLayout/Agenda";
-import Alur from "../layout/ScratchLayout/Alur";
 
 const Styles = styled.div`
   .pagination {
@@ -105,11 +114,10 @@ function TableNewsHeader() {
       <Row>
         <Col>
           <Card id="lihat">
-            <Card.Header as="h5">Hasil Penerimaan</Card.Header>
+            <Card.Header>
+              <Card.Title as="h5">Form Konfirmasi Pembayaran</Card.Title>
+            </Card.Header>
             <Card.Body>
-              <Card.Subtitle as="p">
-                Berikut ini tabel data penerimaan peserta didik baru
-              </Card.Subtitle>
               {loading ? (
                 <Col>
                   <MLoader />
@@ -189,18 +197,8 @@ class Pengumuman extends Component {
       <Aux>
         <Fullscreen enabled={this.props.adminReducer.isFullScreen}>
           <Navigation SubMode={true} />
-          <div style={{ paddingTop: "90px" }}>
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col py-3">
-                  <TableNewsHeader />
-                </div>
-                <div className="col-md-4">
-                  <Alur />
-                  {/* <Agenda /> */}
-                </div>
-              </div>
-            </div>
+          <div style={{paddingTop: "90px"}}>
+            <TableNewsHeader />
           </div>
         </Fullscreen>
       </Aux>

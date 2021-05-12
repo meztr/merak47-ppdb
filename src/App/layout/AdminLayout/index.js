@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
-import { compose } from 'redux';
+// import { compose } from 'redux';
 import {connect} from 'react-redux';
 import Fullscreen from "react-full-screen";
 import windowSize from 'react-window-size';
@@ -12,7 +12,7 @@ import routes from "../../../routes";
 import Aux from "../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions/adminLayoutActions";
 import { signout, fetchAllAdminData } from "../../../store/actions/auth";
-import requireAuth from '../../hoc/requireAuth';
+// import requireAuth from '../../hoc/requireAuth';
 
 import './app.scss';
 

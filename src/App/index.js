@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Loader from './layout/Loader'
 
@@ -7,7 +7,7 @@ import '../../node_modules/font-awesome/scss/font-awesome.scss';
 import Aux from "./hoc/_Aux";
 import ScrollToTop from './layout/ScrollToTop';
 import publicRoute from "../route";
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 
 
 const AdminLayout = Loadable({

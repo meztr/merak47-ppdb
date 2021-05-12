@@ -1,8 +1,8 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+// import { Image } from 'react-bootstrap';
 import DEMO  from './../../../../../store/constant';
 import Aux from "../../../../hoc/_Aux";
-import LogoMerak from '../../../../../assets/images/merak2020.jpg';
+// import LogoMerak from '../../../../../assets/images/merak2020.jpg';
 
 const navLogo = (props) => {
   let toggleClass = ['mobile-menu'];

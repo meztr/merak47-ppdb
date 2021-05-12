@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Aux from '../../../../hoc/_Aux';
 import CardSiswa from '../../../../../App/components/MainCard';
-import CollapseItem from '../../../Component/CollapseItem';
+// import CollapseItem from '../../../Component/CollapseItem';
 import styled from 'styled-components';
 
 function Biodata(props) {

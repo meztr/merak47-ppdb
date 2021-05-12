@@ -3,7 +3,7 @@ import {
   SIGNUP_ERROR,
   SIGNIN_SUCCESS,
   SIGNIN_ERROR,
-  EMAIL_NOT_VERIFIED,
+  // EMAIL_NOT_VERIFIED,
   SIGNOUT_SUCCESS,
   SIGNOUT_ERROR,
   RESET_SUCCESS,
@@ -143,7 +143,7 @@ export const signinCalon = (kodePendaftaran, nisn, callback) => async dispatch =
       .auth()
       .signInAnonymously()
       .then(() => firebase.database()
-        .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`)    //.ref(`ppdb2020/calonsiswa/${randomkode}`)
+        .ref(`ppdb2021/calonsiswa/${kodePendaftaran}`)    //.ref(`ppdb2020/calonsiswa/${randomkode}`)
         .once('value', (snapshot) => {
           const val = snapshot.val();
           if (val == null) {
@@ -249,7 +249,7 @@ export const signinAnonim = (values, callback) => async dispatch => {
         const calonid = data.user.uid;
         
         firebase.database()
-          .ref(`ppdb2020/calonsiswa/${kodePendaftaran}`)
+          .ref(`ppdb2021/calonsiswa/${kodePendaftaran}`)
           .set({
             calonid,
             nisn,

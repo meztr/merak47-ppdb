@@ -1,7 +1,13 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/jsx-key */
-import React, { useState } from 'react';
-import { useTable, useFilters, useSortBy, useRowSelect, usePagination } from 'react-table';
+import React, { useState } from "react";
+import {
+  useTable,
+  useFilters,
+  useSortBy,
+  useRowSelect,
+  usePagination,
+} from "react-table";
 
 // const IndeterminateCheckbox = React.forwardRef(
 //   ({ indeterminate, ...rest }, ref) => {
@@ -38,9 +44,9 @@ import { useTable, useFilters, useSortBy, useRowSelect, usePagination } from 're
 // );
 
 export default function TableCalon({ columns, data }) {
-  const [filterKodeInput, setFilterKodeInput] = useState('');
-  const [filterNamaInput, setFilterNamaInput] = useState('');
-  const [filterNISNInput, setFilterNISNInput] = useState('');
+  const [filterKodeInput, setFilterKodeInput] = useState("");
+  const [filterNamaInput, setFilterNamaInput] = useState("");
+  const [filterNISNInput, setFilterNISNInput] = useState("");
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -58,8 +64,12 @@ export default function TableCalon({ columns, data }) {
     nextPage,
     previousPage,
     setPageSize,
-    selectedFlatRows,
-    state: { pageIndex, pageSize, selectedRowIds },
+    // selectedFlatRows,
+    state: { 
+      pageIndex, 
+      pageSize, 
+      // selectedRowIds 
+    },
   } = useTable(
     {
       columns,
@@ -67,11 +77,11 @@ export default function TableCalon({ columns, data }) {
       initialState: {
         sortBy: [
           {
-            id: 'createAt',
-            desc: true
-          }
-        ]
-      }
+            id: "createAt",
+            desc: true,
+          },
+        ],
+      },
     },
     useFilters,
     useSortBy,
@@ -102,21 +112,21 @@ export default function TableCalon({ columns, data }) {
     // }
   );
 
-  const handleFilterNamaChange = e => {
+  const handleFilterNamaChange = (e) => {
     const value = e.target.value || undefined;
-    setFilter('namasiswa', value);
+    setFilter("namasiswa", value);
     setFilterNamaInput(value);
   };
 
-  const handleFilterKodeChange = e => {
+  const handleFilterKodeChange = (e) => {
     const value = e.target.value || undefined;
-    setFilter('kodePendaftaran', value);
+    setFilter("kodePendaftaran", value);
     setFilterKodeInput(value);
   };
 
-  const handleFilterNISNChange = e => {
+  const handleFilterNISNChange = (e) => {
     const value = e.target.value || undefined;
-    setFilter('nisn', value);
+    setFilter("nisn", value);
     setFilterNISNInput(value);
   };
 
@@ -126,35 +136,37 @@ export default function TableCalon({ columns, data }) {
       <input
         value={filterKodeInput}
         onChange={handleFilterKodeChange}
-        placeholder={'Cari Kode Pendaftaran'}
-      /> {' '}
+        placeholder={"Cari Kode Pendaftaran"}
+      />{" "}
       <input
         value={filterNISNInput}
         onChange={handleFilterNISNChange}
-        placeholder={'Cari NISN'}
-      /> {' '}
+        placeholder={"Cari NISN"}
+      />{" "}
       <input
         value={filterNamaInput}
         onChange={handleFilterNamaChange}
-        placeholder={'Cari Nama'}
-      /> {' '}
-      <label style={{paddingLeft:'13px'}}>Jumlah Pendaftar: {data.length} orang</label>      
+        placeholder={"Cari Nama"}
+      />{" "}
+      <label style={{ paddingLeft: "13px" }}>
+        Jumlah Pendaftar: {data.length} orang
+      </label>
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map(headerGroup => (
+          {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
+              {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className={
                     column.isSorted
                       ? column.isSortedDesc
-                        ? 'sort-desc'
-                        : 'sort-asc'
-                      : ''
+                        ? "sort-desc"
+                        : "sort-asc"
+                      : ""
                   }
                 >
-                  {column.render('Header')}
+                  {column.render("Header")}
                 </th>
               ))}
             </tr>
@@ -165,9 +177,9 @@ export default function TableCalon({ columns, data }) {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
+                {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
               </tr>
@@ -175,45 +187,44 @@ export default function TableCalon({ columns, data }) {
           })}
         </tbody>
       </table>
-
       <div className="pagination">
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {'<<'}
-        </button>{' '}
+          {"<<"}
+        </button>{" "}
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {'<'}
-        </button>{' '}
+          {"<"}
+        </button>{" "}
         <button onClick={() => nextPage()} disabled={!canNextPage}>
-          {'>'}
-        </button>{' '}
+          {">"}
+        </button>{" "}
         <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {'>>'}
-        </button>{' '}
+          {">>"}
+        </button>{" "}
         <span>
-          Page{' '}
+          Page{" "}
           <strong>
             {pageIndex + 1} of {pageOptions.length}
-          </strong>{' '}
+          </strong>{" "}
         </span>
         <span>
-          | Go to page:{' '}
+          | Go to page:{" "}
           <input
             type="number"
             defaultValue={pageIndex + 1}
-            onChange={e => {
+            onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               gotoPage(page);
             }}
-            style={{ width: '100px' }}
+            style={{ width: "100px" }}
           />
-        </span>{' '}
+        </span>{" "}
         <select
           value={pageSize}
-          onChange={e => {
+          onChange={(e) => {
             setPageSize(Number(e.target.value));
           }}
         >
-          {[10, 20, 30, 40, 50].map(pageSize => (
+          {[10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>

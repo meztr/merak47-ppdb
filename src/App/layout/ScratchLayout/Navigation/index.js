@@ -60,7 +60,7 @@ class Navigation extends Component {
 
         const currentScrollPos = window.pageYOffset;
         // const visible = prevScrollpos > currentScrollPos;
-        const visible = 250 > currentScrollPos;
+        const visible = true; //250 > currentScrollPos;
         this.setState({
             prevScrollpos: currentScrollPos,
             visible
@@ -84,18 +84,19 @@ class Navigation extends Component {
 
         const isNavExpanded = this.state.navExpanded ? 'show' : '';
 
-        const ScratchContent = (            
+        const ScratchContent = (
+            // eslint-disable-next-line            
             <div className={`${isNavExpanded}` + "collapse navbar-collapse"} id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
                     {this.state.isSubMode ? 
-                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/">BERANDA</a></li>
+                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/">Beranda</a></li>
                     : 
-                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/pengumuman">PENGUMUMAN KELULUSAN</a></li>
+                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/pengumuman">Pengumuman Penerimaan</a></li>
                     }
                     {/* <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/pengumuman">PENGUMUMAN</a></li> */}
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#prosedur">PROSEDUR PPDB</a></li>
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#info">INFORMASI</a></li>
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger " href="/#contact">HUBUNGI KAMI</a></li>                      
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#prosedur">Prosedur PPDB</a></li>
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#info">Informasi</a></li>
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger " href="/#contact">Hubungi Kami</a></li>                      
                 </ul>
             </div>
         );
@@ -107,7 +108,7 @@ class Navigation extends Component {
                 {/* <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav"> */}
                 <nav className={classnames("navbar navbar-expand-lg navbar-light fixed-top py-3", 
                                     {
-                                        "navbar-scrolled": !this.state.visible
+                                        "navbar-scrolled": this.state.visible
                                     })
                                 } id="mainNav">
                     <img style={{width:"45px", marginRight: "10px"}} src={meraklogo} alt="Logo"/>

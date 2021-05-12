@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Row, Col, Container} from 'react-bootstrap';
 import Moment from 'react-moment';
 import Aux from '../../../../hoc/_Aux';
