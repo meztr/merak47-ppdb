@@ -1,19 +1,22 @@
 // Base styling for the navbar
 #mainNav {
   box-shadow: $box-shadow;
-  background-color: $white-merak; //$white;
+  // background-color: $white-merak; //$white;
+  background-color: #272466; //$white;
   transition: background-color 0.2s ease;
   .navbar-brand {
     font-family: $navlogo-font; //$font-family-sans-serif;
     font-weight: $font-weight-bold;
-    color: $gray-900;
+    // color: $gray-900;
+    color: white;
     // background: url('/assets/logo1.png');
     // background-size: auto;
   }
   .navbar-nav {
     .nav-item {
       .nav-link {
-        color: $gray-600;
+        // color: $gray-600;
+        color: lightgray;
         font-family: $navmenu-font; //$font-family-sans-serif;
         font-weight: $font-weight-small;
         font-size: 0.9rem;

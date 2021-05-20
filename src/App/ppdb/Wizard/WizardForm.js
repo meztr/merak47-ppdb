@@ -1,42 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import WizardForm0Ketentuan from "./WizardForm0Ketentuan";
-import WizardForm1DataSiswa from "./WizardForm1DataSiswa";
-import WizardForm2DataWali from "./WizardForm2DataWali";
-import WizardForm3DataSekolah from "./WizardForm3DataSekolah";
+import Navigation from "../../layout/ScratchLayout/Navigation";
+import Wizard2Form0Ketentuan from "./Wizard2Form/Wizard2Form0Ketentuan";
+import Wizard2Form1DataSiswa from "./Wizard2Form/Wizard2Form1DataSiswa";
+import Wizard2Form2DataWali from "./Wizard2Form/Wizard2Form2DataWali";
+import Wizard2Form3DataSekolah from "./Wizard2Form/Wizard2Form3DataSekolah";
 
 import "../../../assets/scss/style.scss";
 import Aux from "../../hoc/_Aux";
 // import Loader from "../../layout/Loader"
 import styled from "styled-components";
-
-// const Stepper = styled.ul`
-//   & {
-//     width: 80%;
-//     height: 10%;
-//     padding: 0.5em;
-//     bacgkround-color: #f8d05d;
-//     margin: 0 auto;
-//     position: auto;
-//   }
-//   &:after {
-//     border-right: solid 20px transparent;
-//     border-left: solid 20px transparent;
-//     border-top: solid 20px #f8d05d;
-//     transform: translateX(-50%);
-//     position: absolute;
-//     z-index: -1;
-//     content: "";
-//     top: 100%;
-//     left: 50%;
-//     height: 0;
-//     width: 0;
-//   }
-// `;
+import "../../layout/ScratchLayout/app.scss";
 
 const MSContainer = styled.div`
+  margin-top: 78px;
   background-color: #9c27b0;
-  background-image: linear-gradient(120deg, #ff4081, #81d4fa);
+  background-image: linear-gradient(120deg, lightgray, white);
 `;
 
 const MSForm = styled.div`
@@ -177,7 +156,7 @@ const Progressbar = styled.div`
   li {
     list-style-type: none;
     font-size: 12px;
-    width: 25%;
+    width: 24%;
     float: left;
     position: relative;
   }
@@ -185,6 +164,11 @@ const Progressbar = styled.div`
   #ketentuan:before {
     font-family: FontAwesome;
     content: "\f023";
+  }
+
+  #datapendaftaran:before {
+    font-family: FontAwesome;
+    content: "\f007";
   }
 
   #datasiswa:before {
@@ -234,7 +218,7 @@ const Progressbar = styled.div`
 
 const PageStepIndicator = (props) => {
   return (
-    <div className="sticky-top">
+    <div className="sticky-top bg-white px-2">
       <Progressbar>
         {/* <Stepper>Step {props.page}</Stepper> */}
         <ul id="progressbar">
@@ -252,6 +236,7 @@ const PageStepIndicator = (props) => {
           </li>
         </ul>
       </Progressbar>
+      <hr />
     </div>
   );
 };
@@ -267,6 +252,7 @@ class WizardForm extends Component {
   }
   nextPage() {
     this.setState({ page: this.state.page + 1 });
+    console.log("page:" + this.state.page);
   }
 
   previousPage() {
@@ -278,35 +264,36 @@ class WizardForm extends Component {
     const { page } = this.state;
     return (
       <Aux>
+        <Navigation isSubMode navExpanded={true} />
         <MSContainer>
           <div className="row justify-content-center mt-0">
-            <div className="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <div className="col-11 col-sm-9 col-md-7 col-lg-8 text-center px-3 mt-3 mb-2 bg-white">
               <div className="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h3 className="text-center font-weight-bold pt-4 pb-5 mb-2">
-                  <strong>Form Registrasi Calon Siswa</strong>
-                </h3>
-
+                <h4 className="text-center font-weight-bold pb-5 mb-2">
+                  Formulir Online Tahun Pelajaran 2021/2022{" "}
+                  {this.props.gelombang}
+                </h4>
                 <MSForm>
                   <PageStepIndicator page={page} />
 
                   <div className="text-left">
                     {page === 1 && (
-                      <WizardForm0Ketentuan onSubmit={this.nextPage} />
+                      <Wizard2Form0Ketentuan onSubmit={this.nextPage} />
                     )}
                     {page === 2 && (
-                      <WizardForm1DataSiswa
+                      <Wizard2Form1DataSiswa
                         previousPage={this.previousPage}
                         onSubmit={this.nextPage}
                       />
                     )}
                     {page === 3 && (
-                      <WizardForm2DataWali
+                      <Wizard2Form2DataWali
                         previousPage={this.previousPage}
                         onSubmit={this.nextPage}
                       />
                     )}
                     {page === 4 && (
-                      <WizardForm3DataSekolah
+                      <Wizard2Form3DataSekolah
                         previousPage={this.previousPage}
                         onSubmit={onSubmit}
                       />

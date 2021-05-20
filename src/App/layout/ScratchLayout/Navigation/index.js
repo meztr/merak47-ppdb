@@ -112,7 +112,7 @@ class Navigation extends Component {
                                     })
                                 } id="mainNav">
                     <img style={{width:"45px", marginRight: "10px"}} src={meraklogo} alt="Logo"/>
-                    { this.state.pakeH4 ? ( null ) : ( <a className="navbar-brand js-scroll-trigger" href="/#page-top"> PPDB ONLINE </a> )
+                    { this.state.pakeH4 ? ( null ) : ( <a className="navbar-brand js-scroll-trigger" href="/" style={{backgroundColor:"transparent"}}> PPDB ONLINE </a> )
                     }
                     <button onClick={ () => this.toggleNavbar() }
                         className="navbar-toggler navbar-toggler-right" 

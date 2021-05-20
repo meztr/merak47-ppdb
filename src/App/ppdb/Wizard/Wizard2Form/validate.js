@@ -42,9 +42,22 @@ const validate = values => {
   if (!values.nik) {
     errors.nik = ' wajib diisi';
   }
+  // -- no.kk
+  if (!values.nokk) {
+    errors.nokk = ' wajib diisi';
+  }
+
+  // -- scan KK
+  if (!values.scankk) {
+    errors.scankk = ' wajib diisi';
+  }
+  // -- no akta lahir
+  if (!values.noaktalahir) {
+    errors.noaktalahir = ' wajib diisi';
+  }
   // -- jalur pendaftaran
-  if (!values.jalurPendaftaran) {
-    errors.jalurPendaftaran = ' wajib diisi';
+  if (!values.jenisPendaftaran) {
+    errors.jenisPendaftaran = ' wajib diisi';
   }
   // -- tempat lahir
   if (!values.tempatlahirsiswa) {
@@ -93,6 +106,50 @@ const validate = values => {
   // -- anak ke (tunda gak ya)
   if (!values.anakkebrp) {
     errors.anakkebrp = ' wajib diisi';
+  }
+  // -- moda transportasi
+  if (!values.modatransportasi) {
+    errors.modatransportasi = ' wajib diisi';
+  }
+  // -- jarak tempat tinggal
+  if (!values.jaraktempattinggal) {
+    errors.jaraktempattinggal = ' wajib diisi';
+  }
+  // -- jarak dlm kilometer
+  if (!values.jarakdalamkilometer) {
+    errors.jarakdalamkilometer = ' wajib diisi';
+  }
+  // -- waktu tempuh
+  if (!values.waktutempuh) {
+    errors.waktutempuh = ' wajib diisi';
+  }
+  // -- tinggi badan
+  if (!values.tinggibadan) {
+    errors.tinggibadan = ' wajib diisi';
+  }
+  // -- berat badan
+  if (!values.beratbadan) {
+    errors.beratbadan = ' wajib diisi';
+  }
+  // -- lingkar kepala
+  if (!values.lingkarkepala) {
+    errors.lingkarkepala = ' wajib diisi';
+  }
+  // -- hobi
+  if (!values.hobi) {
+    errors.hobi = ' wajib diisi';
+  }
+  // -- cita-cita
+  if (!values.citacita) {
+    errors.citacita = ' wajib diisi';
+  }
+  // -- kebutuhankhusus
+  if (!values.kebutuhankhusus) {
+    errors.kebutuhankhusus = ' wajib diisi';
+  }
+  // -- alamat email
+  if (!values.alamatemail) {
+    errors.alamatemail = ' wajib diisi';
   }
   // -- status 
   if (!values.statusdlmkeluarga) {
@@ -203,9 +260,10 @@ const validate = values => {
   }
 
   // -- Alamat sekolah asal
-  if (!values.alamatsekolah) {
-    errors.alamatsekolah = ' wajib diisi';
+  if (!values.kabupatensekolah) {
+    errors.kabupatensekolah = ' wajib diisi';
   }
+
   // -- Tahun lulus
   if (!values.tahunlulus) {
     errors.tahunlulus = ' wajib diisi';

@@ -67,9 +67,13 @@ function TableNewsHeader() {
         Header: "PILIHAN JURUSAN",
         accessor: "jurusan",
       },
+      // {
+      //   Header: "JALUR",
+      //   accessor: "jalurpendaftaran",
+      // },
       {
-        Header: "JALUR",
-        accessor: "jalurpendaftaran",
+        Header: "JENIS",
+        accessor: "jenispendaftaran",
       },
       {
         Header: "KETERANGAN",

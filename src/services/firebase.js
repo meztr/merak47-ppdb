@@ -1,11 +1,12 @@
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
-import * as firebase from 'firebase/app';
+import * as firebase from "firebase/app";
 
 // Add the Firebase services that you want to use
 // We only want to use Firebase Auth here
-import 'firebase/auth';
-import 'firebase/database';
+import "firebase/auth";
+import "firebase/database";
+import "firebase/storage";
 
 // Your app's Firebase configuration
 const prodconfig = {
@@ -16,7 +17,7 @@ const prodconfig = {
   storageBucket: process.env.REACT_APP_PROD_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_PROD_MESSAGING_SENDER_ID,
 };
-  
+
 // const devconfig = {
 //   apiKey: process.env.REACT_APP_DEV_API_KEY,
 //   authDomain: process.env.REACT_APP_DEV_AUTH_DOMAIN,
@@ -42,6 +43,8 @@ const prodconfig = {
 // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 firebase.initializeApp(prodconfig);
+const storage = firebase.storage();
 
 // Finally, export it to use it throughout your app
-export default firebase;
+// export default firebase;
+export { storage, firebase as default };

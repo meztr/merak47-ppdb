@@ -41,11 +41,13 @@ const Wizard = ({
             kodePendaftaran: randomkode,
             namasiswa: values.namasiswa,
             nisn: values.nisn,
+            // scankkurl: "dummyscankkrul", //values.scankkurl,
             verifikasi: false, // 3 state: #belum, #gagal, #berhasil
             diterima: false,
             lunasPembayaran: false,
             calonid: data.user.uid,
-            jalurPendaftaran: values.jalurPendaftaran,
+            // //jalurPendaftaran: values.jalurPendaftaran,
+            // jenisPendaftaran: values.jenisPendaftaran,
             createAt: firebase.database.ServerValue.TIMESTAMP,
             dibuatSaat: new Date(),
           };
@@ -89,7 +91,7 @@ const Wizard = ({
     //   {/* <WizardForm onSubmit={proceedRegisterCalonSiswa} /> */}
     //   <ReCaptchaWizard />
     // </GoogleReCaptchaProvider>
-    <WizardForm onSubmit={proceedRegisterCalonSiswa} />
+    <WizardForm onSubmit={proceedRegisterCalonSiswa} gelombang="Gelombang 1" />
   );
 };
 
