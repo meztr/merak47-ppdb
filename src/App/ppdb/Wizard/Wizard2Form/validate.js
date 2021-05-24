@@ -260,13 +260,30 @@ const validate = values => {
   }
 
   // -- Alamat sekolah asal
+  if (!values.alamatSekolah) {
+    errors.alamatSekolah = ' wajib diisi';
+  }
+  // -- Kabupaten sekolah asal
   if (!values.kabupatensekolah) {
     errors.kabupatensekolah = ' wajib diisi';
   }
 
+  // -- Nomor Peserta Ujian SMP
+  if (!values.nopesertaujiansmp) {
+    errors.nopesertaujiansmp = ' wajib diisi';
+  }
+  // -- Tanggal atau Nomor STKJ
+  if (!values.tanggalnomorstk) {
+    errors.tanggalnomorstk = ' wajib diisi';
+  }
   // -- Tahun lulus
   if (!values.tahunlulus) {
     errors.tahunlulus = ' wajib diisi';
+  }
+  
+  // -- Lama Belajar
+  if (!values.lamabelajarsmp) {
+    errors.lamabelajarsmp = ' wajib diisi';
   }
   return errors;
 };

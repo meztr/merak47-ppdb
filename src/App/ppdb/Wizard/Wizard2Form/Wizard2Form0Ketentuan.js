@@ -95,5 +95,5 @@ export default reduxForm({
   form: "wizard",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  validate,
+  // validate,
 })(WizardForm0Ketentuan);

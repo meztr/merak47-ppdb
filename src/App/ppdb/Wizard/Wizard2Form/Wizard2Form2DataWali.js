@@ -1,12 +1,10 @@
-import React, { 
-  // useState 
-} from "react";
+import React, { useState } from "react"; // useState
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
 import renderField from "./renderField";
 // import "../../../../assets/scss/style.scss";
-import Aux from "../../../hoc/_Aux"
+import Aux from "../../../hoc/_Aux";
 
 const pendidikan = [
   "Tidak Sekolah",
@@ -65,30 +63,6 @@ const whiteStyle = {
 //   backgroundColor: "gray",
 // };
 
-// const renderFieldWali = ({
-//   input,
-//   label,
-//   type,
-//   value,
-//   disabled,
-//   meta: { touched, error },
-// }) => (
-//   <Form.Group style={{ color: "black" }}>
-//     <Form.Label>{label}</Form.Label>
-//     <Form.Control
-//       required
-//       {...input}
-//       type={type}
-//       placeholder={label}
-//       isInvalid={touched && error}
-//       style={disabledStyle}
-//       disabled={disabled}
-//       value={value}
-//     />
-//     <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
-//   </Form.Group>
-// );
-
 // const renderError = ({ meta: { touched, error } }) =>
 //   touched && error ? <span>{error}</span> : false
 
@@ -100,7 +74,9 @@ const renderSelectorWithArray = ({
   meta: { touched, error },
 }) => (
   <Form.Group style={{ color: "black" }}>
-    <Form.Label>{label}</Form.Label>
+    <Form.Label>
+      <strong>{label}</strong>
+    </Form.Label>
     <Form.Control
       as="select"
       {...input}
@@ -128,161 +104,201 @@ const phoneNumber = (value) =>
 const WizardFormSecondPage = (props) => {
   const { handleSubmit, previousPage } = props;
   // const [waliAyah, setWaliAyah] = useState(false);
+  const [opsiWali, setOpsiWali] = useState("waliBaru");
   return (
     <Aux>
       <Container>
         <Row>
           <Col>
             <form onSubmit={handleSubmit}>
-              <h4>Data Ibu Kandung</h4>
-              <Field
-                name="namaIbu"
-                type="text"
-                component={renderField}
-                label="Nama Lengkap Ibu"
-              />
-              {/* <Field
-                name="pendidikanIbu"
-                array={pendidikan}
-                type="text"
-                placeholder="Pilih Pendidikan.. "
-                component={renderSelectorWithArray}
-                label="Pendidikan Terakhir"
-              />
-              <Field
-                name="pekerjaanIbu"
-                array={pekerjaanIbu}
-                type="text"
-                placeholder="Pilih Pekerjaan.."
-                component={renderSelectorWithArray}
-                label="Pekerjaan"
-              />
-              <Field
-                name="agamaIbu"
-                array={agama}
-                type="text"
-                placeholder="Pilih Agama.."
-                component={renderSelectorWithArray}
-                label="Agama"
-              />
-              <Field
-                name="penghasilanIbu"
-                array={penghasilan}
-                type="text"
-                placeholder="Pilih Penghasilan.."
-                component={renderSelectorWithArray}
-                label="Penghasilan per bulan"
-              />
-              <Field
-                name="nohapeIbu"
-                type="number"
-                component={renderField}
-                validate={phoneNumber}
-                label="No. HP"
-              /> */}
+              <fieldset className="mb-4">
+                <legend
+                  className="bg-secondary text-white pl-4 pr-4 mb-4"
+                  style={{ borderRadius: "20px", fontSize: "20px" }}
+                >
+                  <i className="fa fa-user mr-3"></i>Data Ibu Kandung
+                </legend>
+                <div className="mx-3">
+                  <Field
+                    name="namaIbu"
+                    type="text"
+                    component={renderField}
+                    label="Nama Lengkap Ibu"
+                  />
+                  <Field
+                    name="pendidikanIbu"
+                    array={pendidikan}
+                    type="text"
+                    placeholder="Pilih Pendidikan.. "
+                    component={renderSelectorWithArray}
+                    label="Pendidikan Terakhir"
+                  />
+                  <Field
+                    name="pekerjaanIbu"
+                    array={pekerjaanIbu}
+                    type="text"
+                    placeholder="Pilih Pekerjaan.."
+                    component={renderSelectorWithArray}
+                    label="Pekerjaan"
+                  />
+                  <Field
+                    name="agamaIbu"
+                    array={agama}
+                    type="text"
+                    placeholder="Pilih Agama.."
+                    component={renderSelectorWithArray}
+                    label="Agama"
+                  />
+                  <Field
+                    name="penghasilanIbu"
+                    array={penghasilan}
+                    type="text"
+                    placeholder="Pilih Penghasilan.."
+                    component={renderSelectorWithArray}
+                    label="Penghasilan per bulan"
+                  />
+                  <Field
+                    name="nohapeIbu"
+                    type="number"
+                    component={renderField}
+                    validate={phoneNumber}
+                    label="No. HP"
+                  />
+                </div>
+              </fieldset>
 
-              <h4>Data Ayah Kandung</h4>
-              {/* <Field
-                name="namaAyah"
-                type="text"
-                component={renderField}
-                label="Nama Lengkap Ayah"
-              /> */}
-              {/* <Field
-                name="pendidikanAyah"
-                type="text"
-                array={pendidikan}
-                label="Pendidikan Terakhir"
-                placeholder="Pilih Pendidikan Ayah.."
-                component={renderSelectorWithArray}
-              />
-              <Field
-                name="pekerjaanAyah"
-                array={pekerjaan}
-                type="text"
-                placeholder="Pilih Pekerjaan.."
-                component={renderSelectorWithArray}
-                label="Pekerjaan"
-              />
-              <Field
-                name="agamaAyah"
-                array={agama}
-                type="text"
-                placeholder="Pilih Agama.."
-                component={renderSelectorWithArray}
-                label="Agama"
-              />
-              <Field
-                name="penghasilanAyah"
-                array={penghasilan}
-                type="text"
-                placeholder="Pilih Penghasilan.."
-                component={renderSelectorWithArray}
-                label="Penghasilan per bulan"
-              />
-              <Field
-                name="nohapeAyah"
-                type="number"
-                component={renderField}
-                validate={phoneNumber}
-                label="No. HP"
-              /> */}
-              {/* <h4>Data Wali Calon Siswa</h4> */}
-              {/* <Field name="ayahWali" component="input" type="checkbox" value="ayahWali" onChange={() => setWaliAyah(!waliAyah)} />{' '} Isikan Data Ayah Kandung sebagai Data Wali
-      { waliAyah 
-        ? 
-        <div>
-          {props.form.wizard}
-          
-          <Field name="namaWali" type="text" component={renderFieldWali} label="Nama Lengkap Wali" value="StaticSet" disabled={true}/>
-          <Field name="pendidikanWali" array={pendidikan} type="text" placeholder="Pilih Pendidikan.. " component={renderSelectorWithArray} label="Pendidikan Terakhir" />
-          <Field name="pekerjaanWali" array={pekerjaan} type="text" placeholder="Pilih Pekerjaan.." component={renderSelectorWithArray} label="Pekerjaan" />
-          <Field name="penghasilanWali" array={penghasilan} type="text" placeholder="Pilih Penghasilan.." component={renderSelectorWithArray} label="Penghasilan per bulan" />
-          <Field name="nohapeWali" type="number" component={renderFieldWali} validate={phoneNumber} label="No. HP" /> 
-        </div>
-        : 
-        null
-      } */}
+              <fieldset className="mb-4">
+                <legend
+                  className="bg-secondary text-white pl-4 pr-4 mb-4"
+                  style={{ borderRadius: "20px", fontSize: "20px" }}
+                >
+                  <i className="fa fa-user mr-3"></i>Data Ayah Kandung
+                </legend>
+                <div className="mx-3">
+                  <Field
+                    name="namaAyah"
+                    type="text"
+                    component={renderField}
+                    label="Nama Lengkap Ayah"
+                  />
+                  <Field
+                    name="pendidikanAyah"
+                    type="text"
+                    array={pendidikan}
+                    label="Pendidikan Terakhir"
+                    placeholder="Pilih Pendidikan Ayah.."
+                    component={renderSelectorWithArray}
+                  />
+                  <Field
+                    name="pekerjaanAyah"
+                    array={pekerjaan}
+                    type="text"
+                    placeholder="Pilih Pekerjaan.."
+                    component={renderSelectorWithArray}
+                    label="Pekerjaan"
+                  />
+                  <Field
+                    name="agamaAyah"
+                    array={agama}
+                    type="text"
+                    placeholder="Pilih Agama.."
+                    component={renderSelectorWithArray}
+                    label="Agama"
+                  />
+                  <Field
+                    name="penghasilanAyah"
+                    array={penghasilan}
+                    type="text"
+                    placeholder="Pilih Penghasilan.."
+                    component={renderSelectorWithArray}
+                    label="Penghasilan per bulan"
+                  />
+                  <Field
+                    name="nohapeAyah"
+                    type="number"
+                    component={renderField}
+                    validate={phoneNumber}
+                    label="No. HP"
+                  />
+                </div>
+              </fieldset>
 
-              <h4>Data Wali Calon Siswa</h4>
-              {/* <Field
-                name="namaWali"
-                type="text"
-                component={renderField}
-                label="Nama Lengkap Wali"
-              /> */}
-              {/* <Field
-                name="pendidikanWali"
-                array={pendidikan}
-                type="text"
-                placeholder="Pilih Pendidikan.. "
-                component={renderSelectorWithArray}
-                label="Pendidikan Terakhir"
-              />
-              <Field
-                name="pekerjaanWali"
-                array={pekerjaan}
-                type="text"
-                placeholder="Pilih Pekerjaan.."
-                component={renderSelectorWithArray}
-                label="Pekerjaan"
-              />
-              <Field
-                name="penghasilanWali"
-                array={penghasilan}
-                type="text"
-                placeholder="Pilih Penghasilan.."
-                component={renderSelectorWithArray}
-                label="Penghasilan per bulan"
-              />
-              <Field
-                name="nohapeWali"
-                type="number"
-                component={renderField}
-                validate={phoneNumber}
-                label="No. HP"
-              /> */}
-
+              <fieldset className="mb-4">
+                <legend
+                  className="bg-secondary text-white pl-4 pr-4 mb-4"
+                  style={{ borderRadius: "20px", fontSize: "20px" }}
+                >
+                  <i className="fa fa-user mr-3"></i>Data Wali Calon Siswa
+                </legend>
+                {/* // TODO: onHalt  */}
+                {/* <div key={`opsi-radio-wali`} className="mb-3">
+                  <Form.Check
+                    name="radioWali"
+                    type="radio"
+                    id="radioWaliBaru"
+                    label="Orang Lain sebagai Wali"
+                    value="radioWaliBaru"
+                    onChange={(e) => setOpsiWali(e.target.value)}
+                    defaultChecked
+                  />
+                  <Form.Check
+                    name="radioWali"
+                    type="radio"
+                    id="radioWaliIbu"
+                    label="Ibu sebagai Wali"
+                    value="radioWaliIbu"
+                    onChange={(e) => setOpsiWali(e.target.value)}
+                  />
+                  <Form.Check
+                    name="radioWali"
+                    type="radio"
+                    id="radioWaliAyah"
+                    label="Ayah sebagai Wali"
+                    value="radioWaliAyah"
+                    onChange={(e) => setOpsiWali(e.target.value)}
+                  />
+                </div> */}
+                <div className="mx-3">
+                  <Field
+                    name="namaWali"
+                    type="text"
+                    component={renderField}
+                    label="Nama Lengkap Wali"
+                    value={opsiWali}
+                  />
+                  <Field
+                    name="pendidikanWali"
+                    array={pendidikan}
+                    type="text"
+                    placeholder="Pilih Pendidikan.. "
+                    component={renderSelectorWithArray}
+                    label="Pendidikan Terakhir"
+                  />
+                  <Field
+                    name="pekerjaanWali"
+                    array={pekerjaan}
+                    type="text"
+                    placeholder="Pilih Pekerjaan.."
+                    component={renderSelectorWithArray}
+                    label="Pekerjaan"
+                  />
+                  <Field
+                    name="penghasilanWali"
+                    array={penghasilan}
+                    type="text"
+                    placeholder="Pilih Penghasilan.."
+                    component={renderSelectorWithArray}
+                    label="Penghasilan per bulan"
+                  />
+                  <Field
+                    name="nohapeWali"
+                    type="number"
+                    component={renderField}
+                    validate={phoneNumber}
+                    label="No. HP"
+                  />
+                </div>
+              </fieldset>
               <div className="d-flex justify-content-between">
                 <Button
                   type="button"
@@ -307,5 +323,5 @@ export default reduxForm({
   form: "wizard",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  validate,
+  // validate,
 })(WizardFormSecondPage);

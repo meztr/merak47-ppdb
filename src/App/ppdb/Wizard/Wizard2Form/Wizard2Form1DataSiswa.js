@@ -116,7 +116,7 @@ const renderSelectorWithArray = ({
   input,
   meta: { touched, error },
 }) => (
-  <Form.Group style={{ color: "black" }}>
+  <Form.Group>
     <Form.Label>
       <strong>{label}</strong>
     </Form.Label>
@@ -407,7 +407,6 @@ const WizardFormFirstPage = (props) => {
                     component={renderField}
                     label="Cita-cita"
                   />
-                  {/* Kebutuhan khusus */}
                   <Field
                     name="kebutuhankhusus"
                     array={itemKebutuhanKhusus}
@@ -530,5 +529,5 @@ export default reduxForm({
   form: "wizard",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  validate,
+  // validate,
 })(WizardFormFirstPage);

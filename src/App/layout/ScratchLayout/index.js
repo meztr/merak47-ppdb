@@ -114,12 +114,6 @@ class ScratchLayout extends Component {
             <div className="container h-100">
               <div className="row">
                 <div className="row h-100 align-items-center justify-content-center text-center">
-                  {/* <FloatMenu>
-                                      <a className="btn btn-info btn-xl"                                         
-                                          href="/pengumuman"
-                                      >Pengumuman Kelulusan</a>                                    
-                                  </FloatMenu>                                 */}
-
                   <div className="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                     <h1 className="text-uppercase text-white">PPDB ONLINE</h1>
                     <h2 className="text-uppercase text-white">
@@ -193,7 +187,7 @@ class ScratchLayout extends Component {
                 style={{ paddingBottom: "15px" }}
                 src={process.env.PUBLIC_URL + "../assets/ppdb_btn.png"}
               />
-              <br /> Tombol Pendaftaran PPDB Online adalah cara yang lebih baik
+              <br /> Tombol <strong>Isi Formulir PPDB</strong> Online adalah cara yang lebih baik
               bagi Calon Siswa SMK Muhammadiyah Sampit untuk melakukan
               Pendaftaran secara real time
             </Modal.Body>
@@ -203,11 +197,11 @@ class ScratchLayout extends Component {
               </Button>
               <Button
                 variant="info"
-                download="FormulirOfflineSMKMSampit.pdf"
+                download="FormulirOfflineSMKMSampit2021.pdf"
                 target="_blank"
                 href={
                   process.env.PUBLIC_URL +
-                  "../assets/Formulir-Offline-smkmsampit.pdf"
+                  "../assets/formulir-ppdb-2021-2022.pdf"
                 }
               >
                 Lanjutkan Download

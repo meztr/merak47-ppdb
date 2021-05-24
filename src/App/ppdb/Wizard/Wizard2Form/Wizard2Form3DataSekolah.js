@@ -8,9 +8,10 @@ const whiteStyle = {
   backgroundColor: "white",
 };
 
-const statusSekolah = ["Negeri", "Swasta"];
+// const statusSekolah = ["Negeri", "Swasta"];
 const year = new Date().getFullYear();
 const years = Array.from(new Array(10), (val, index) => year - index);
+const lama = ["2 tahun", "3 tahun", "4 tahun", "5 tahun", "6 tahun"];
 
 const renderSelectorWithArray = ({
   array,
@@ -20,7 +21,7 @@ const renderSelectorWithArray = ({
   meta: { touched, error },
 }) => (
   <Form.Group style={{ color: "black" }}>
-    <Form.Label>{label}</Form.Label>
+    <Form.Label><strong>{label}</strong></Form.Label>
     <Form.Control
       size="sm"
       as="select"
@@ -43,35 +44,56 @@ const WizardFormThirdPage = (props) => {
   const { handleSubmit, pristine, previousPage, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <h4>Data Sekolah Asal</h4>
-      <Field
-        name="sekolahasal"
-        type="text"
-        component={renderField}
-        label="Nama Sekolah"
-      />
-      {/* <Field
-        name="statussekolah"
-        array={statusSekolah}
-        type="text"
-        label="Status Sekolah"
-        placeholder="Pilih Status Sekolah.."
-        component={renderSelectorWithArray}
-      />
-      <Field
-        name="alamatSekolah"
-        type="text"
-        component={renderField}
-        label="Alamat Sekolah"
-      />
-      <Field
-        name="tahunlulus"
-        array={years}
-        type="number"
-        placeholder="Tahun lulus.."
-        component={renderSelectorWithArray}
-        label="Tahun Lulus"
-      /> */}
+      <fieldset className="mb-4">
+        <legend
+          className="bg-secondary text-white pl-4 pr-4 mb-4"
+          style={{ borderRadius: "20px", fontSize: "20px" }}
+        >
+          <i className="fa fa-user mr-3"></i>Data Sekolah Asal
+        </legend>
+        <div className="mx-3">
+          <Field
+            name="sekolahasal"
+            type="text"
+            component={renderField}
+            label="Nama Sekolah"
+          />
+          <Field
+            name="nopesertaujiansmp"
+            type="number"
+            component={renderField}
+            label="Nomor Peserta Ujian SMP"
+          />
+          <Field
+            name="tanggalnomorstk"
+            type="text"
+            component={renderField}
+            label="Tanggal / No.STK"
+          />
+          <Field
+            name="alamatSekolah"
+            type="text"
+            component={renderField}
+            label="Alamat Sekolah"
+          />
+          <Field
+            name="tahunlulus"
+            array={years}
+            type="number"
+            placeholder="Tahun Lulus.."
+            component={renderSelectorWithArray}
+            label="Tahun Lulus"
+          />
+          <Field
+            name="lamabelajarsmp"
+            array={lama}
+            type="number"
+            placeholder="Lama Belajar.."
+            component={renderSelectorWithArray}
+            label="Lama Belajar di SMP (tahun)"
+          />
+        </div>
+      </fieldset>
 
       <div className="d-flex justify-content-between">
         <Button type="button" className="previous" onClick={previousPage}>
@@ -88,5 +110,5 @@ export default reduxForm({
   form: "wizard",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  validate,
+  // validate,
 })(WizardFormThirdPage);
